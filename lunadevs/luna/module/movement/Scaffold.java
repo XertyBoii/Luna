@@ -1,0 +1,225 @@
+package lunadevs.luna.module.movement;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.lwjgl.input.Keyboard;
+
+import com.darkmagician6.eventapi.EventTarget;
+
+import lunadevs.luna.category.Category;
+import lunadevs.luna.events.EventMotion;
+import lunadevs.luna.events.EventPlayerUpdate;
+import lunadevs.luna.events.EventType;
+import lunadevs.luna.events.KeyPressEvent;
+import lunadevs.luna.module.Module;
+import lunadevs.luna.utils.TimeHelper;
+import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.projectile.EntitySnowball;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.play.client.C09PacketHeldItemChange;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.Vec3;
+
+public class Scaffold extends Module{
+
+	public Scaffold() {
+		super("Scaffold", Keyboard.KEY_PERIOD, Category.MOVEMENT, true);
+	}
+	
+	 private List<Block> invalid = Arrays.asList(new Block[] { Blocks.air, Blocks.water, Blocks.fire, Blocks.flowing_water, Blocks.lava, Blocks.flowing_lava });
+	  private TimeHelper timer = new TimeHelper();
+	  private BlockData blockData;
+	  boolean placing;
+	  private int slot;
+	  public static boolean active;
+	  
+	  @Override
+	public void onEnable() {
+		  active=true;
+		super.onEnable();
+	}
+	  @Override
+	public void onDisable() {
+		  active=false;
+		  super.onDisable();
+	}
+	  
+	  
+	   
+	  
+	  public static float[] getBlockRotations(int x, int y, int z)
+	  {
+	    Minecraft mc = Minecraft.getMinecraft();
+	    Entity temp = new EntitySnowball(Minecraft.theWorld);
+	    temp.posX = (x + 0.5D);
+	    temp.posY = (y + 0.5D);
+	    temp.posZ = (z + 0.5D);
+	    return getAngles(temp);
+	  }
+	  public static float[] getAngles(Entity e)
+	  {
+	    Minecraft mc = Minecraft.getMinecraft();
+	    return new float[] { getYawChangeToEntity(e) + Minecraft.thePlayer.rotationYaw, getPitchChangeToEntity(e) + Minecraft.thePlayer.rotationPitch };
+	  }
+	  public static float getYawChangeToEntity(Entity entity)
+	  {
+	    Minecraft mc = Minecraft.getMinecraft();
+	    double deltaX = entity.posX - Minecraft.thePlayer.posX;
+	    double deltaZ = entity.posZ - Minecraft.thePlayer.posZ;
+	    double yawToEntity;
+	    if ((deltaZ < 0.0D) && (deltaX < 0.0D))
+	    {
+	      yawToEntity = 90.0D + Math.toDegrees(Math.atan(deltaZ / deltaX));
+	    }
+	    else
+	    {
+	      if ((deltaZ < 0.0D) && (deltaX > 0.0D)) {
+	        yawToEntity = -90.0D + 
+	          Math.toDegrees(Math.atan(deltaZ / deltaX));
+	      } else {
+	        yawToEntity = Math.toDegrees(-Math.atan(deltaX / deltaZ));
+	      }
+	    }
+	    return 
+	      MathHelper.wrapAngleTo180_float(-(Minecraft.thePlayer.rotationYaw - (float)yawToEntity));
+	  }
+
+	  public static float getPitchChangeToEntity(Entity entity)
+	  {
+	    Minecraft mc = Minecraft.getMinecraft();
+	    double deltaX = entity.posX - Minecraft.thePlayer.posX;
+	    double deltaZ = entity.posZ - Minecraft.thePlayer.posZ;
+	    double deltaY = entity.posY - 1.6D + entity.getEyeHeight() - 0.4D - 
+	      Minecraft.thePlayer.posY;
+	    double distanceXZ = MathHelper.sqrt_double(deltaX * deltaX + deltaZ * 
+	      deltaZ);
+	    
+	    double pitchToEntity = -Math.toDegrees(Math.atan(deltaY / distanceXZ));
+	    
+	    return -MathHelper.wrapAngleTo180_float(Minecraft.thePlayer.rotationPitch - 
+	      (float)pitchToEntity);
+	  }
+	  
+	  @EventTarget
+	  public void onPre(EventMotion event)
+	  {
+		  if(mc.gameSettings.keyBindSneak.pressed){
+		  }
+	    if (event.getType() == EventType.PRE)
+	    {
+	    	
+	      int tempSlot = getBlockSlot();
+	      this.blockData = null;
+	      this.slot = -1;
+	      if ((tempSlot != -1))
+	      {
+	        double x2 = Math.cos(Math.toRadians(Minecraft.thePlayer.rotationYaw + 90.0F));
+	        double z2 = Math.sin(Math.toRadians(Minecraft.thePlayer.rotationYaw + 90.0F));
+	        double xOffset = Minecraft.thePlayer.movementInput.moveForward * 0.4D * x2 + Minecraft.thePlayer.movementInput.moveStrafe * 0.4D * z2;
+	        double zOffset = Minecraft.thePlayer.movementInput.moveForward * 0.4D * z2 - Minecraft.thePlayer.movementInput.moveStrafe * 0.4D * x2;
+	        double x = Minecraft.thePlayer.posX + xOffset;double y = Minecraft.thePlayer.posY - 1.0D;double z = Minecraft.thePlayer.posZ + zOffset;
+	        BlockPos blockBelow1 = new BlockPos(x, y, z);
+	        if (Minecraft.theWorld.getBlockState(blockBelow1).getBlock() == Blocks.air)
+	        {
+	          this.blockData = getBlockData(blockBelow1, this.invalid);
+	          this.slot = tempSlot;
+	          if (this.blockData != null)
+	          {
+	            event.getLocation().setYaw(getBlockRotations(this.blockData.position.getX(), this.blockData.position.getY(), this.blockData.position.getZ(), this.blockData.face)[0]);
+	            event.getLocation().setPitch(getBlockRotations(this.blockData.position.getX(), this.blockData.position.getY(), this.blockData.position.getZ(), this.blockData.face)[1]);
+	          }
+	        }
+	      }
+	    }
+	  }
+	
+	  @EventTarget
+	  public void onPost(EventPlayerUpdate post)
+	  {
+	    post.getType();
+	    if ((post.getType() == EventType.POST) && (this.blockData != null) && (this.timer.hasReached(75L)) && (this.slot != -1))
+	    {
+	      mc.rightClickDelayTimer = 3;
+	      boolean dohax = mc.thePlayer.inventory.currentItem != this.slot;
+	      if (dohax) {
+	    	  mc.thePlayer.sendQueue.addToSendQueue(new C09PacketHeldItemChange(this.slot));
+	      }
+	      if (mc.playerController.func_178890_a(mc.thePlayer, mc.theWorld, mc.thePlayer.inventoryContainer.getSlot(36 + this.slot).getStack(), this.blockData.position, this.blockData.face, new Vec3(this.blockData.position.getX(), this.blockData.position.getY(), this.blockData.position.getZ()))) {
+	        mc.thePlayer.swingItem();
+	      }
+	      if (dohax) {
+	    	  mc.thePlayer.sendQueue.addToSendQueue(new C09PacketHeldItemChange(mc.thePlayer.inventory.currentItem));
+	      }
+	    }
+	  }
+	  
+	  @EventTarget
+	  public void onPre(EventPlayerUpdate e5)
+	  {
+	  }
+	  
+	  @EventTarget
+	  public void onPress(KeyPressEvent e)
+	  {
+	    e.getKey();
+	    mc.gameSettings.keyBindJump.getKeyCode();
+	  }
+	
+	@Override
+	public String getValue() {
+		return "Smart";
+	}
+	  public static float[] getBlockRotations(int x, int y, int z, EnumFacing facing)
+	  {
+	    Minecraft mc = Minecraft.getMinecraft();
+	    Entity temp = new EntitySnowball(Minecraft.theWorld);
+	    temp.posX = (x + 0.5D);
+	    temp.posY = (y + 0.5D);
+	    temp.posZ = (z + 0.5D);
+	    return getAngles(temp);         
+	  }
+	  public static BlockData getBlockData(BlockPos pos, List list)
+	  {
+		  Minecraft.getMinecraft();return 
+	    
+	      !list.contains(Minecraft.theWorld.getBlockState(pos.add(0, 0, 1)).getBlock()) ? 
+	      new BlockData(pos.add(0, 0, 1), EnumFacing.NORTH) : !list.contains(Minecraft.theWorld.getBlockState(pos.add(0, 0, -1)).getBlock()) ? new BlockData(pos.add(0, 0, -1), EnumFacing.SOUTH) : !list.contains(Minecraft.theWorld.getBlockState(pos.add(1, 0, 0)).getBlock()) ? new BlockData(pos.add(1, 0, 0), EnumFacing.WEST) : !list.contains(Minecraft.theWorld.getBlockState(pos.add(-1, 0, 0)).getBlock()) ? new BlockData(pos.add(-1, 0, 0), EnumFacing.EAST) : !list.contains(Minecraft.theWorld.getBlockState(pos.add(0, -1, 0)).getBlock()) ? new BlockData(pos.add(0, -1, 0), EnumFacing.UP) : null;
+	  }
+	  
+	  public static class BlockData
+	  {
+	    public BlockPos position;
+	    public EnumFacing face;
+	    
+	    public BlockData(BlockPos position, EnumFacing face)
+	    {
+	      this.position = position;
+	      this.face = face;
+	    }
+	  }
+	  
+	  public static Block getBlock(int x, int y, int z)
+	  {
+	    return Minecraft.theWorld.getBlockState(new BlockPos(x, y, z)).getBlock();
+	  }
+	  
+	  private int getBlockSlot()
+	  {
+	    for (int i = 36; i < 45; i++)
+	    {
+	      ItemStack itemStack = mc.thePlayer.inventoryContainer.getSlot(i).getStack();
+	      if ((itemStack != null) && ((itemStack.getItem() instanceof ItemBlock))) {
+	        return i - 36;
+	      }
+	    }
+	    return -1;
+	  }
+
+}

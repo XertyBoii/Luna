@@ -1,0 +1,5 @@
+public enum OS {
+
+    LINUX, SOLARIS, WINDOWS, MACOS, UNKNOWN
+
+}
