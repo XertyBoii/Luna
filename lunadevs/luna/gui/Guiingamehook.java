@@ -39,7 +39,7 @@ public class Guiingamehook extends GuiIngame{
      public void renderClientName(){
     	 Minecraft mc = Minecraft.getMinecraft();
     	 ScaledResolution sr = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
-         Parallaxa.fontRendererHotBar.drawStringWithShadow("Luna", 3, 3, RenderUtils.getRainbow(6000, -15 * 70));
+         Parallaxa.fontRendererHotBar.drawStringWithShadow("Luna", 3, 3, 0xFF9931FF);
         // zCore.rainbowCircle(sr, 2, 2, 30);
      }
      /**

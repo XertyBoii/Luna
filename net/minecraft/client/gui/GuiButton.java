@@ -1,5 +1,6 @@
 package net.minecraft.client.gui;
 
+import lunadevs.luna.main.Parallaxa;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
@@ -76,10 +77,8 @@ public class GuiButton extends Gui
     /**
      * Draws this button to the screen.
      */
-    public void drawButton(Minecraft mc, int mouseX, int mouseY)
-    {
-        if (this.visible)
-        {
+    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+        if (this.visible) {
             FontRenderer var4 = mc.fontRendererObj;
             mc.getTextureManager().bindTexture(buttonTextures);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -88,21 +87,25 @@ public class GuiButton extends Gui
             GlStateManager.enableBlend();
             GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
             GlStateManager.blendFunc(770, 771);
-            this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 46 + var5 * 20, this.width / 2, this.height);
-            this.drawTexturedModalRect(this.xPosition + this.width / 2, this.yPosition, 200 - this.width / 2, 46 + var5 * 20, this.width / 2, this.height);
+
+            if (!this.enabled) {
+                drawRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 0x40000000);
+            } else if (this.hovered) {
+                drawRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 0x809b42f4);
+            } else {
+                drawRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 0x90000000);
+            }
+
             this.mouseDragged(mc, mouseX, mouseY);
             int var6 = 14737632;
 
-            if (!this.enabled)
-            {
+            if (!this.enabled) {
                 var6 = 10526880;
-            }
-            else if (this.hovered)
-            {
+            } else if (this.hovered) {
                 var6 = 16777120;
             }
 
-            this.drawCenteredString(var4, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, var6);
+            Parallaxa.fontRenderer.drawCenteredString(this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, var6);
         }
     }
 

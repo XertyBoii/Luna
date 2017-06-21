@@ -1,9 +1,11 @@
 package lunadevs.luna.module.movement;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.Display;
 
 import com.darkmagician6.eventapi.EventTarget;
 
@@ -12,13 +14,16 @@ import lunadevs.luna.events.EventMotion;
 import lunadevs.luna.events.EventPlayerUpdate;
 import lunadevs.luna.events.EventType;
 import lunadevs.luna.events.KeyPressEvent;
+import lunadevs.luna.main.Parallaxa;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.utils.TimeHelper;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.C09PacketHeldItemChange;
@@ -37,7 +42,10 @@ public class Scaffold extends Module{
 	  private TimeHelper timer = new TimeHelper();
 	  private BlockData blockData;
 	  boolean placing;
+	  private boolean count = true;
 	  private int slot;
+	  private int blockcount;
+	    private int original;
 	  public static boolean active;
 	  
 	  @Override
@@ -50,9 +58,6 @@ public class Scaffold extends Module{
 		  active=false;
 		  super.onDisable();
 	}
-	  
-	  
-	   
 	  
 	  public static float[] getBlockRotations(int x, int y, int z)
 	  {
@@ -106,12 +111,61 @@ public class Scaffold extends Module{
 	    return -MathHelper.wrapAngleTo180_float(Minecraft.thePlayer.rotationPitch - 
 	      (float)pitchToEntity);
 	  }
+	  private void swap(final int slot, final int hotbarNum) {
+	        z.mc().playerController.windowClick(z.player().inventoryContainer.windowId, slot, hotbarNum, 2, z.player());
+	    }
+	  
+	  private boolean grabBlock() {
+	        for (int i = 0; i < 36; i++) {
+	            ItemStack stack = z.player().inventoryContainer.getSlot(i).getStack();
+	            if (stack != null && stack.getItem() instanceof ItemBlock) {
+	                for (int x = 36; x < 45; x++) {
+	                    try {
+	                        Item stackkk = z.player().inventoryContainer.getSlot(x).getStack().getItem();
+	                    } catch (NullPointerException ex) {
+	                        System.out.println(x-36);
+	                        swap(i, x - 36);
+	                        return true;
+	                    }
+	                }
+	                swap(i, 1);
+	                return true;
+	            }
+	        }
+	        return false;
+	    }
+
+	    private int blockInHotbar() {
+	        for (int i = 36; i < 45; i++) {
+	            ItemStack stack = z.player().inventoryContainer.getSlot(i).getStack();
+	            if (stack != null && stack.getItem() instanceof ItemBlock) {
+	                return i;
+	            }
+	        }
+	        return 0;
+	    }
+
 	  
 	  @EventTarget
 	  public void onPre(EventMotion event)
 	  {
 		  if(mc.gameSettings.keyBindSneak.pressed){
 		  }
+	        blockcount = 0;
+	        for (int i = 0; i < 45; i++) {
+	            ItemStack stack = z.player().inventoryContainer.getSlot(i).getStack();
+	            if (stack != null && stack.getItem() instanceof ItemBlock) {
+	                blockcount += stack.stackSize;
+	            }
+	        }
+	        int block = blockInHotbar();
+
+	        if (block == 0) {
+	            if ((grabBlock())) {
+	                block = blockInHotbar();
+	                if (block == 0) return;
+	            }
+	        }
 	    if (event.getType() == EventType.PRE)
 	    {
 	    	
@@ -174,7 +228,7 @@ public class Scaffold extends Module{
 	
 	@Override
 	public String getValue() {
-		return "Smart";
+		return String.valueOf(new DecimalFormat("#.#").format(blockcount));
 	}
 	  public static float[] getBlockRotations(int x, int y, int z, EnumFacing facing)
 	  {

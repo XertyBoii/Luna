@@ -69,6 +69,7 @@ public class Parallaxa {
 	public static final MistFontRenderer fontRendererGuiFour = new MistFontRenderer(getFont6(100), true, 8);
 	public static final MistFontRenderer fontRendererArrayList = new MistFontRenderer(getFont7(150), true, 8);
 	public static final MistFontRenderer fontRendererHotBar = new MistFontRenderer(getFont8(150), true, 8);
+	public static final MistFontRenderer fontRendererTabGuiName = new MistFontRenderer(getFontTitle(170), true, 8);
 	
 	
 	
@@ -108,6 +109,35 @@ public class Parallaxa {
 			ex.printStackTrace();
 			System.out.println("Error loading font");
 			font = new Font("default", 0, size);
+		}
+		return font;
+	}
+	
+	private static Font getFontTitle(int size) {
+		Font font = null;
+		try {
+			InputStream is = Minecraft.getMinecraft().getResourceManager()
+					.getResource(new ResourceLocation("NightMist/Comfortaa_Regular.ttf")).getInputStream();
+			font = Font.createFont(0, is);
+			font = font.deriveFont(0, size);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("Error loading font");
+			font = new Font("default", 0, +10);
+		}
+		return font;
+	}
+	private static Font getFontLuna(int size) {
+		Font font = null;
+		try {
+			InputStream is = Minecraft.getMinecraft().getResourceManager()
+					.getResource(new ResourceLocation("luna/font.ttf")).getInputStream();
+			font = Font.createFont(0, is);
+			font = font.deriveFont(0, size);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("Error loading font");
+			font = new Font("default", 0, +10);
 		}
 		return font;
 	}

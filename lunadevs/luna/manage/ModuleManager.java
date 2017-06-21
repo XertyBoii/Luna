@@ -75,12 +75,14 @@ import lunadevs.luna.module.player.InventoryWalk;
 import lunadevs.luna.module.player.MiddleClick;
 import lunadevs.luna.module.player.NoFall;
 import lunadevs.luna.module.player.Parkour;
+import lunadevs.luna.module.player.Phase;
 import lunadevs.luna.module.player.PlayerChecker;
 import lunadevs.luna.module.player.SkipLadder;
 import lunadevs.luna.module.player.SpeedMine;
 import lunadevs.luna.module.player.Trizlo;
 import lunadevs.luna.module.render.Animations;
 import lunadevs.luna.module.render.ChestESP;
+import lunadevs.luna.module.render.CircleESP;
 import lunadevs.luna.module.render.ESP;
 import lunadevs.luna.module.render.Fullbright;
 import lunadevs.luna.module.render.MobESP;
@@ -192,6 +194,8 @@ public class ModuleManager {
 		mods.add(new OldNameTags());
 		mods.add(new Eagle());
 		mods.add(new ServerCrasher());
+		mods.add(new CircleESP());
+		mods.add(new Phase());
 	}
 
 	public static <T extends Module> T findMod(Class<T> clazz)

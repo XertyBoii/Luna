@@ -10,7 +10,6 @@ import com.mojang.authlib.exceptions.AuthenticationException;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.mojang.authlib.yggdrasil.YggdrasilUserAuthentication;
 
-import lunadevs.luna.gui.button.ExpandButton;
 import lunadevs.luna.main.Parallaxa;
 import lunadevs.luna.utils.FileUtils;
 import net.minecraft.client.gui.GuiButton;
@@ -121,9 +120,9 @@ public class GuiAddAlt
     {
         Keyboard.enableRepeatEvents(true);
         this.buttonList.clear();
-        this.buttonList.add(new ExpandButton(0, this.width / 2 - 100,
+        this.buttonList.add(new GuiButton(0, this.width / 2 - 100,
                 this.height / 4 + 92 + 12, "Login"));
-        this.buttonList.add(new ExpandButton(1, this.width / 2 - 100,
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 100,
                 this.height / 4 + 116 + 12, "Back"));
         this.username = new GuiTextField(1, this.mc.fontRendererObj, this.width / 2 - 100, 60, 200,
                 20);

@@ -92,6 +92,10 @@ public class zCore {
 	  {
 	    return mc().thePlayer;
 	  }
+	  public static EntityPlayerSP player()
+	  {
+	    return mc().thePlayer;
+	  }
 	  
 	  public static void sendChatMessage(String msg) {
 	        zCore.sendPacket(new C01PacketChatMessage(msg));

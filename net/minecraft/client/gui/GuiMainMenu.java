@@ -1,5 +1,9 @@
 package net.minecraft.client.gui;
 
+import com.google.common.collect.Lists;
+
+import lunadevs.luna.main.Parallaxa;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,25 +11,8 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import org.apache.commons.io.Charsets;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GLContext;
-import org.lwjgl.util.glu.Project;
-
-import com.google.common.collect.Lists;
-import com.zCore.Core.zCore;
-import com.zCore.Render.Particles.Particle;
-import com.zCore.Render.Particles.ParticleGenerator;
-
-import lunadevs.luna.gui.button.BlackButtons;
-import lunadevs.luna.login.GuiAltManager;
-import lunadevs.luna.main.Parallaxa;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -40,21 +27,19 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.demo.DemoWorldServer;
 import net.minecraft.world.storage.ISaveFormat;
 import net.minecraft.world.storage.WorldInfo;
+import org.apache.commons.io.Charsets;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GLContext;
+import org.lwjgl.util.glu.Project;
 
 public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
 {
-	boolean background = true;
-	public static boolean update;
-
     private static final AtomicInteger field_175373_f = new AtomicInteger(0);
     private static final Logger logger = LogManager.getLogger();
     private static final Random field_175374_h = new Random();
 
-    /** MiDNiGHT */
-    private static final ResourceLocation background1 = new ResourceLocation("luna/BG1.jpg");
-    private static final ResourceLocation background2 = new ResourceLocation("Parallaxa/bg2.jpg");
-    
-    
     /** Counts the number of screen updates. */
     private float updateCounter;
 
@@ -86,7 +71,6 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
     private int field_92021_u;
     private int field_92020_v;
     private int field_92019_w;
-    private ParticleGenerator particles;
     private ResourceLocation field_110351_G;
     private GuiButton field_175372_K;
     private static final String __OBFID = "CL_00001154";
@@ -207,7 +191,6 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
 
         boolean var2 = true;
         int var3 = this.height / 4 + 48;
-        this.particles = new ParticleGenerator(51, width, height);
 
         if (this.mc.isDemo())
         {
@@ -218,10 +201,9 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
             this.addSingleplayerMultiplayerButtons(var3, 24);
         }
 
-        this.buttonList.add(new BlackButtons(0, this.width / 2 - 100, var3 + 80 + 12, 98, 20, I18n.format("menu.options", new Object[0])));
-        this.buttonList.add(new BlackButtons(4, this.width / 2 + 2, var3 + 80 + 12, 98, 20, I18n.format("menu.quit", new Object[0])));
-        this.buttonList.add(new BlackButtons(5, this.width / 2 - 100, var3 + 58 + 12, 98, 20, I18n.format("Language", new Object[0])));
-        this.buttonList.add(new BlackButtons(6, this.width / 2 + 2, var3 + 58 + 12, 98, 20, I18n.format("BackGround", new Object[0])));
+        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, var3 + 80 + 12, 98, 20, I18n.format("menu.options", new Object[0])));
+        this.buttonList.add(new GuiButton(4, this.width / 2 + 2, var3 + 80 + 12, 98, 20, I18n.format("menu.quit", new Object[0])));
+        this.buttonList.add(new GuiButton(5, this.width / 2 - 100, var3 + 58 + 12, 200, 20, I18n.format("Language", new Object[0])));
         Object var4 = this.field_104025_t;
 
         synchronized (this.field_104025_t)
@@ -241,9 +223,9 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
      */
     private void addSingleplayerMultiplayerButtons(int p_73969_1_, int p_73969_2_)
     {
-        this.buttonList.add(new BlackButtons(1, this.width / 2 - 100, p_73969_1_ + 4, I18n.format("menu.singleplayer", new Object[0])));
-        this.buttonList.add(new BlackButtons(2, this.width / 2 - 100, p_73969_1_ + p_73969_2_ * 1 + 2, I18n.format("menu.multiplayer", new Object[0])));
-        this.buttonList.add(this.field_175372_K = new BlackButtons(14, this.width / 2 - 100, p_73969_1_ + p_73969_2_ * 2, I18n.format("Account", new Object[0])));
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, p_73969_1_ + 4, I18n.format("menu.singleplayer", new Object[0])));
+        this.buttonList.add(new GuiButton(2, this.width / 2 - 100, p_73969_1_ + p_73969_2_ * 1 + 2, I18n.format("menu.multiplayer", new Object[0])));
+        this.buttonList.add(this.field_175372_K = new GuiButton(14, this.width / 2 - 100, p_73969_1_ + p_73969_2_ * 2, I18n.format("Account", new Object[0])));
     }
 
     /**
@@ -285,23 +267,15 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         }
 
         if (button.id == 14)
-        		//&& this.field_175372_K.visible
+        //&& this.field_175372_K.visible
         {
-        	//this.switchToRealms();
-        	this.mc.displayGuiScreen(new GuiAltManager());
+            //this.switchToRealms();
+            this.mc.displayGuiScreen(new lunadevs.luna.login.GuiAltManager());
         }
 
         if (button.id == 4)
         {
             this.mc.shutdown();
-        }
-        if (button.id == 6)
-        {
-            if (background==true){
-            	background=false;
-            }else if (background==false){
-            	background=true;
-            }
         }
 
         if (button.id == 11)
@@ -543,19 +517,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         GlStateManager.scale(var9, var9, var9);
         GlStateManager.popMatrix();
         String var10 = "Luna Hacked Client";
-
-        Parallaxa.fontRendererMainMenu.drawCenteredString("Luna", GuiScreen.width / 2, GuiScreen.height / 4, 0xFFdc28ed);
-        
-        String dev = "Made by LunaDevs";
-        
-        Parallaxa.fontRendererGUI.drawCenteredString(dev, GuiScreen.width / 2 , GuiScreen.height / 5, 0xFFdc28ed);
-        
-       // if (Build.check()) {
-        //Parallaxa.fontRendererGUI.drawString("An update is available! Download it at http://Parallaxa.tk", 2.0F, 3.0F, -16716288);
-   // } else {
-           // Parallaxa.fontRendererGUI.drawString("No updates are available.", 2.0F, 3.0F, -65536);
-  //  }
-
+        Parallaxa.fontRendererMAIN.drawCenteredString("Luna", GuiScreen.width / 2, GuiScreen.height / 4, 0xFFdc28ed);
         if (this.mc.isDemo())
         {
             var10 = var10 + " Demo";
@@ -563,17 +525,12 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         //this.drawString(this.fontRendererObj, var10, 2, this.height - 10, -1);
         //String var11 = Luna.CLIENT_CREATORS;
         //this.drawString(this.fontRendererObj, var11, this.width - this.fontRendererObj.getStringWidth(var11) - 2, this.height - 10, -1);
-        
-        this.particles.drawParticles();
-        Iterator localIterator2;
-        for (Iterator localIterator1 = this.particles.particles.iterator(); localIterator1.hasNext(); localIterator2.hasNext())
-        {
-          Particle p = (Particle)localIterator1.next();
-          
-          localIterator2 = this.particles.particles.iterator(); continue;
-        }        super.drawScreen(mouseX, mouseY, partialTicks);
+
+        super.drawScreen(mouseX, mouseY, partialTicks);
     }
-    
+
+    private static final ResourceLocation background = new ResourceLocation("Luna/Luna.jpg");
+
     public void renderBackground(int par1, int par2)
     {
         GL11.glDisable(GL11.GL_DEPTH_TEST);
@@ -581,11 +538,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         OpenGlHelper.glBlendFunc(770, 771, 1, 0);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         GL11.glDisable(GL11.GL_ALPHA_TEST);
-        if(background==true){
-        this.mc.getTextureManager().bindTexture(background1);
-        }else if(background==false){
-        	this.mc.getTextureManager().bindTexture(background2);
-        }
+        this.mc.getTextureManager().bindTexture(background);
         Tessellator var3 = Tessellator.instance;
         var3.getWorldRenderer().startDrawingQuads();
         var3.getWorldRenderer().addVertexWithUV(0.0D, (double)par2, -90.0D, 0.0D, 1.0D);
@@ -598,7 +551,6 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         GL11.glEnable(GL11.GL_ALPHA_TEST);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
     }
-
 
     /**
      * Called when the mouse is clicked. Args : mouseX, mouseY, clickedButton

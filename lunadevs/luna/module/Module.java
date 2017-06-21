@@ -149,5 +149,9 @@ public abstract class Module {
     public void setTransition(final int transition) {
         this.transition = transition;
     }
+
+	public void init() {
+		
+	}
 	
 }

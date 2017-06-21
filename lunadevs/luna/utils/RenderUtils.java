@@ -1,6 +1,8 @@
 package lunadevs.luna.utils;
 
 import org.lwjgl.opengl.GL11;
+import static org.lwjgl.opengl.GL11.GL_LINE_STRIP;
+import static org.lwjgl.opengl.GL11.GL_POINT_SMOOTH;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -41,6 +43,32 @@ public class RenderUtils {
 		worldRenderer.addVertex(aa.minX, aa.maxY, aa.maxZ);
 		tessellator.draw();
 	}
+	
+	public static void enableGL3D(float lineWidth) {
+        GL11.glDisable(3008);
+        GL11.glEnable(3042);
+        GL11.glBlendFunc(770, 771);
+        GL11.glDisable(3553);
+        GL11.glDisable(2929);
+        GL11.glDepthMask(false);
+        GL11.glEnable(2884);
+        GL11.glEnable(2848);
+        GL11.glHint(3154, 4354);
+        GL11.glHint(3155, 4354);
+        GL11.glLineWidth(lineWidth);
+    }
+
+    public static void disableGL3D() {
+        GL11.glEnable(3553);
+        GL11.glEnable(2929);
+        GL11.glDisable(3042);
+        GL11.glEnable(3008);
+        GL11.glDepthMask(true);
+        GL11.glCullFace(1029);
+        GL11.glDisable(2848);
+        GL11.glHint(3154, 4352);
+        GL11.glHint(3155, 4352);
+    }
 	
 	public static void drawBorderedRect(float x, float y, float x1, float y1, float width, int internalColor, int borderColor) {
         RenderUtils.enableGL2D();
@@ -451,6 +479,74 @@ public class RenderUtils {
 		hue /= speed;
 		return Color.getHSBColor(hue,1f,1f).getRGB();
 	}
+
+	public static void DrawArc(double cx, double cy, double r, double start_angle, double arc_angle, int num_segments, float lw, int c) {
+        float f = (float)(c >> 24 & 255) / 255.0f;
+        float f1 = (float)(c >> 16 & 255) / 255.0f;
+        float f2 = (float)(c >> 8 & 255) / 255.0f;
+        float f3 = (float)(c & 255) / 255.0f;
+        GL11.glColor4f(f1, f2, f3, f);
+        double theta = arc_angle / (num_segments - 1);
+
+        double tangetial_factor = Math.tan(theta);
+        double radial_factor = Math.cos(theta);
+
+        double x = r * Math.cos(start_angle);
+        double y = r * Math.sin(start_angle);
+
+
+        GL11.glLineWidth(lw);
+        GL11.glBegin(GL_LINE_STRIP);
+        for(int ii = 0; ii < num_segments; ii++)
+        {
+            GL11.glVertex2d(x + cx, y + cy);
+
+            double tx = -y;
+            double ty = x;
+
+            x += tx * tangetial_factor;
+            y += ty * tangetial_factor;
+
+            x *= radial_factor;
+            y *= radial_factor;
+        }
+        GL11.glEnd();
+    }
+
+    public static void drawRainbowCircle(float cx, float cy, float r, int num_segments, float lw) {
+        GL11.glPushMatrix();
+
+        float theta = (float)(6.2831852 / (double)num_segments);
+        float p = (float)Math.cos(theta);
+        float s = (float)Math.sin(theta);
+        float x = r *= 2.0f;
+        float y = 0.0f;
+        RenderUtils.enableGL2D();
+        GL11.glLineWidth(lw);
+        GL11.glEnable(GL_POINT_SMOOTH);
+        GL11.glBegin(2);
+        int ii = 0;
+        Color[] c = new Color[num_segments];
+        int n = 0;
+
+        while (n++ < num_segments) {
+            c[n] = new Color((int)(Math.sin(n) * 127 + 128), (int)(Math.sin(n + Math.PI/2) * 127 + 128), (int)(Math.sin(n + Math.PI) * 127 + 128));
+        }
+
+        while (ii < num_segments) {
+            n++;
+//            GL11.glColor3f(c[n]);
+
+            GL11.glVertex2f(x + cx, y + cy);
+            float t = x;
+            x = p * x - s * y;
+            y = s * t + p * y;
+            ++ii;
+        }
+        GL11.glEnd();
+        RenderUtils.disableGL2D();
+        GL11.glPopMatrix();
+    }
 	
 
 	

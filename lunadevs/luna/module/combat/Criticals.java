@@ -23,13 +23,15 @@ public class Criticals extends Module{
 
 	public static void doCrit()
 	  {
-		if(Timer.hasReach(500)) {
-            zCore.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(Wrapper.getPlayer().posX, Wrapper.getPlayer().posY + 0.05, Wrapper.getPlayer().posZ, false));
-            zCore.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(Wrapper.getPlayer().posX, Wrapper.getPlayer().posY, Wrapper.getPlayer().posZ, false));
-            Timer.reset();
-            cancelSomePackets = true;
-		}
-}
+		double x = z.player().posX;
+        double y = z.player().posY;
+        double z = zCore.player().posZ;
+
+        zCore.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(x, y + 0.05, z, false));
+        zCore.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(x, y, z, false));
+        zCore.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(x, y + 0.012511, z, false));
+        zCore.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(x, y, z, false));
+    }
 
 	
 	@EventTarget
@@ -38,6 +40,7 @@ public class Criticals extends Module{
 	    if ((event.getType() == EventPacket.EventPacketType.SEND) && ((event.getPacket() instanceof C02PacketUseEntity)) && (mc.thePlayer.onGround) && 
 	      (((C02PacketUseEntity)event.getPacket()).getAction() == C02PacketUseEntity.Action.ATTACK)) {
 	      doCrit();
+	        zCore.player().onCriticalHit(event.getTarget());
 	    }
 	  }
 	

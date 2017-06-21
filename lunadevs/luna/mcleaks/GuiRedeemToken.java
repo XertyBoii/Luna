@@ -1,21 +1,16 @@
 package lunadevs.luna.mcleaks;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.net.URI;
-import java.util.List;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiMultiplayer;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.util.Session;
+
 import org.lwjgl.input.Keyboard;
 
-import lunadevs.luna.gui.button.ExpandButton;
 import lunadevs.luna.login.GuiAltManager;
 import lunadevs.luna.main.Parallaxa;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiTextField;
 
 public class GuiRedeemToken
   extends GuiScreen
@@ -47,13 +42,13 @@ public class GuiRedeemToken
   {
     Keyboard.enableRepeatEvents(true);
     
-    this.restoreButton = new ExpandButton(0, this.width / 2 - 150, this.height / 4 + 96 + 18, 128, 20, 
+    this.restoreButton = new GuiButton(0, this.width / 2 - 150, this.height / 4 + 96 + 18, 128, 20, 
       this.sessionRestored ? "Session restored!" : "Restore Session");
     this.restoreButton.enabled = (MCLeaks.savedSession != null);
     this.buttonList.add(this.restoreButton);
-    this.buttonList.add(new ExpandButton(1, this.width / 2 - 18, this.height / 4 + 96 + 18, 168, 20, "Redeem Token"));
-    this.buttonList.add(new ExpandButton(2, this.width / 2 - 150, this.height / 4 + 120 + 18, 158, 20, "Get Token"));
-    this.buttonList.add(new ExpandButton(3, this.width / 2 + 12, this.height / 4 + 120 + 18, 138, 20, "Cancel"));
+    this.buttonList.add(new GuiButton(1, this.width / 2 - 18, this.height / 4 + 96 + 18, 168, 20, "Redeem Token"));
+    this.buttonList.add(new GuiButton(2, this.width / 2 - 150, this.height / 4 + 120 + 18, 158, 20, "Get Token"));
+    this.buttonList.add(new GuiButton(3, this.width / 2 + 12, this.height / 4 + 120 + 18, 138, 20, "Cancel"));
     
     this.tokenField = new GuiTextField(0, this.fontRendererObj, this.width / 2 - 100, 128, 200, 20);
     this.tokenField.setFocused(true);

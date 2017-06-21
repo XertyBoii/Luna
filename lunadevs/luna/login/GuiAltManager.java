@@ -7,7 +7,6 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
-import lunadevs.luna.gui.button.ExpandButton;
 import lunadevs.luna.irc.IrcManager;
 import lunadevs.luna.main.Parallaxa;
 import lunadevs.luna.mcleaks.GuiRedeemToken;
@@ -30,7 +29,7 @@ public class GuiAltManager extends GuiScreen
     private int offset;
     public Alt selectedAlt = null;
     private String status = "§7Waiting...";
-    private static final ResourceLocation background = new ResourceLocation("luna/BG1.jpg");
+    private static final ResourceLocation background = new ResourceLocation("luna/Luna.jpg");
     private static IrcManager irc = Parallaxa.ircManager;
     
     
@@ -233,23 +232,23 @@ public class GuiAltManager extends GuiScreen
 
     public void initGui()
     {
-        this.buttonList.add(new ExpandButton(0, this.width / 2 + 4 + 76,
+        this.buttonList.add(new GuiButton(0, this.width / 2 + 4 + 76,
                 this.height - 24, 75, 20, "Cancel"));
-        this.buttonList.add(this.login = new ExpandButton(1, this.width / 2 - 154,
+        this.buttonList.add(this.login = new GuiButton(1, this.width / 2 - 154,
                 this.height - 48, 100, 20, "Login"));
-        this.buttonList.add(this.remove = new ExpandButton(2, this.width / 2 - 74,
+        this.buttonList.add(this.remove = new GuiButton(2, this.width / 2 - 74,
                 this.height - 24, 70, 20, "Remove"));
-        this.buttonList.add(new ExpandButton(3, this.width / 2 + 4 + 50,
+        this.buttonList.add(new GuiButton(3, this.width / 2 + 4 + 50,
                 this.height - 48, 100, 20, "Add"));
-        this.buttonList.add(new ExpandButton(4, this.width / 2 - 50,
+        this.buttonList.add(new GuiButton(4, this.width / 2 - 50,
                 this.height - 48, 100, 20, "Direct Login"));
-        this.buttonList.add(new ExpandButton(5, this.width / 2 - 154,
+        this.buttonList.add(new GuiButton(5, this.width / 2 - 154,
                 this.height - 24, 70, 20, "Random"));
-        this.buttonList.add(this.rename = new ExpandButton(6, this.width / 2 + 4,
+        this.buttonList.add(this.rename = new GuiButton(6, this.width / 2 + 4,
                 this.height - 24, 70, 20, "Rename"));
-        this.buttonList.add(new ExpandButton(7, this.width / 2 - 230,
+        this.buttonList.add(new GuiButton(7, this.width / 2 - 230,
                 this.height - 24, 70, 20, "Last Alt"));
-        this.buttonList.add(new ExpandButton(8, this.width / 2 - 230,
+        this.buttonList.add(new GuiButton(8, this.width / 2 - 230,
                 this.height - 48, 70, 20, "MCLeaks"));
         this.login.enabled = false;
         this.remove.enabled = false;

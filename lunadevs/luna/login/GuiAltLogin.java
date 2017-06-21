@@ -2,14 +2,9 @@ package lunadevs.luna.login;
 
 import java.io.IOException;
 
-import javax.swing.JOptionPane;
-
 import org.lwjgl.input.Keyboard;
 
 import lunadevs.luna.generator.AltGen;
-import lunadevs.luna.gui.button.ExpandButton;
-import lunadevs.luna.irc.IrcManager;
-import lunadevs.luna.main.Parallaxa;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
@@ -61,8 +56,8 @@ public class GuiAltLogin
 
     public void initGui() {
         int var3 = this.height / 4 + 24;
-        this.buttonList.add(new ExpandButton(0, this.width / 2 - 100, var3 + 72 + 12, "Login"));
-        this.buttonList.add(new ExpandButton(1, this.width / 2 - 100, var3 + 72 + 12 + 24, "Back"));
+        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, var3 + 72 + 12, "Login"));
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, var3 + 72 + 12 + 24, "Back"));
         this.username = new GuiTextField(1, this.mc.fontRendererObj, this.width / 2 - 100, 60, 200, 20);
         this.password = new GuiPasswordField(this.mc.fontRendererObj, this.width / 2 - 100, 100, 200, 20);
         this.username.setFocused(true);
