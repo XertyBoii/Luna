@@ -6,7 +6,7 @@ import com.zCore.Core.zCore;
 
 import lunadevs.luna.category.Category;
 import lunadevs.luna.events.Event;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import net.minecraft.client.Minecraft;
 

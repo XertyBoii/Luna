@@ -2,7 +2,7 @@ package lunadevs.luna.utils;
 
 import java.awt.Color;
 
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.EntityRenderer;
@@ -25,7 +25,7 @@ public class R3DUtils
     GL11.glEnable(2848);
     GL11.glDisable(3553);
     GL11.glDisable(2929);
-    Parallaxa.mc.entityRenderer.setupCameraTransform(Parallaxa.mc.timer.renderPartialTicks, 0);
+    Luna.mc.entityRenderer.setupCameraTransform(Luna.mc.timer.renderPartialTicks, 0);
   }
   
   public static void stopDrawing()
@@ -41,7 +41,7 @@ public class R3DUtils
   {
     WorldRenderer worldRenderer = Tessellator.getInstance().getWorldRenderer();
     Tessellator tessellator = Tessellator.getInstance();
-    Parallaxa.mc.entityRenderer.setupCameraTransform(Parallaxa.mc.timer.renderPartialTicks, 0);
+    Luna.mc.entityRenderer.setupCameraTransform(Luna.mc.timer.renderPartialTicks, 0);
     worldRenderer.startDrawingQuads();
     worldRenderer.addVertex(aabb.minX, aabb.minY, aabb.minZ);
     worldRenderer.addVertex(aabb.minX, aabb.maxY, aabb.minZ);

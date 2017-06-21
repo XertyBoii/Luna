@@ -1,7 +1,7 @@
 package lunadevs.luna.commands;
 
 import lunadevs.luna.command.Command;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 
 public class Longjump extends Command{
 
@@ -29,12 +29,12 @@ public class Longjump extends Command{
             updated=true;
             lunadevs.luna.module.movement.Longjump.old = false;
             lunadevs.luna.module.movement.Longjump.updated = true;
-            Parallaxa.addChatMessage("Longjump mode set to New");
+            Luna.addChatMessage("Longjump mode set to New");
         }else if(args[0].equalsIgnoreCase("old")){
             updated=false;
             lunadevs.luna.module.movement.Longjump.old = true;
             lunadevs.luna.module.movement.Longjump.updated = false;
-            Parallaxa.addChatMessage("Longjump mode set to Old");
+            Luna.addChatMessage("Longjump mode set to Old");
         }
 
     }

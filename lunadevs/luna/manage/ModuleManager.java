@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.module.combat.Aimbot;
 import lunadevs.luna.module.combat.AntiBot;
@@ -42,6 +42,7 @@ import lunadevs.luna.module.fun.HeadlessExploit;
 import lunadevs.luna.module.fun.SlowMotion;
 import lunadevs.luna.module.fun.Twerk;
 import lunadevs.luna.module.movement.AACJesus;
+import lunadevs.luna.module.movement.AACTPFly;
 import lunadevs.luna.module.movement.AirHop;
 import lunadevs.luna.module.movement.AntiPlate;
 import lunadevs.luna.module.movement.Boost;
@@ -196,6 +197,7 @@ public class ModuleManager {
 		mods.add(new ServerCrasher());
 		mods.add(new CircleESP());
 		mods.add(new Phase());
+		mods.add(new AACTPFly());
 	}
 
 	public static <T extends Module> T findMod(Class<T> clazz)
@@ -243,7 +245,7 @@ public class ModuleManager {
 				String bind = split[1];
 				String enable = split[2];
 				int key = Integer.parseInt(bind);
-				for (Module m : Parallaxa.moduleManager.mods) {
+				for (Module m : Luna.moduleManager.mods) {
 					if (name.equalsIgnoreCase(m.name)) {
 						m.bind = key;
 						if ((enable.equalsIgnoreCase("true")) && (!m.isEnabled)) {
@@ -258,7 +260,7 @@ public class ModuleManager {
 
 	public static void save() {
 		List<String> fileContent = new ArrayList();
-		for (Module m : Parallaxa.moduleManager.mods) {
+		for (Module m : Luna.moduleManager.mods) {
 			fileContent.add(m.name + ":" + m.bind + ":" + m.isEnabled);
 		}
 		FileUtils.write(MODULE, fileContent, true);

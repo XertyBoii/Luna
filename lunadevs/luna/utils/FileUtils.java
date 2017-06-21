@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lunadevs.luna.login.Alt;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.manage.ModuleManager;
 import net.minecraft.client.Minecraft;
 
@@ -45,26 +45,26 @@ public class FileUtils {
 						String[] parts = s.split("    ");
 						String[] account = parts[1].split(":");
 						if (account.length == 2) {
-							Parallaxa.getAltManager().setLastAlt(new Alt(account[0], account[1], parts[0]));
+							Luna.getAltManager().setLastAlt(new Alt(account[0], account[1], parts[0]));
 						} else {
 							String pw = account[1];
 							for (int i = 2; i < account.length; i++) {
 								pw = pw + ":" + account[i];
 							}
-							Parallaxa.getAltManager().setLastAlt(new Alt(account[0], pw, parts[0]));
+							Luna.getAltManager().setLastAlt(new Alt(account[0], pw, parts[0]));
 						}
 					} else {
 						String[] account = s.split(":");
 						if (account.length == 1) {
-							Parallaxa.getAltManager().setLastAlt(new Alt(account[0], ""));
+							Luna.getAltManager().setLastAlt(new Alt(account[0], ""));
 						} else if (account.length == 2) {
-							Parallaxa.getAltManager().setLastAlt(new Alt(account[0], account[1]));
+							Luna.getAltManager().setLastAlt(new Alt(account[0], account[1]));
 						} else {
 							String pw = account[1];
 							for (int i = 2; i < account.length; i++) {
 								pw = pw + ":" + account[i];
 							}
-							Parallaxa.getAltManager().setLastAlt(new Alt(account[0], pw));
+							Luna.getAltManager().setLastAlt(new Alt(account[0], pw));
 						}
 					}
 				}
@@ -80,7 +80,7 @@ public class FileUtils {
 	public static void saveLastAlt() {
 		try {
 			PrintWriter printWriter = new PrintWriter(LASTALT);
-			Alt alt = Parallaxa.getAltManager().getLastAlt();
+			Alt alt = Luna.getAltManager().getLastAlt();
 			if (alt != null) {
 				if (alt.getMask().equals("")) {
 					printWriter.println(alt.getUsername() + ":" + alt.getPassword());
@@ -111,21 +111,21 @@ public class FileUtils {
 						String[] parts = s.split("    ");
 						String[] account = parts[1].split(":");
 						if (account.length == 2) {
-							Parallaxa.getAltManager().getAlts().add(new Alt(account[0], account[1], parts[0]));
+							Luna.getAltManager().getAlts().add(new Alt(account[0], account[1], parts[0]));
 						} else {
 							String pw = account[1];
 							for (int i = 2; i < account.length; i++) {
 								pw = pw + ":" + account[i];
 							}
-							Parallaxa.getAltManager().getAlts().add(new Alt(account[0], pw, parts[0]));
+							Luna.getAltManager().getAlts().add(new Alt(account[0], pw, parts[0]));
 						}
 					} else {
 						String[] account = s.split(":");
 						if (account.length == 1) {
-							Parallaxa.getAltManager().getAlts().add(new Alt(account[0], ""));
+							Luna.getAltManager().getAlts().add(new Alt(account[0], ""));
 						} else if (account.length == 2) {
 							try {
-								Parallaxa.getAltManager().getAlts().add(new Alt(account[0], account[1]));
+								Luna.getAltManager().getAlts().add(new Alt(account[0], account[1]));
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
@@ -134,7 +134,7 @@ public class FileUtils {
 							for (int i = 2; i < account.length; i++) {
 								pw = pw + ":" + account[i];
 							}
-							Parallaxa.getAltManager().getAlts().add(new Alt(account[0], pw));
+							Luna.getAltManager().getAlts().add(new Alt(account[0], pw));
 						}
 					}
 				}
@@ -148,7 +148,7 @@ public class FileUtils {
 	public static void saveAlts() {
 		try {
 			PrintWriter printWriter = new PrintWriter(ALT);
-			for (Alt alt : Parallaxa.getAltManager().getAlts()) {
+			for (Alt alt : Luna.getAltManager().getAlts()) {
 				if (alt.getMask().equals("")) {
 					printWriter.println(alt.getUsername() + ":" + alt.getPassword());
 				} else {
@@ -217,7 +217,7 @@ public class FileUtils {
     }
     
     public static File getConfigDir() {
-        final File file = new File(Minecraft.getMinecraft().mcDataDir, "Parallaxa");
+        final File file = new File(Minecraft.getMinecraft().mcDataDir, "Luna");
         if (!file.exists()) {
             file.mkdir();
         }

@@ -10,7 +10,7 @@ import lunadevs.luna.events.Event;
 import lunadevs.luna.events.InsideBlockRenderEvent;
 import lunadevs.luna.events.PushOutOfBlocksEvent;
 import lunadevs.luna.events.UpdateEvent;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.utils.BlockHelper;
 import lunadevs.luna.utils.ClientUtils;

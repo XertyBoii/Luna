@@ -10,7 +10,7 @@ import com.mojang.authlib.exceptions.AuthenticationException;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.mojang.authlib.yggdrasil.YggdrasilUserAuthentication;
 
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.utils.FileUtils;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -46,7 +46,7 @@ public class GuiAddAlt
             try
             {
                 auth.logIn();
-                Parallaxa.getAltManager().getAlts()
+                Luna.getAltManager().getAlts()
                         .add(new Alt(username, password));
                 FileUtils.saveAlts();
                 GuiAddAlt.this.status = ("\247aAlt added. (" + username + ")");
@@ -62,7 +62,7 @@ public class GuiAddAlt
         {
             if (this.password.equals(""))
             {
-                Parallaxa.getAltManager().getAlts().add(new Alt(this.username, ""));
+                Luna.getAltManager().getAlts().add(new Alt(this.username, ""));
                 FileUtils.saveAlts();
                 GuiAddAlt.this.status = ("\247aAlt added. (" + this.username + " - offline name)");
                 return;

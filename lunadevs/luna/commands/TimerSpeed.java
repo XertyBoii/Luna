@@ -1,7 +1,7 @@
 package lunadevs.luna.commands;
 
 import lunadevs.luna.command.Command;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.movement.TimerBoost;
 
 public class TimerSpeed extends Command{
@@ -26,12 +26,12 @@ public class TimerSpeed extends Command{
 	@Override
 	public void onCommand(String command, String[] args) throws Exception {
 		if(args[0].equalsIgnoreCase("help")){
-			Parallaxa.addChatMessage("speed");
+			Luna.addChatMessage("speed");
 		}else if (args[0].equalsIgnoreCase("speed")){
 		    String timer = args[1];
 		    TimerBoost.speed = Double.parseDouble(timer);
 		    value = TimerBoost.speed;
-		    Parallaxa.addChatMessage("Timer speed: " + value);
+		    Luna.addChatMessage("Timer speed: " + value);
 		}
 	}
 

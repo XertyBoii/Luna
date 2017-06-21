@@ -4,7 +4,7 @@ import java.awt.Font;
 import java.io.InputStream;
 
 import lunadevs.luna.font.MistFontRenderer;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -27,12 +27,12 @@ public class Wrapper {
 		Font font = null;
 		try {
 			InputStream is = Minecraft.getMinecraft().getResourceManager()
-					.getResource(new ResourceLocation("Parallaxa/Comfortaa-Bold.ttf")).getInputStream();
+					.getResource(new ResourceLocation("Luna/Comfortaa-Bold.ttf")).getInputStream();
 			font = Font.createFont(0, is);
 			font = font.deriveFont(0, size);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.out.println("[Parallaxa]: Error loading font");
+			System.out.println("[Luna]: Error loading font");
 			font = new Font("default", 0, size);
 		}
 		return font;
@@ -42,12 +42,12 @@ public class Wrapper {
 		Font font = null;
 		try {
 			InputStream is = Minecraft.getMinecraft().getResourceManager()
-					.getResource(new ResourceLocation("Parallaxa/Night_Ride.ttf")).getInputStream();
+					.getResource(new ResourceLocation("Luna/Night_Ride.ttf")).getInputStream();
 			font = Font.createFont(0, is);
 			font = font.deriveFont(0, size);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.out.println("[Parallaxa]: Error loading font");
+			System.out.println("[Luna]: Error loading font");
 			font = new Font("default", 0, size);
 		}
 		return font;
@@ -57,19 +57,19 @@ public class Wrapper {
 		Font font = null;
 		try {
 			InputStream is = Minecraft.getMinecraft().getResourceManager()
-					.getResource(new ResourceLocation("Parallaxa/theboldfont.ttf")).getInputStream();
+					.getResource(new ResourceLocation("Luna/theboldfont.ttf")).getInputStream();
 			font = Font.createFont(0, is);
 			font = font.deriveFont(0, size);
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			System.out.println("[Parallaxa]: Error loading font");
+			System.out.println("[Luna]: Error loading font");
 			font = new Font("default", 0, size);
 		}
 		return font;
 	}
 
 	public static String getClientName() {
-		return "Parallaxa";
+		return "Luna";
 	}
 	
 	public static int getClientNumber() {

@@ -3,7 +3,7 @@ package lunadevs.luna.module.combat;
 import org.lwjgl.input.Keyboard;
 
 import lunadevs.luna.category.Category;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import net.minecraft.item.ItemSword;
 
@@ -15,7 +15,7 @@ public class Autoblock extends Module {
 	
 	public void onEnable() {
 		String a = "Use this with Killaura.";
-		Parallaxa.addChatMessage(a);
+		Luna.addChatMessage(a);
 	}
 	
 	public void onUpdate() {

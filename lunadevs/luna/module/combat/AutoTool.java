@@ -6,7 +6,7 @@ import com.darkmagician6.eventapi.EventTarget;
 
 import lunadevs.luna.category.Category;
 import lunadevs.luna.events.DamageBlockEvent;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 
 
@@ -30,7 +30,7 @@ public class AutoTool extends Module{
 	@EventTarget
 	public void damageBlock(DamageBlockEvent e) {
 		if(!this.isEnabled) return;
-		mc.thePlayer.inventory.currentItem = Parallaxa.getModuleHelper().getBestToolForBlock(e.getBlockPos());
+		mc.thePlayer.inventory.currentItem = Luna.getModuleHelper().getBestToolForBlock(e.getBlockPos());
 	}
 	
 	public String getValue() {

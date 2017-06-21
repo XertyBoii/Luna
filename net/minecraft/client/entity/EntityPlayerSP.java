@@ -21,7 +21,7 @@ import lunadevs.luna.events.TickPreEvent;
 import lunadevs.luna.events.UpdateEvent;
 import lunadevs.luna.irc.IrcChatLine;
 import lunadevs.luna.irc.IrcManager;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.exploits.NoSlowDown;
 import lunadevs.luna.utils.MathUtils;
 import net.minecraft.block.Block;
@@ -335,7 +335,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
     {
 	    if (p_71165_1_.startsWith("@"))
 	    {
-	      IrcManager irc = Parallaxa.ircManager;
+	      IrcManager irc = Luna.ircManager;
 	      if (irc.isConnected())
 	      {
 	        irc.sendMessage(IrcManager.IRC_ChannelName, p_71165_1_.replace("@", ""));
@@ -344,10 +344,10 @@ public class EntityPlayerSP extends AbstractClientPlayer
 	      }
 	      else
 	      {
-	        Parallaxa.addIRCMessage("Not Connected To IRC");
+	        Luna.addIRCMessage("Not Connected To IRC");
 	      }
 	    }else
-    	if (Parallaxa.onSendChatMessage(p_71165_1_)){
+    	if (Luna.onSendChatMessage(p_71165_1_)){
         this.sendQueue.addToSendQueue(new C01PacketChatMessage(p_71165_1_));
     	}
     }
@@ -768,9 +768,9 @@ public class EntityPlayerSP extends AbstractClientPlayer
     	
     	EventManager.call(new EventOnLivingUpdate());
     	
-    	Parallaxa.onUpdate();
+    	Luna.onUpdate();
 
-    	Parallaxa.onGUIPressed();
+    	Luna.onGUIPressed();
     	
         if (this.sprintingTicksLeft > 0)
         {

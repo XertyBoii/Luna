@@ -18,7 +18,7 @@ import java.util.Hashtable;
 import java.util.StringTokenizer;
 
 import lunadevs.luna.irc.IrcChatLine;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 
 public abstract class PircBot
   implements ReplyConstants
@@ -390,7 +390,7 @@ public abstract class PircBot
         sourceLogin = senderInfo.substring(exclamation + 1, at);
         sourceHostname = senderInfo.substring(at + 1);
         
-        String separ = "PRIVMSG " + Parallaxa.ircManager.IRC_ChannelName + " :";
+        String separ = "PRIVMSG " + Luna.ircManager.IRC_ChannelName + " :";
         if (line.contains(separ))
         {
           int chatIndx = line.indexOf(separ);

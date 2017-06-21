@@ -1,6 +1,6 @@
 package lunadevs.luna.utils;
 
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import net.minecraft.client.Minecraft;
 
@@ -24,8 +24,8 @@ public class Comparator
 	  }else{
 		  s2 = m2.name;
 	  }
-      final int cmp = (int) (Parallaxa.fontRenderer.getStringWidth(s2)
-              - Parallaxa.fontRenderer.getStringWidth(s1));
+      final int cmp = (int) (Luna.fontRenderer.getStringWidth(s2)
+              - Luna.fontRenderer.getStringWidth(s1));
       return (cmp != 0) ? cmp : s2.compareTo(s1);
   }
 }

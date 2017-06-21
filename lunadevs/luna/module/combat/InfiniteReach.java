@@ -5,7 +5,7 @@ import java.util.Random;
 import org.lwjgl.input.Keyboard;
 
 import lunadevs.luna.category.Category;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.utils.EntityUtils;
 import net.minecraft.client.Minecraft;

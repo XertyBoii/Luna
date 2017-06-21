@@ -15,7 +15,7 @@ import lunadevs.luna.commands.NotACommand;
 import lunadevs.luna.commands.TimerSpeed;
 import lunadevs.luna.commands.Toggle;
 import lunadevs.luna.commands.Vclip;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 
 public class CommandManager {
 
@@ -62,8 +62,8 @@ public class CommandManager {
 	        }
 	        catch (Exception e)
 	        {
-	          Parallaxa.addChatMessage("Invalid Command Usage");
-	          Parallaxa.addChatMessage(c.getSyntax());
+	          Luna.addChatMessage("Invalid Command Usage");
+	          Luna.addChatMessage(c.getSyntax());
 	        }
 	        return;
 	      }

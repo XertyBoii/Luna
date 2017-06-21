@@ -5,12 +5,12 @@ import net.minecraft.util.ChatComponentText;
 
 import org.apache.logging.log4j.Logger;
 
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 
 public class ChatLogger {
 		
     private static final Minecraft MINECRAFT = Minecraft.getMinecraft();
-    private static final String PREFIX = "\2478[\2477Parallaxa\2478] \2477";
+    private static final String PREFIX = "\2478[\2477Luna\2478] \2477";
     private static boolean enabled = true;
     
     public static void print(String message) {
@@ -18,7 +18,7 @@ public class ChatLogger {
             if (MINECRAFT.thePlayer != null) {
                 MINECRAFT.thePlayer.addChatComponentMessage(new ChatComponentText(PREFIX + message));
             } else {
-                Parallaxa.getLogger().info(message);
+                Luna.getLogger().info(message);
             }
         }
     }

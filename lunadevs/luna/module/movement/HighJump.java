@@ -5,7 +5,7 @@ import org.lwjgl.input.Keyboard;
 import com.zCore.Core.zCore;
 
 import lunadevs.luna.category.Category;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.utils.MoveUtils;
 import net.minecraft.network.play.client.C03PacketPlayer;

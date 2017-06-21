@@ -33,7 +33,7 @@ import net.minecraft.network.play.server.S02PacketChat;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ResourceLocation;
 
-public class Parallaxa {
+public class Luna {
 
 	public static String CLIENT_NAME = "Luna";
 	public static String CLIENT_VERSION = "6";
@@ -57,7 +57,7 @@ public class Parallaxa {
 	// MANAGE
 	public static final FontRenderer minecraftFontRenderer = new FontRenderer(mc.gameSettings,
 			new ResourceLocation("textures/font/ascii.png"), mc.getTextureManager(), false);
-	public static final MistFontRenderer fontRenderer50 = new MistFontRenderer(getFont(70), true, 8);
+	public static final MistFontRenderer fontRenderer50 = new MistFontRenderer(getFont(90), true, 8);
 	public static final MistFontRenderer fontRendererGUI = new MistFontRenderer(getFont(40), true, 8);
 	public static final MistFontRenderer fontRendererBOLD = new MistFontRenderer(getFont2(60), true, 8);
 	public static final MistFontRenderer fontRenderer = new MistFontRenderer(getFont(36), true, 8);
@@ -75,7 +75,7 @@ public class Parallaxa {
 	
 	// FONT
 	public static void start() {
-		Display.setTitle("Minecraft 1.8 | Luna b" + Parallaxa.CLIENT_VERSION);
+		Display.setTitle("Minecraft 1.8 | Luna b" + Luna.CLIENT_VERSION);
 		moduleManager = new ModuleManager();
 		moduleManager.loadmods();
 		OptionManager.start();
@@ -219,7 +219,7 @@ public class Parallaxa {
 	private static Font getFont5(int size) {
 		Font font = null;
 		try {
-			InputStream is = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("Parallaxa/Pacifico.ttf")).getInputStream();
+			InputStream is = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("Luna/Pacifico.ttf")).getInputStream();
 			font = Font.createFont(0,  is);
 			font = font.deriveFont(0,  size);
 		}catch (Exception ex) {
@@ -233,7 +233,7 @@ public class Parallaxa {
 	private static Font getFont6(int size) {
 		Font font = null;
 		try {
-			InputStream is = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("Parallaxa/Albondigas.ttf")).getInputStream();
+			InputStream is = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("Luna/Albondigas.ttf")).getInputStream();
 			font = Font.createFont(0, is);
 			font = font.deriveFont(0, size);
 		}catch (Exception ex) {
@@ -245,7 +245,7 @@ public class Parallaxa {
 	}
 	
 	public static void addChatMessage(String s) {
-		mc.thePlayer.addChatMessage(new ChatComponentText("\2478[\2477Parallaxa\2478] \2477" + s));
+		mc.thePlayer.addChatMessage(new ChatComponentText("\2478[\2477Luna\2478] \2477" + s));
 	}
 
 	public static void sendChatMessage(String s) {
@@ -257,7 +257,7 @@ public class Parallaxa {
 			cmdManager.callCommand(s.substring(1));
 			return false;
 		}
-		for (Module m : Parallaxa.moduleManager.getModules()) {
+		for (Module m : Luna.moduleManager.getModules()) {
 			if (Module.isToggled(true)) {
 				return m.onSendChatMessage(s);
 			}
@@ -310,7 +310,7 @@ public class Parallaxa {
 
 
 	public static String getClientName() {
-		return "Parallaxa";
+		return "Luna";
 	}
 
 	public static String getClientBuild() {
@@ -328,7 +328,7 @@ public class Parallaxa {
 	}
 
 	public static String getClientDevelopers() {
-		String prefix = "\2478[\2477Parallaxa\2478] \2477";
+		String prefix = "\2478[\2477Luna\2478] \2477";
 		return prefix + "@ZiTROXClient, @Mega_Mixer74, ugotsmashed, TimeSwitcher";
 	}
 
@@ -379,7 +379,7 @@ public class Parallaxa {
 	public static void logChatMessage(String message) {
 		 if (Minecraft.getMinecraft().thePlayer != null)
 		    {
-		    Minecraft.getMinecraft().thePlayer.addChatComponentMessage(new ChatComponentText("\2478[\2477Parallaxa\2478] \2477" + message));
+		    Minecraft.getMinecraft().thePlayer.addChatComponentMessage(new ChatComponentText("\2478[\2477Luna\2478] \2477" + message));
 		    }
 		    else
 		    {

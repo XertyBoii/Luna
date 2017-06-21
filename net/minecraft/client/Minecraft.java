@@ -63,7 +63,7 @@ import lunadevs.luna.events.EventMiddleClick;
 import lunadevs.luna.events.KeyPressEvent;
 import lunadevs.luna.events.TickEvent;
 import lunadevs.luna.gui.Guiingamehook;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.utils.Nullable;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -591,7 +591,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
         this.renderGlobal.func_174966_b();
         
-        Parallaxa.start();
+        Luna.start();
     }
 
     private void func_175608_ak()
@@ -1929,7 +1929,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                     }
                     else
                     {
-                    	Parallaxa.onKeyPressed(var1);
+                    	Luna.onKeyPressed(var1);
                     	
                     	EventManager.call(new KeyPressEvent(var1));
                     	

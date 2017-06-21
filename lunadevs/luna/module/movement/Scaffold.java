@@ -14,7 +14,7 @@ import lunadevs.luna.events.EventMotion;
 import lunadevs.luna.events.EventPlayerUpdate;
 import lunadevs.luna.events.EventType;
 import lunadevs.luna.events.KeyPressEvent;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.utils.TimeHelper;
 import net.minecraft.block.Block;

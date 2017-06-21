@@ -1,9 +1,9 @@
-package parallaxadevs.Utils;
+package lunadevs.luna.utils;
 
 import java.awt.Color;
 import java.util.Random;
 
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 
 public class Colors {
 	
@@ -20,7 +20,7 @@ public class Colors {
 	  public static int getColor()
 	  {
 	    int color = 16735581;
-	    Parallaxa ophis = new Parallaxa();
+	    Luna ophis = new Luna();
 	    Random random = new Random();
 	    int module = random.nextInt(8);
 	    if (module < 2) {

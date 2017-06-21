@@ -10,7 +10,7 @@ import lunadevs.luna.events.EventLiquidCollide;
 import lunadevs.luna.events.EventPacket;
 import lunadevs.luna.events.EventPlayerUpdate;
 import lunadevs.luna.events.EventType;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.utils.BlockUtils;
 import net.minecraft.block.BlockLiquid;

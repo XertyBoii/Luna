@@ -3,7 +3,7 @@ package lunadevs.luna.commands;
 import org.lwjgl.input.Keyboard;
 
 import lunadevs.luna.command.Command;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 
 public class Bind extends Command{
@@ -29,18 +29,18 @@ public class Bind extends Command{
 			args[2] = args[2].toUpperCase();
 			int key = Keyboard.getKeyIndex(args[2]);
 			
-			for(Module m: Parallaxa.moduleManager.getModules()){
+			for(Module m: Luna.moduleManager.getModules()){
 				if(args[1].equalsIgnoreCase(m.getName())){
 					m.setBind(Keyboard.getKeyIndex(Keyboard.getKeyName(key)));
-					Parallaxa.addChatMessage(args[1] + " has been binded to " + args[2]);
+					Luna.addChatMessage(args[1] + " has been binded to " + args[2]);
 				}
 			}
 			
 		}else if(args[0].equalsIgnoreCase("del")){
-			for(Module m: Parallaxa.moduleManager.getModules()){
+			for(Module m: Luna.moduleManager.getModules()){
 				if(m.getName().equalsIgnoreCase(args[1])){
 					m.setBind(0);
-					Parallaxa.addChatMessage(args[1] + " has been unbinded");
+					Luna.addChatMessage(args[1] + " has been unbinded");
 				}
 			}
 	}

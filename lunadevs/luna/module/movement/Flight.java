@@ -3,7 +3,7 @@ package lunadevs.luna.module.movement;
 import org.lwjgl.input.Keyboard;
 
 import lunadevs.luna.category.Category;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Timer;

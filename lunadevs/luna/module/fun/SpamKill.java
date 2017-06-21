@@ -3,7 +3,7 @@ package lunadevs.luna.module.fun;
 import org.lwjgl.input.Keyboard;
 
 import lunadevs.luna.category.Category;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import net.minecraft.network.play.client.C03PacketPlayer;
 
@@ -18,8 +18,8 @@ public class SpamKill extends Module{
 	public void onUpdate() {
 		if(!this.isEnabled) return;
 		for(int kek = 0; kek < 500; kek++) {
-			Parallaxa.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(Parallaxa.getPlayer().posX, Parallaxa.getPlayer().posY - 0.05D, Parallaxa.getPlayer().posZ, false));
-			Parallaxa.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(Parallaxa.getPlayer().posX, Parallaxa.getPlayer().posY, Parallaxa.getPlayer().posZ, false));
+			Luna.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(Luna.getPlayer().posX, Luna.getPlayer().posY - 0.05D, Luna.getPlayer().posZ, false));
+			Luna.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(Luna.getPlayer().posX, Luna.getPlayer().posY, Luna.getPlayer().posZ, false));
 		}
 	}
 	

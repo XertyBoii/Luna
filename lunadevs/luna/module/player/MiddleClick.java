@@ -5,7 +5,7 @@ import com.darkmagician6.eventapi.EventTarget;
 import lunadevs.luna.category.Category;
 import lunadevs.luna.events.EventMiddleClick;
 import lunadevs.luna.friend.FriendManager;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.utils.faithsminiutils.Wrapper;
 import net.minecraft.client.Minecraft;
@@ -27,12 +27,12 @@ public class MiddleClick extends Module{
 			      if (FriendManager.isFriend(name))
 			      {
 			        FriendManager.removeFriend(name);
-			        Parallaxa.logChatMessage("Removed: " + name);
+			        Luna.logChatMessage("Removed: " + name);
 			      }
 			      else
 			      {
 			        FriendManager.addFriend(name, name);
-			        Parallaxa.logChatMessage("Added: " + name);
+			        Luna.logChatMessage("Added: " + name);
 			      }
 			    }
 			  }

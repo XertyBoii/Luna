@@ -1,7 +1,7 @@
 package lunadevs.luna.commands;
 
 import lunadevs.luna.command.Command;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 
 //Coded By Faith.
 
@@ -22,12 +22,12 @@ public class ClientBuild extends Command{
 		return "-build <tells user what build>";
 	}
 
-	String b = "You are using: b" + Parallaxa.CLIENT_BUILD + " " + "(" + Parallaxa.CLIENT_BUILD + ")" ;
+	String b = "You are using: b" + Luna.CLIENT_BUILD + " " + "(" + Luna.CLIENT_BUILD + ")" ;
 	
 	@Override
 	public void onCommand(String command, String[] args) throws Exception {
-		if(Parallaxa.onSendChatMessage(command)) {
-			Parallaxa.addChatMessage(b);
+		if(Luna.onSendChatMessage(command)) {
+			Luna.addChatMessage(b);
 		}
 		
 	}

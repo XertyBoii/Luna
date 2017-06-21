@@ -5,7 +5,7 @@ import com.mojang.authlib.exceptions.AuthenticationException;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.mojang.authlib.yggdrasil.YggdrasilUserAuthentication;
 
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.utils.FileUtils;
 
 import java.net.Proxy;
@@ -71,7 +71,7 @@ public class AltLoginThread
         }
         else
         {
-            Parallaxa.getAltManager().setLastAlt(new Alt(this.username, this.password));
+            Luna.getAltManager().setLastAlt(new Alt(this.username, this.password));
             FileUtils.saveLastAlt();
             this.status = ("\247aLogged in. (" + auth.getUsername() + ")");
             this.mc.session = auth;

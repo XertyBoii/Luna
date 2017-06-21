@@ -13,7 +13,7 @@ public class IrcManager extends PircBot
 {
     private final String IRC_HostName = "irc.mibbit.net";
     private final int IRC_HostPort = 6667;
-    public static final String IRC_ChannelName = "#ParallaxaClientIRC";
+    public static final String IRC_ChannelName = "#LunaClient";
     private static String username;
     
     public IrcManager(String username) {
@@ -44,8 +44,8 @@ public class IrcManager extends PircBot
         catch (IrcException e3) {
             e3.printStackTrace();
         }
-        System.out.println("Joing Parallaxa IRC");
+        System.out.println("Connecting to #LunaClient > 6667 < IRC Server");
         this.joinChannel(this.IRC_ChannelName);
-        System.out.println("Logged in");
+        System.out.println("Connected!");
     }
 }

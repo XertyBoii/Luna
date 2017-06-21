@@ -8,7 +8,7 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 import lunadevs.luna.irc.IrcManager;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.mcleaks.GuiRedeemToken;
 import lunadevs.luna.utils.FileUtils;
 import lunadevs.luna.utils.RenderHelper;
@@ -30,7 +30,7 @@ public class GuiAltManager extends GuiScreen
     public Alt selectedAlt = null;
     private String status = "§7Waiting...";
     private static final ResourceLocation background = new ResourceLocation("luna/Luna.jpg");
-    private static IrcManager irc = Parallaxa.ircManager;
+    private static IrcManager irc = Luna.ircManager;
     
     
     public GuiAltManager()
@@ -69,7 +69,7 @@ public class GuiAltManager extends GuiScreen
                 if (this.loginThread != null) {
                     this.loginThread = null;
                 }
-                Parallaxa.getAltManager().getAlts().remove(this.selectedAlt);
+                Luna.getAltManager().getAlts().remove(this.selectedAlt);
                 this.status = "\2474Removed.";
                 this.selectedAlt = null;
                 FileUtils.saveAlts();
@@ -83,7 +83,7 @@ public class GuiAltManager extends GuiScreen
             case 5:
                 Alt randomAlt =
 
-                        (Alt)Parallaxa.getAltManager().getAlts().get(new Random().nextInt(Parallaxa.getAltManager()
+                        (Alt)Luna.getAltManager().getAlts().get(new Random().nextInt(Luna.getAltManager()
                                 .getAlts().size()));
                 String user1 = randomAlt.getUsername();
                 String pass1 = randomAlt.getPassword();
@@ -94,7 +94,7 @@ public class GuiAltManager extends GuiScreen
                 mc.displayGuiScreen(new GuiRenameAlt(this));
                 break;
             case 7:
-                Alt lastAlt = Parallaxa.getAltManager().getLastAlt();
+                Alt lastAlt = Luna.getAltManager().getLastAlt();
                 if (lastAlt == null)
                 {
                     if (this.loginThread == null) {
@@ -142,7 +142,7 @@ public class GuiAltManager extends GuiScreen
         drawString(this.fontRendererObj, mc.session.getUsername(), 10, 10,
                 -7829368);
         drawCenteredString(this.fontRendererObj, "Account Manager - " +
-                        Parallaxa.getAltManager().getAlts().size() + " alts",
+                        Luna.getAltManager().getAlts().size() + " alts",
                 this.width / 2, 10, -1);
         drawCenteredString(this.fontRendererObj, this.loginThread == null ? this.status :
                 this.loginThread.getStatus(), this.width / 2, 20, -1);
@@ -152,7 +152,7 @@ public class GuiAltManager extends GuiScreen
         prepareScissorBox(0.0F, 33.0F, this.width, this.height - 50);
         GL11.glEnable(3089);
         int y = 38;
-        for (Alt alt : Parallaxa.getAltManager().getAlts()) {
+        for (Alt alt : Luna.getAltManager().getAlts()) {
             if (isAltInArea(y))
             {
                 String name;
@@ -272,7 +272,7 @@ public class GuiAltManager extends GuiScreen
             this.offset = 0;
         }
         int y = 38 - this.offset;
-        for (Alt alt : Parallaxa.getAltManager().getAlts())
+        for (Alt alt : Luna.getAltManager().getAlts())
         {
             if (isMouseOverAlt(par1, par2, y))
             {

@@ -10,7 +10,7 @@ import lunadevs.luna.events.EventBoundingBox;
 import lunadevs.luna.events.EventCollision;
 import lunadevs.luna.events.EventLiquidCollide;
 import lunadevs.luna.events.Location;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;

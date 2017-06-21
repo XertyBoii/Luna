@@ -1,7 +1,7 @@
 package lunadevs.luna.commands;
 
 import lunadevs.luna.command.Command;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 
 public class AntiBot extends Command{
 
@@ -23,12 +23,12 @@ public class AntiBot extends Command{
 	@Override
 	public void onCommand(String command, String[] args) throws Exception {
 		if (args[0].equalsIgnoreCase("advanced")){
-			Parallaxa.addChatMessage("AntiBot mode set to Advanced");
+			Luna.addChatMessage("AntiBot mode set to Advanced");
 			lunadevs.luna.module.combat.AntiBot.Watchdog = false;
 			lunadevs.luna.module.combat.AntiBot.GWEN = true;
 		}
 		if(args[0].equalsIgnoreCase("watchdog")){
-			Parallaxa.addChatMessage("AntiBot mode set to WatchDog");
+			Luna.addChatMessage("AntiBot mode set to WatchDog");
 			lunadevs.luna.module.combat.AntiBot.Watchdog = true;
 			lunadevs.luna.module.combat.AntiBot.GWEN = false;
 		}

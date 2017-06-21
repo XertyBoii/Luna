@@ -1,6 +1,6 @@
 package net.minecraft.client.gui;
 
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
@@ -105,7 +105,7 @@ public class GuiButton extends Gui
                 var6 = 16777120;
             }
 
-            Parallaxa.fontRenderer.drawCenteredString(this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, var6);
+            Luna.fontRenderer.drawCenteredString(this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, var6);
         }
     }
 

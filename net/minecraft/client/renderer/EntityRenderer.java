@@ -6,7 +6,7 @@ import com.google.gson.JsonSyntaxException;
 import lunadevs.luna.events.EventHurtCam;
 import lunadevs.luna.events.EventRender3D;
 import lunadevs.luna.events.RenderWorldEvent;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.manage.ModuleManager;
 import lunadevs.luna.module.render.Tracers;
 
@@ -1925,7 +1925,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
         
         this.mc.mcProfiler.endStartSection("hand");
         
-        Parallaxa.onRender();
+        Luna.onRender();
         
         boolean handRendered = Reflector.callBoolean(Reflector.ForgeHooksClient_renderFirstPersonHand, new Object[] {this.mc.renderGlobal, Float.valueOf(partialTicks), Integer.valueOf(pass)});
 

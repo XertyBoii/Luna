@@ -224,9 +224,9 @@ public class Killaura extends Module {
 
 	public void onUpdate() {
         if (mode==0){
-            modname="Switch  ";
+            modname="Switch";
         }else if (mode==1){
-            modname="Tick  ";
+            modname="Tick";
             
         }
 		super.onUpdate();

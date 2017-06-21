@@ -16,7 +16,7 @@ import lunadevs.luna.category.Category;
 import lunadevs.luna.events.EventRender3D;
 import lunadevs.luna.events.Render3DEvent;
 import lunadevs.luna.friend.FriendManager;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.manage.ModuleManager;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.utils.EntityUtils;
@@ -104,7 +104,7 @@ public class CircleESP extends Module{
                     WorldRenderer worldRenderer = tessellator.getWorldRenderer();
                     GlStateManager.func_179090_x();
                     worldRenderer.startDrawingQuads();
-                    int stringWidth = Parallaxa.fr.getStringWidth(str) / 2;
+                    int stringWidth = Luna.fr.getStringWidth(str) / 2;
                     GL11.glColor3f(0.0F, 0.0F, 0.0F);
                     GL11.glLineWidth(1.0E-6F);
                     GL11.glBegin(3);
@@ -124,7 +124,7 @@ public class CircleESP extends Module{
                     worldRenderer.addVertex(stringWidth + 2, -0.8D, 0.0D);
                     tessellator.draw();
                     GlStateManager.func_179098_w();
-                    Parallaxa.fr.drawString(str, -Parallaxa.fr.getStringWidth(str) / 2, 0, -1);
+                    Luna.fr.drawString(str, -Luna.fr.getStringWidth(str) / 2, 0, -1);
                     GlStateManager.enableLighting();
                     GlStateManager.enableDepth();
                     if ((this.armor) && ((ent instanceof EntityPlayer)))
@@ -334,7 +334,7 @@ public class CircleESP extends Module{
         x = (int)(x * 1.75D);
         GL11.glScalef(0.57F, 0.57F, 0.57F);
         y -= 4;
-        Parallaxa.fontRendererGUI.drawString(text, x, -36 - y, 64250);
+        Luna.fontRendererGUI.drawString(text, x, -36 - y, 64250);
         GlStateManager.enableDepth();
         GlStateManager.popMatrix();
     }

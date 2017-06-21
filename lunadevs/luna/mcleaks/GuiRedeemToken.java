@@ -6,7 +6,7 @@ import java.net.URI;
 import org.lwjgl.input.Keyboard;
 
 import lunadevs.luna.login.GuiAltManager;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -67,7 +67,7 @@ public class GuiRedeemToken
       {
         MCLeaks.remove();
         SessionManager.setSession(MCLeaks.savedSession);
-        Parallaxa.ircManager.changeNick(MCLeaks.savedSession.getUsername());
+        Luna.ircManager.changeNick(MCLeaks.savedSession.getUsername());
         MCLeaks.savedSession = null;
         Minecraft.getMinecraft().displayGuiScreen(new GuiRedeemToken(this.parent, true));
       }
@@ -99,7 +99,7 @@ public class GuiRedeemToken
             MCLeaks.refresh(response.getSession(), response.getMcName());
             Minecraft.getMinecraft().displayGuiScreen(new GuiRedeemToken(GuiRedeemToken.this.parent, false, 
               ChatColor.GREEN + "Your token was redeemed successfully!"));
-            Parallaxa.ircManager.changeNick(response.getMcName());
+            Luna.ircManager.changeNick(response.getMcName());
           }
         });
       }
@@ -146,16 +146,16 @@ public class GuiRedeemToken
   public void drawScreen(int mouseX, int mouseY, float partialTicks)
   {
     drawDefaultBackground();
-    Parallaxa.fontRenderer50.drawCenteredString(ChatColor.WHITE + "- " + ChatColor.AQUA + "MCLeaks" + ChatColor.WHITE + 
+    Luna.fontRenderer50.drawCenteredString(ChatColor.WHITE + "- " + ChatColor.AQUA + "MCLeaks" + ChatColor.WHITE + 
       "." + ChatColor.AQUA + "net " + ChatColor.WHITE + "-", this.width / 2, (int) 17.0F, 16777215);
-    Parallaxa.fontRenderer50.drawCenteredString("Free minecraft accounts", this.width / 2, (int) 32.0F, 16777215);
+    Luna.fontRenderer50.drawCenteredString("Free minecraft accounts", this.width / 2, (int) 32.0F, 16777215);
     
-    Parallaxa.fontRenderer50.drawCenteredString("Status:", this.width / 2, (int) 68.0F, 16777215);
-    Parallaxa.fontRenderer50.drawCenteredString(MCLeaks.getStatus(), this.width / 2, (int) 90.0F, 16777215);
+    Luna.fontRenderer50.drawCenteredString("Status:", this.width / 2, (int) 68.0F, 16777215);
+    Luna.fontRenderer50.drawCenteredString(MCLeaks.getStatus(), this.width / 2, (int) 90.0F, 16777215);
     
-    Parallaxa.fontRenderer.drawString("Token", this.width / 2 - 100, 115.0F, 10526880);
+    Luna.fontRenderer.drawString("Token", this.width / 2 - 100, 115.0F, 10526880);
     if (this.message != null) {
-    	Parallaxa.fontRenderer50.drawCenteredString(this.message, this.width / 2, (int) 158.0F, 16777215);
+    	Luna.fontRenderer50.drawCenteredString(this.message, this.width / 2, (int) 158.0F, 16777215);
     }
     this.tokenField.drawTextBox();
     super.drawScreen(mouseX, mouseY, partialTicks);

@@ -22,7 +22,7 @@ import javax.xml.bind.DatatypeConverter;
 import com.mojang.authlib.GameProfile;
 
 import lunadevs.luna.login.Alt;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import net.minecraft.client.Minecraft;
 public class license {
 	

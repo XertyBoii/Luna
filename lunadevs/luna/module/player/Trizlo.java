@@ -5,7 +5,7 @@ import org.lwjgl.input.Keyboard;
 import com.zCore.Core.zCore;
 
 import lunadevs.luna.category.Category;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import net.minecraft.network.play.client.C03PacketPlayer;
 
@@ -14,7 +14,7 @@ public class Trizlo extends Module {
 	private boolean active;
 
 	public Trizlo() {
-		super("Trizlo", Keyboard.KEY_NONE, Category.PLAYER, false);
+		super("Trizlo", Keyboard.KEY_NONE, Category.PLAYER, true);
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class Trizlo extends Module {
 
 	@Override
 	public String getValue() {
-		return null;
+		return "Jump";
 	}
 
 }

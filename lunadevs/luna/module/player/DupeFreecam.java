@@ -9,7 +9,7 @@ import lunadevs.luna.events.BoundingBoxEvent;
 import lunadevs.luna.events.EventPacket;
 import lunadevs.luna.events.PacketSendEvent;
 import lunadevs.luna.events.PreMotionUpdatesEvent;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.option.Option;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
@@ -32,7 +32,7 @@ public class DupeFreecam extends Module {
 	}
 	
 	public void onEnable() {
-		Parallaxa.addChatMessage("Use this for the /pv 1 duplication glitch.");
+		Luna.addChatMessage("Use this for the /pv 1 duplication glitch.");
 		  	nuumun = this.mc.thePlayer.posX;
 		  	nienmun = this.mc.thePlayer.posY;
 		    nuhmun = this.mc.thePlayer.posZ;
@@ -46,7 +46,7 @@ public class DupeFreecam extends Module {
 
 	public void onDisable() {
 		mc.thePlayer.setPosition(nuumun, nienmun, nuhmun);
-		Parallaxa.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(Parallaxa.getPlayer().posX,Parallaxa.getPlayer().posY + 0.01D, Parallaxa.getPlayer().posZ, Parallaxa.getPlayer().onGround));
+		Luna.sendPacket(new C03PacketPlayer.C04PacketPlayerPosition(Luna.getPlayer().posX,Luna.getPlayer().posY + 0.01D, Luna.getPlayer().posZ, Luna.getPlayer().onGround));
 		mc.thePlayer.capabilities.isFlying = false;
 		mc.thePlayer.noClip = false;
 		mc.theWorld.removeEntityFromWorld(-1);

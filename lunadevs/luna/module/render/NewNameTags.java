@@ -1,49 +1,27 @@
 package lunadevs.luna.module.render;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
-import lunadevs.luna.events.EventRender3D;
-import lunadevs.luna.events.EventRenderNameTag;
-import lunadevs.luna.friend.FriendManager;
-import lunadevs.luna.main.Parallaxa;
-import lunadevs.luna.manage.ModuleManager;
-import lunadevs.luna.mcleaks.ChatColor;
-import lunadevs.luna.utils.MathUtils;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemAxe;
-import net.minecraft.item.ItemBow;
 import org.lwjgl.opengl.GL11;
 
 import lunadevs.luna.category.Category;
+import lunadevs.luna.events.EventRenderNameTag;
+import lunadevs.luna.friend.FriendManager;
 import lunadevs.luna.module.Module;
-import lunadevs.luna.utils.MathUtil;
-import lunadevs.luna.utils.RenderUtil;
 import lunadevs.luna.utils.RenderUtils;
-import lunadevs.luna.utils.Values.ValueManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemAxe;
+import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.util.EnumChatFormatting;
-import parallaxadevs.Render.BoolValue;
 import parallaxadevs.Utils.GLUtil;
 
 public class NewNameTags extends Module{
@@ -120,9 +98,9 @@ public class NewNameTags extends Module{
 	      }
 	    }
 	    if (Math.floor(health) == health) {
-	      tag = tag + " " + healthColour + "❤ " + (int)Math.floor(health);
+	      tag = tag + " " + healthColour + "â�¤ " + (int)Math.floor(health);
 	    } else {
-	      tag = tag + " " + healthColour + "❤ " + health;
+	      tag = tag + " " + healthColour + "â�¤ " + health;
 	    }
 	    float scale = var2 * 2.0F;
 	    scale /= 150.0F;

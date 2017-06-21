@@ -1,7 +1,7 @@
 package lunadevs.luna.commands;
 
 import lunadevs.luna.command.Command;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 
 public class Toggle extends Command{
@@ -24,15 +24,15 @@ public class Toggle extends Command{
 	@Override
 	public void onCommand(String command, String[] args) throws Exception {
 		boolean found = false;
-		for(Module m: Parallaxa.moduleManager.getModules()){
+		for(Module m: Luna.moduleManager.getModules()){
 			if(args[0].equalsIgnoreCase(m.getName())){
 				m.toggle();
 				found = true;
-				Parallaxa.addChatMessage(m.getName() + " was toggled!");
+				Luna.addChatMessage(m.getName() + " was toggled!");
 			}
 		}
 		if(found == false){
-			Parallaxa.addChatMessage("Mod not found!");
+			Luna.addChatMessage("Mod not found!");
 		}
 	}
 

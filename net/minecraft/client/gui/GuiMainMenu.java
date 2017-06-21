@@ -2,7 +2,7 @@ package net.minecraft.client.gui;
 
 import com.google.common.collect.Lists;
 
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -517,7 +517,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         GlStateManager.scale(var9, var9, var9);
         GlStateManager.popMatrix();
         String var10 = "Luna Hacked Client";
-        Parallaxa.fontRendererMAIN.drawCenteredString("Luna", GuiScreen.width / 2, GuiScreen.height / 4, 0xFFdc28ed);
+        Luna.fontRendererMAIN.drawCenteredString("Luna", GuiScreen.width / 2, GuiScreen.height / 4, 0xFFdc28ed);
         if (this.mc.isDemo())
         {
             var10 = var10 + " Demo";

@@ -1,6 +1,6 @@
 package lunadevs.luna.utils;
 
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.manage.PropertyManager;
 import lunadevs.luna.module.Module;
 
@@ -43,7 +43,7 @@ public class Property<Type>
   public void reset()
   {
     this.value = this.defaultvalue;
-    Parallaxa.logChatMessage(getModule().getName());
+    Luna.logChatMessage(getModule().getName());
   }
   
   public Module getModule()

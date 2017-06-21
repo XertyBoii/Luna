@@ -6,7 +6,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 import lunadevs.luna.events.RenderStringEvent;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 
 import java.awt.Color;
 import java.util.ArrayList;

@@ -6,14 +6,14 @@ import org.lwjgl.input.Keyboard;
 import lunadevs.luna.utils.TimerUtil;
 import net.minecraft.network.play.client.C01PacketChatMessage;
 import lunadevs.luna.category.Category;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 
 //coded by faith
 
 public class Spammer extends Module{
 
-	private String[] spamList = { "MiDNiGHT developed by MinemanFaith, Mega_Mixer, Timothy/ZiTROX", "I am using the best hacked client!!", "Did you know? That You can download Parallaxa for free! but only for a certain time!", "Im not hacking, just energy drink."  };
+	private String[] spamList = { "MiDNiGHT developed by MinemanFaith, Mega_Mixer, Timothy/ZiTROX", "I am using the best hacked client!!", "Did you know? That You can download Luna for free! but only for a certain time!", "Im not hacking, just energy drink."  };
 	private int last;
 	TimerUtil timer = new TimerUtil();
 	

@@ -21,7 +21,7 @@ import com.mojang.authlib.GameProfile;
 
 import io.netty.buffer.Unpooled;
 import lunadevs.luna.events.EventPacket;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.manage.ModuleManager;
 import lunadevs.luna.module.combat.AntiKnockback;
 import lunadevs.luna.module.combat.AntiKnockbackGomme;
@@ -881,7 +881,7 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
     public void handleChat(S02PacketChat packetIn)
     {
     	
-    	if (Parallaxa.onRecieveChatMessage(packetIn)){
+    	if (Luna.onRecieveChatMessage(packetIn)){
     	
         PacketThreadUtil.func_180031_a(packetIn, this, this.gameController);
 

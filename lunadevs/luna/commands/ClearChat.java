@@ -1,7 +1,7 @@
 package lunadevs.luna.commands;
 
 import lunadevs.luna.command.Command;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 
 //Coded by faith.
 
@@ -27,7 +27,7 @@ public class ClearChat extends Command{
 
 	@Override
 	public void onCommand(String command, String[] args) throws Exception {
-		if(Parallaxa.onSendChatMessage(command)) {
+		if(Luna.onSendChatMessage(command)) {
 			mc.ingameGUI.getChatGUI().clearChatMessages();
 		}
 		

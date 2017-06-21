@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import lunadevs.luna.category.Category;
-import lunadevs.luna.main.Parallaxa;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.module.render.TabGuiColor;
 import lunadevs.luna.utils.RenderUtils;
@@ -52,9 +52,9 @@ public class TabGuiManager {
         updateBars();
         int y = 4;
         GuiIngame.drawRect(1, 20, 2 + baseCategoryWidth, 16 + baseCategoryHeight, -1610612736);
-        GuiIngame.drawRect(2, categoryPosition, 2 + baseCategoryWidth - 1, categoryPosition + 14, 0xFF9931FF);
-        if(Parallaxa.moduleManager.getModule(TabGuiColor.class).isEnabled) {
-             GuiIngame.drawRect(2, categoryPosition, 2 + baseCategoryWidth - 1, categoryPosition + 14, RenderUtils.getRainbow(6000, -15 * y));
+        GuiIngame.drawRect(2 /** Used for drawing the main rect with Category texts. */, categoryPosition, 2 + baseCategoryWidth - 1, categoryPosition + 13, 0xFF9931FF);
+        if(Luna.moduleManager.getModule(TabGuiColor.class).isEnabled) {
+             GuiIngame.drawRect(2, categoryPosition, 2 + baseCategoryWidth - 1, categoryPosition + 13, RenderUtils.getRainbow(6000, -15 * y));
              y+= 12;
         }
         // Purple:0xFF9931FF
@@ -63,16 +63,16 @@ public class TabGuiManager {
         for (int i = 0; i < Category.values().length; i++) {
             Category category = Category.values()[i];
             String name = StringUtil.capitalize(category.name().toLowerCase());
-            Parallaxa.fontRenderer.drawStringWithShadow(name, (int) 6.0, yPos + 2, -1);
+            Luna.fontRenderer.drawStringWithShadow(name, (int) 6.0, yPos + 2, -1);
             yPos += 14;
             yPosBottom += 14;
         }
         if (section == Section.MODS) {
         	int y2 = 4;
         	GuiIngame.drawRect(baseCategoryWidth + 4, categoryPosition - 1, baseCategoryWidth +  baseModWidth + 10, categoryPosition + getModsInCategory(Category.values()[categoryTab]).size() * 14 + 1, -1610612736);
-        	GuiIngame.drawRect(baseCategoryWidth + 5, modPosition, baseCategoryWidth + baseModWidth + 9, modPosition + 14, 0xFF9931FF);
-        	if(Parallaxa.moduleManager.getModule(TabGuiColor.class).isEnabled) {
-            	GuiIngame.drawRect(baseCategoryWidth + 5, modPosition, baseCategoryWidth + baseModWidth + 9, modPosition + 14, RenderUtils.getRainbow(6000, -15 * y2
+        	GuiIngame.drawRect(baseCategoryWidth + 5, modPosition, baseCategoryWidth + baseModWidth + 9, modPosition + 13, 0xFF9931FF);
+        	if(Luna.moduleManager.getModule(TabGuiColor.class).isEnabled) {
+            	GuiIngame.drawRect(baseCategoryWidth + 5, modPosition, baseCategoryWidth + baseModWidth + 9, modPosition + 13, RenderUtils.getRainbow(6000, -15 * y2
             			));
             	y2+= 12;
         	}
@@ -83,7 +83,7 @@ public class TabGuiManager {
             for (int i = 0; i < getModsInCategory(Category.values()[categoryTab]).size(); i++) {
                 Module mod = getModsInCategory(Category.values()[categoryTab]).get(i);
                 String name = mod.name;
-                Parallaxa.fontRenderer.drawStringWithShadow(name, (int) (baseCategoryWidth + 7.0), yPos + 2, mod.isEnabled() ? -1 : -4210753);
+                Luna.fontRenderer.drawStringWithShadow(name, (int) (baseCategoryWidth + 7.0), yPos + 2, mod.isEnabled() ? -1 : -4210753);
                 yPos += 14;
                 yPosBottom += 14;
             }
