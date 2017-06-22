@@ -197,7 +197,7 @@ public class ModuleManager {
 		mods.add(new ServerCrasher());
 		mods.add(new CircleESP());
 		mods.add(new Phase());
-		mods.add(new AACTPFly());
+		mods.add(new AACTPFly()); /** Testing, Might get you kicked. */
 	}
 
 	public static <T extends Module> T findMod(Class<T> clazz)

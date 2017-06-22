@@ -29,7 +29,7 @@ public class GuiAltManager extends GuiScreen
     private int offset;
     public Alt selectedAlt = null;
     private String status = "§7Waiting...";
-    private static final ResourceLocation background = new ResourceLocation("luna/Luna.jpg");
+    private static final ResourceLocation background = new ResourceLocation("luna/bg.png");
     private static IrcManager irc = Luna.ircManager;
     
     

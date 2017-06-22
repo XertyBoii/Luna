@@ -340,32 +340,37 @@ public class ItemRenderer
                 switch (ItemRenderer.SwitchEnumAction.field_178094_a[var7.ordinal()])
                 {
                     case 1:
-                        this.func_178096_b(var2, 0.0F);
+                    	func_178096_b(var2, var4);
                         break;
 
                     case 2:
                     case 3:
-                        this.func_178104_a(var3, p_78440_1_);
-                        this.func_178096_b(var2, 0.0F);
+                    	func_178104_a(var3, p_78440_1_);
+                        func_178096_b(var2 + 0.21F, var4);
+                        GlStateManager.rotate(4.0F, 1.0F, 0.0F, 0.0F);
                         break;
 
                     case 4:
-                        this.func_178096_b(var2, 0.0F);
-                        this.func_178103_d();
-                        
-                        float var14 = MathHelper.sin(var4 * var4 * 3.1415927F);
-                        float var15 = MathHelper.sin(MathHelper.sqrt_float(var4) * 3.1415927F);
-                        GlStateManager.translate(-0.4F, 0.3F, 0.0F);
-                        GlStateManager.rotate(-var15 * ((float)70D / 2.0F), -8.0F, -0.0F, 9.0F);
-                        GlStateManager.rotate(-var15 * (float)70D, 1.0F, -0.4F, -0.0F);
-                        
-                        break;
-
-                    case 5:
-                        this.func_178096_b(var2, 0.0F);
-                        this.func_178098_a(p_78440_1_, var3);
-                }
-            }
+                        if(Animations.active==false) {
+                            this.func_178096_b(var2, var4);
+                            this.func_178103_d();
+                        }
+                          if(Animations.active==true) {
+                              this.func_178096_b(var2, 0.0F);
+                              this.func_178103_d();
+                              float var14 = MathHelper.sin(var4 * var4 * 3.1415927F);
+                              float var15 = MathHelper.sin(MathHelper.sqrt_float(var4) * 3.1415927F);
+                              GlStateManager.translate(-0.4F, 0.3F, 0.0F);
+                              GlStateManager.rotate(-var15 * ((float) 70D / 2.0F), -8.0F, -0.0F, 9.0F);
+                              GlStateManager.rotate(-var15 * (float) 70D, 1.0F, -0.4F, -0.0F);
+                              GL11.glTranslatef(-0.05F, this.mc.thePlayer.isSneaking() ? -0.0F : 0.0F, 0.1F);
+                          }
+                          break;
+                        case 5: 
+                        	this.func_178096_b(var2, 0.0F);
+                            this.func_178098_a(p_78440_1_, var3);
+                        }
+                      }
             else
             {
             	if (Animations.active==true){

@@ -31,7 +31,7 @@ public class GuiOptions extends GuiScreen implements GuiYesNoCallback
     private GuiLockIconButton field_175356_r;
     protected String field_146442_a = "Options";
     private static final String __OBFID = "CL_00000700";
-    private static final ResourceLocation background = new ResourceLocation("luna/LunaBG2.jpg");
+    private static final ResourceLocation background = new ResourceLocation("luna/bg.png");
 
     public GuiOptions(GuiScreen p_i1046_1_, GameSettings p_i1046_2_)
     {

@@ -516,8 +516,11 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         var9 = var9 * 100.0F / (float)(this.fontRendererObj.getStringWidth(this.splashText) + 32);
         GlStateManager.scale(var9, var9, var9);
         GlStateManager.popMatrix();
+        /**
+         * CHANGED: Replaced the centered string with " " [Nothing], Replaced with a new background
+         */
         String var10 = "Luna Hacked Client";
-        Luna.fontRendererMAIN.drawCenteredString("Luna", GuiScreen.width / 2, GuiScreen.height / 4, 0xFFdc28ed);
+        Luna.fontRendererMAIN.drawCenteredString("", GuiScreen.width / 2, GuiScreen.height / 4, 0xFFdc28ed);
         if (this.mc.isDemo())
         {
             var10 = var10 + " Demo";
@@ -529,7 +532,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
-    private static final ResourceLocation background = new ResourceLocation("Luna/Luna.jpg");
+    private static final ResourceLocation background = new ResourceLocation("Luna/bg.png");
 
     public void renderBackground(int par1, int par2)
     {

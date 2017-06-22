@@ -37,6 +37,8 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ResourceLocation;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -49,6 +51,7 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
     private static final Logger field_175287_a = LogManager.getLogger();
     private static final Set field_175284_f = Sets.newHashSet(new String[] {"http", "https"});
     private static final Splitter field_175285_g = Splitter.on('\n');
+
 
     /** Reference to the Minecraft object. */
     protected Minecraft mc;
@@ -631,7 +634,6 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
     {
         this.drawWorldBackground(0);
     }
-
     public void drawWorldBackground(int tint)
     {
         if (this.mc.theWorld != null)
