@@ -12,7 +12,6 @@ import lunadevs.luna.module.combat.InfiniteAura;
 import lunadevs.luna.module.combat.Killaura;
 import lunadevs.luna.module.exploits.AACClip;
 import lunadevs.luna.module.exploits.NCPGlide;
-import lunadevs.luna.module.fun.HeadlessExploit;
 import lunadevs.luna.module.movement.Boost;
 import lunadevs.luna.module.movement.Nuker;
 import lunadevs.luna.module.movement.TimerBoost;
@@ -38,8 +37,6 @@ public class Mineplex extends Module {
 			ModuleManager.findMod(Nuker.class).toggle();
 		} else if (ModuleManager.findMod(TimerBoost.class).isEnabled()) {
 			ModuleManager.findMod(TimerBoost.class).toggle();
-		} else if (ModuleManager.findMod(HeadlessExploit.class).isEnabled()) {
-			ModuleManager.findMod(HeadlessExploit.class).toggle();
 		} else if (ModuleManager.findMod(InfiniteAura.class).isEnabled()) {
 			ModuleManager.findMod(InfiniteAura.class).toggle();
 		} else if (ModuleManager.findMod(NCPGlide.class).isEnabled()) {

@@ -16,7 +16,7 @@ public class AACTPFly extends Module{
 	@Override
 	public void onUpdate() {
 		if (!this.isEnabled) return;
-	if(z.gsettings().keyBindAttack.pressed==true){
+	if(z.gsettings().keyBindAttack.pressed){
 		Minecraft.thePlayer.capabilities.isFlying = true;
 		double yaw = Minecraft.getMinecraft().thePlayer.rotationYaw;
 		float increment = +8.5F;
@@ -26,14 +26,14 @@ public class AACTPFly extends Module{
         mc.thePlayer.posY, 
         mc.thePlayer.posZ + 
         Math.cos(Math.toRadians(-yaw)) * increment);
+	}else if (z.gsettings().keyBindAttack.pressed==false){
+		Minecraft.thePlayer.capabilities.isFlying = false;
 	}
 		super.onUpdate();
 	}
 
 	@Override
 	public void onDisable() {
-		Minecraft.thePlayer.onGround = false;
-		Timer.timerSpeed = 1.0F;
 		Minecraft.thePlayer.capabilities.isFlying = false;
 		super.onDisable();
 	}

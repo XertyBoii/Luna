@@ -518,8 +518,10 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
         Entity var2 = this.clientWorldController.getEntityByID(packetIn.func_149412_c());
         {
         }
-     if (ModuleManager.findMod(AntiKnockback.class).isEnabled()){
+     if (ModuleManager.findMod(AntiKnockback.class).isEnabled()) {
     	 return;
+}else if (ModuleManager.findMod(AntiKnockbackGomme.class).isEnabled==true) {
+    var2.setVelocity((double)packetIn.func_149411_d() / 0.0D, (double)packetIn.func_149410_e() / 0.0D, (double)packetIn.func_149409_f() / 0.0D);
 }
         if (var2 != null)
         {

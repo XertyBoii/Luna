@@ -9,6 +9,8 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
+import lunadevs.luna.Connector.ConnectSettings.ConnectSettings;
+import lunadevs.luna.Connector.URLPremium.URLHWID;
 import lunadevs.luna.font.MistFontRenderer;
 import lunadevs.luna.friend.FriendManager;
 import lunadevs.luna.gui.clickgui.ClickGui;
@@ -35,10 +37,10 @@ import net.minecraft.util.ResourceLocation;
 
 public class Luna {
 
-	public static String CLIENT_NAME = "Luna";
-	public static String CLIENT_VERSION = "6";
-	public static String CLIENT_BUILD = "6";
-	public static String isPRE = "";
+	public static String CLIENT_NAME = ConnectSettings.NAME;
+	public static String CLIENT_VERSION = ConnectSettings.VERSION;
+	public static String CLIENT_BUILD = ConnectSettings.VERSION;
+	public static String isPRE = ConnectSettings.PRERELEASE;
 	public static int NUMBER_OF_CLIENT_DEVELOPERS = -1;
 	// VERSION
 	public static ModuleManager moduleManager = new ModuleManager();
@@ -74,8 +76,9 @@ public class Luna {
 	
 	
 	// FONT
-	public static void start() {
-		Display.setTitle("Minecraft 1.8 | Luna b" + Luna.CLIENT_VERSION);
+	public static void start() throws Exception {
+		URLHWID.whitelist(); //Beta
+		Display.setTitle(ConnectSettings.STARTUPTITLE + " " + ConnectSettings.NAME + " b" + Luna.CLIENT_VERSION);
 		moduleManager = new ModuleManager();
 		moduleManager.loadmods();
 		OptionManager.start();

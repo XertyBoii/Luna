@@ -17,7 +17,6 @@ import lunadevs.luna.module.exploits.NCPGlide;
 import lunadevs.luna.module.exploits.PacketFly;
 import lunadevs.luna.module.exploits.Regen;
 import lunadevs.luna.module.exploits.Zoot;
-import lunadevs.luna.module.fun.HeadlessExploit;
 import lunadevs.luna.module.movement.AirHop;
 import lunadevs.luna.module.movement.Boost;
 import lunadevs.luna.module.movement.Nuker;
@@ -43,8 +42,6 @@ public class GommeHD extends Module {
 			ModuleManager.findMod(Nuker.class).toggle();
 		} else if (ModuleManager.findMod(TimerBoost.class).isEnabled()) {
 			ModuleManager.findMod(TimerBoost.class).toggle();
-		} else if (ModuleManager.findMod(HeadlessExploit.class).isEnabled()) {
-			ModuleManager.findMod(HeadlessExploit.class).toggle();
 		} else if (ModuleManager.findMod(Regen.class).isEnabled()) {
 			ModuleManager.findMod(Regen.class).toggle();
 		} else if (ModuleManager.findMod(FastBow.class).isEnabled()) {

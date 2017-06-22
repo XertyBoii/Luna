@@ -5,6 +5,8 @@ import org.lwjgl.input.Keyboard;
 import lunadevs.luna.category.Category;
 import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
+import net.minecraft.client.network.NetHandlerPlayClient;
+import net.minecraft.network.play.client.C03PacketPlayer;
 
 public class AntiKnockbackGomme extends Module {
 
@@ -17,6 +19,7 @@ public class AntiKnockbackGomme extends Module {
 	@Override
 	public void onUpdate() {
 		if (!this.isEnabled) return;
+				
 		super.onUpdate();
 	}
 

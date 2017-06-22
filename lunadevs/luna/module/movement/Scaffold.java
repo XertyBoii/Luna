@@ -44,9 +44,16 @@ public class Scaffold extends Module{
 	  boolean placing;
 	  private boolean count = true;
 	  private int slot;
-	  private int blockcount;
+	  public static int blockcount;
 	    private int original;
 	  public static boolean active;
+	  
+	  @Override
+	  public void onRender(){
+		  ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft(), Display.getWidth(), Display.getHeight());
+          Luna.fontRenderer.drawStringWithShadow(String.valueOf(blockcount), sr.getScaledWidth() / 2 - (Luna.fontRenderer.getStringWidth(String.valueOf(blockcount))) / 2, sr.getScaledHeight() / 2 - 15, 0xFF690096);
+  }
+	  
 	  
 	  @Override
 	public void onEnable() {

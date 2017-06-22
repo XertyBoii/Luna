@@ -38,7 +38,6 @@ import lunadevs.luna.module.exploits.ServerCrasher;
 import lunadevs.luna.module.exploits.SpartanGlide;
 import lunadevs.luna.module.exploits.Zoot;
 import lunadevs.luna.module.exploits.zPackets;
-import lunadevs.luna.module.fun.HeadlessExploit;
 import lunadevs.luna.module.fun.SlowMotion;
 import lunadevs.luna.module.fun.Twerk;
 import lunadevs.luna.module.movement.AACJesus;
@@ -52,6 +51,7 @@ import lunadevs.luna.module.movement.GlideModes;
 import lunadevs.luna.module.movement.HighJump;
 import lunadevs.luna.module.movement.Jesus;
 import lunadevs.luna.module.movement.Longjump;
+import lunadevs.luna.module.movement.LowHop;
 import lunadevs.luna.module.movement.Nuker;
 import lunadevs.luna.module.movement.SafeWalk;
 import lunadevs.luna.module.movement.Scaffold;
@@ -143,7 +143,6 @@ public class ModuleManager {
 		//mods.add(new AntiChat());
 		mods.add(new BowAimbot());
 		mods.add(new FastBow());
-		mods.add(new HeadlessExploit());
 		mods.add(new SlowMotion());
 		mods.add(new Twerk());
 		mods.add(new Frames());
@@ -198,6 +197,7 @@ public class ModuleManager {
 		mods.add(new CircleESP());
 		mods.add(new Phase());
 		mods.add(new AACTPFly()); /** Testing, Might get you kicked. */
+		mods.add(new LowHop());
 	}
 
 	public static <T extends Module> T findMod(Class<T> clazz)

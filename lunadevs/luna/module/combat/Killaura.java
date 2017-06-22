@@ -33,9 +33,9 @@ import net.minecraft.util.MathHelper;
 public class Killaura extends Module {
 	public static boolean active;
     @Option.Op(min=1.0D, max=20.0D, increment=0.1D, name="Range")
-    public static double range = 5;
+    public static double range = 7;
     @Option.Op(min=1.0D, max=20.0D, increment=0.1D, name="Speed")
-    public static double speed = 12;
+    public static double speed = 13;
     @Option.Op(name="Block")
     public static boolean block = true;
     @Option.Op(name="Friend")

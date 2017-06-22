@@ -1,4 +1,4 @@
-package lunadevs.luna.Capes.URLRender;
+package lunadevs.luna.Connector.URLCapes;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IImageBuffer;

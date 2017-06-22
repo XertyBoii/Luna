@@ -1,11 +1,34 @@
 package net.minecraft.client;
 
+import com.darkmagician6.eventapi.EventManager;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Queues;
+import com.google.common.collect.Sets;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.ListenableFutureTask;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.properties.Property;
+import com.mojang.authlib.properties.PropertyMap;
+import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
+
+import lunadevs.luna.Connector.URLPremium.URLHWID;
+import lunadevs.luna.events.KeyPressEvent;
+import lunadevs.luna.events.TickEvent;
+import lunadevs.luna.gui.Guiingamehook;
+import lunadevs.luna.main.Luna;
+import lunadevs.luna.manage.ModuleManager;
+import lunadevs.luna.module.Module;
+import lunadevs.luna.utils.Nullable;
+
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.Proxy;
 import java.net.SocketAddress;
+import java.net.URL;
+import java.net.URLConnection;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.text.DecimalFormat;
@@ -23,48 +46,8 @@ import java.util.UUID;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
-
 import javax.imageio.ImageIO;
 
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.Validate;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.lwjgl.LWJGLException;
-import org.lwjgl.Sys;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.ContextCapabilities;
-import org.lwjgl.opengl.Display;
-import org.lwjgl.opengl.DisplayMode;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GLContext;
-import org.lwjgl.opengl.OpenGLException;
-import org.lwjgl.opengl.PixelFormat;
-import org.lwjgl.util.glu.GLU;
-
-import com.darkmagician6.eventapi.EventManager;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Queues;
-import com.google.common.collect.Sets;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.ListenableFutureTask;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.properties.Property;
-import com.mojang.authlib.properties.PropertyMap;
-import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
-import com.zCore.Core.zCore;
-
-import lunadevs.luna.events.EventMiddleClick;
-import lunadevs.luna.events.KeyPressEvent;
-import lunadevs.luna.events.TickEvent;
-import lunadevs.luna.gui.Guiingamehook;
-import lunadevs.luna.main.Luna;
-import lunadevs.luna.utils.Nullable;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.audio.MusicTicker;
@@ -195,11 +178,29 @@ import net.minecraft.world.chunk.storage.AnvilSaveConverter;
 import net.minecraft.world.storage.ISaveFormat;
 import net.minecraft.world.storage.ISaveHandler;
 import net.minecraft.world.storage.WorldInfo;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.Validate;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.lwjgl.LWJGLException;
+import org.lwjgl.Sys;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.ContextCapabilities;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
+import org.lwjgl.opengl.GLContext;
+import org.lwjgl.opengl.OpenGLException;
+import org.lwjgl.opengl.PixelFormat;
+import org.lwjgl.util.glu.GLU;
 
 public class Minecraft implements IThreadListener, IPlayerUsage
 {
     private static final Logger logger = LogManager.getLogger();
     private static final ResourceLocation locationMojangPng = new ResourceLocation("textures/gui/title/mojang.png");
+    private static final ResourceLocation loading = new ResourceLocation("luna/Loading.jpg");
     public static final boolean isRunningOnMac = Util.getOSType() == Util.EnumOS.OSX;
 
     /** A 10MiB preallocation to ensure the heap is reasonably sized. */
@@ -302,6 +303,40 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     public boolean inGameHasFocus;
     long systemTime = getSystemTime();
 
+    @Nullable
+    public NetHandlerPlayClient getConnection()
+    {
+      return thePlayer == null ? null : thePlayer.sendQueue;
+    }
+/**
+ * FIXME: Beta HWID System
+ */
+    public static void hwid1() {
+        try
+        {
+            URL url = new URL("http://lunaclient.pw/api/hwid/HWID.php?id=" + URLHWID.getHwid());
+            ArrayList<Object> lines = new ArrayList();
+            URLConnection connection = url.openConnection();
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null)
+            {
+                lines.add(line);
+            }
+            if (!lines.contains("true")) {
+                Minecraft.getMinecraft().shutdown();
+                Minecraft.getMinecraft().shutdownMinecraftApplet();
+                System.exit(0);
+            }
+        }
+        catch (Exception e)
+        {
+            Minecraft.getMinecraft().shutdown();
+            Minecraft.getMinecraft().shutdownMinecraftApplet();
+            System.exit(0);
+        }
+    }
+
     /** Join player counter */
     private int joinPlayerCounter;
     private final boolean jvm64bit;
@@ -316,12 +351,12 @@ public class Minecraft implements IThreadListener, IPlayerUsage
      * Keeps track of how long the debug crash keycombo (F3+C) has been pressed for, in order to crash after 10 seconds.
      */
     private long debugCrashKeyPressTime = -1L;
-    public IReloadableResourceManager mcResourceManager;
+    private IReloadableResourceManager mcResourceManager;
     private final IMetadataSerializer metadataSerializer_ = new IMetadataSerializer();
     private final List defaultResourcePacks = Lists.newArrayList();
     private final DefaultResourcePack mcDefaultResourcePack;
     private ResourcePackRepository mcResourcePackRepository;
-    public LanguageManager mcLanguageManager;
+    private LanguageManager mcLanguageManager;
     private IStream stream;
     private Framebuffer framebufferMc;
     private TextureMap textureMapBlocks;
@@ -356,7 +391,6 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
     /** Profiler currently displayed in the debug screen pie chart */
     private String debugProfilerName = "root";
-	public Entity renderViewEntity;
     public Minecraft(GameConfiguration p_i45547_1_)
     {
         theMinecraft = this;
@@ -459,11 +493,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             return;
         }
     }
-
-    /**
-     * Starts the game: initializes the canvas, the title, the settings, etcetera.
-     */
-    private void startGame() throws LWJGLException
+    private void startGame() throws Exception
     {
         this.gameSettings = new GameSettings(this, this.mcDataDir);
         this.defaultResourcePacks.add(this.mcDefaultResourcePack);
@@ -619,7 +649,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     private void func_175609_am() throws LWJGLException
     {
         Display.setResizable(true);
-        Display.setTitle("Minecraft 1.8 | Luna | zCore b" + zCore.zCore_BUILD);
+        Display.setTitle("Loading Luna");
 
         try
         {
@@ -1826,9 +1856,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
                 if (Mouse.getEventButtonState())
                 {
-                	EventMiddleClick eventMiddleClick = new EventMiddleClick(var1);
-                	EventManager.call(eventMiddleClick);
-                	if (Minecraft.thePlayer.func_175149_v() && var1 == 2)
+                    if (Minecraft.thePlayer.func_175149_v() && var1 == 2)
                     {
                         this.ingameGUI.func_175187_g().func_175261_b();
                     }
@@ -2457,27 +2485,6 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             this.displayGuiScreen((GuiScreen)null);
         }
     }
-    
-    /**
-     * Cleans incoming packets.
-     * @return
-     */
-    public void freeMemoryzPack()
-    {
-      try
-      {
-        memoryReserve = new byte[0];
-        this.renderGlobal.deleteAllDisplayLists();
-      }
-      catch (Throwable localThrowable) {}
-      try
-      {
-        System.gc();
-        loadWorld(null);
-      }
-      catch (Throwable localThrowable1) {}
-      System.gc();
-    }
 
     /**
      * Gets whether this is a demo or not.
@@ -2487,7 +2494,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         return this.isDemo;
     }
 
-    public static NetHandlerPlayClient getNetHandler()
+    public NetHandlerPlayClient getNetHandler()
     {
         return Minecraft.thePlayer != null ? Minecraft.thePlayer.sendQueue : null;
     }
@@ -3326,11 +3333,5 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                 ;
             }
         }
-    }
-
-	@Nullable
-    public NetHandlerPlayClient getConnection()
-    {
-        return this.thePlayer == null ? null : this.thePlayer.sendQueue;
     }
 }
