@@ -51,6 +51,7 @@ import lunadevs.luna.module.movement.Frames;
 import lunadevs.luna.module.movement.GlideModes;
 import lunadevs.luna.module.movement.HighJump;
 import lunadevs.luna.module.movement.Jesus;
+import lunadevs.luna.module.movement.KeepSprint;
 import lunadevs.luna.module.movement.Longjump;
 import lunadevs.luna.module.movement.LowHop;
 import lunadevs.luna.module.movement.Nuker;
@@ -202,6 +203,8 @@ public class ModuleManager {
 		mods.add(new AACTPFly()); /** Testing, Might get you kicked. */
 		mods.add(new LowHop());
 		mods.add(new Suicide());
+		mods.add(new KeepSprint());
+		/** 92 current modules? (91 when you count the 0) */
 	}
 
 	public static <T extends Module> T findMod(Class<T> clazz)
