@@ -9,6 +9,7 @@ import java.util.concurrent.Callable;
 import com.darkmagician6.eventapi.EventManager;
 
 import lunadevs.luna.events.EventSafewalk;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.movement.Scaffold;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
@@ -2034,6 +2035,11 @@ public abstract class Entity implements ICommandSender
 
     public float getCollisionBorderSize()
     {
+    	//LUNA HITBOXES (BROKEN BROKEN AND MORE BROKEN)
+    	//CLIENT WILL CRASH IF YOU USE IT.
+    	//if(Luna.moduleManager.getModules().get(92).isEnabled()){
+    		//return 0.5F;
+    	//}
         return 0.1F;
     }
 

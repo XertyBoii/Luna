@@ -26,7 +26,7 @@ public class Help extends Command{
 	public void onCommand(String command, String[] args) throws Exception {
 		zCore.addChatMessageP("-t <module>");
 		zCore.addChatMessageP("-bind set/del <module>");
-		zCore.addChatMessageP("-killaura <block/friend/lock/speed/range> <true/false>");
+		zCore.addChatMessageP("-killaura <block/friend/lock/speed/range> §7<true/false>");
 		zCore.addChatMessageP("-killaura <tick/switch>");
 		zCore.addChatMessageP("-vclip <blocks>");
 		zCore.addChatMessageP("-hclip <blocks>");
