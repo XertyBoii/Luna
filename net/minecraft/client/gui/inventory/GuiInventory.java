@@ -1,6 +1,14 @@
 package net.minecraft.client.gui.inventory;
 
 import java.io.IOException;
+import java.util.Random;
+
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+
+import com.zCore.Render.Particles.ParticleGenerator;
+
+import lunadevs.luna.Connector.ParticleSync.Particles.Particle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.achievement.GuiAchievements;
@@ -13,11 +21,15 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.MathHelper;
 
 public class GuiInventory extends InventoryEffectRenderer
 {
     /** The old x position of the mouse pointer */
     private float oldMouseX;
+ // TODO Particle
+ 	private ParticleGenerator particles;
+ 	private Random random = new Random();
 
     /** The old y position of the mouse pointer */
     private float oldMouseY;
@@ -57,7 +69,10 @@ public class GuiInventory extends InventoryEffectRenderer
         {
             super.initGui();
         }
-    }
+     // TODO Particle
+     		this.particles = new ParticleGenerator(100, this.width, this.height);
+
+     	}
 
     /**
      * Draw the foreground layer for the GuiContainer (everything in front of the items). Args : mouseX, mouseY
@@ -75,7 +90,69 @@ public class GuiInventory extends InventoryEffectRenderer
         super.drawScreen(mouseX, mouseY, partialTicks);
         this.oldMouseX = (float)mouseX;
         this.oldMouseY = (float)mouseY;
+     // TODO Particle
+
+		
+     		for (Particle p : particles.particles) {
+     			for (Particle p2 : particles.particles) {
+     				int xx = (int) (MathHelper.cos(0.1F * (p.x + p.k)) * 10.0F);
+     				int xx2 = (int) (MathHelper.cos(0.1F * (p2.x + p2.k)) * 10.0F);
+
+     				boolean mouseOver = (mouseX >= p.x + xx - 95) && (mouseY >= p.y - 90) && (mouseX <= p.x)
+     						&& (mouseY <= p.y);
+
+     				if (mouseOver) {
+     					if (mouseY >= p.y - 80 && mouseX >= p2.x - 100 && mouseY >= p2.y && mouseY <= p2.y + 70
+     							&& mouseX <= p2.x) {
+
+     						int maxDistance = 100;
+
+     						final int xDif = p.x - mouseX;
+     						final int yDif = p.y - mouseY;
+     						final int distance = (int) Math.sqrt(xDif * xDif + yDif + yDif);
+
+     						final int xDif1 = p2.x - mouseX;
+     						final int yDif1 = p2.y - mouseY;
+     						final int distance2 = (int) Math.sqrt(xDif1 * xDif1 + yDif1 + yDif1);
+
+     						if (distance < maxDistance && distance2 < maxDistance) {
+
+     							GL11.glPushMatrix();
+     							GL11.glEnable(GL11.GL_LINE_SMOOTH);
+     							GL11.glDisable(GL11.GL_DEPTH_TEST);
+     							GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+     							GL11.glDisable(GL11.GL_TEXTURE_2D);
+     							GL11.glDepthMask(false);
+     							GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+     							GL11.glEnable(GL11.GL_BLEND);
+     							GL11.glLineWidth(1.5F);
+     							GL11.glBegin(GL11.GL_LINES);
+
+     							GL11.glVertex2d(p.x + xx, p.y);
+     							GL11.glVertex2d(p2.x + xx2, p2.y);
+     							GL11.glEnd();
+     							GL11.glPopMatrix();
+
+     							if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
+     								if (p2.x > mouseX) {
+     									p2.y -= random.nextInt(5);
+     								}
+     								if (p2.y < mouseY) {
+     									p2.x += random.nextInt(5);
+     								}
+
+     							}
+
+     						}
+     					}
+     				}
+     			}
+
+     		}
+
+     		this.particles.drawParticles();
     }
+
 
     /**
      * Args : renderPartialTicks, mouseX, mouseY

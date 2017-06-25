@@ -63,6 +63,7 @@ public class Luna {
 	public static final MistFontRenderer fontRendererGUI = new MistFontRenderer(getFont(40), true, 8);
 	public static final MistFontRenderer fontRendererBOLD = new MistFontRenderer(getFont2(60), true, 8);
 	public static final MistFontRenderer fontRenderer = new MistFontRenderer(getFont(36), true, 8);
+	public static final MistFontRenderer fontRendererCO = new MistFontRenderer(getFontCorbert(36), true, 8);
 	public static final MistFontRenderer fontRendererMAIN = new MistFontRenderer(getFont3(250), true, 8);
 	public static final MistFontRenderer fontRendererGUItwo = new MistFontRenderer(getFont3(50), true, 8);
 	public static final MistFontRenderer fontRendererMainMenu = new MistFontRenderer(getFont2(250), true, 8);
@@ -76,8 +77,9 @@ public class Luna {
 	
 	
 	// FONT
-	public static void start() throws Exception {
-		URLHWID.whitelist(); //Beta
+	public static void start() throws Exception 
+	{
+		// URLHWID.whitelist(); //Beta
 		Display.setTitle(ConnectSettings.STARTUPTITLE + " " + ConnectSettings.NAME + " b" + Luna.CLIENT_VERSION);
 		moduleManager = new ModuleManager();
 		moduleManager.loadmods();
@@ -106,6 +108,21 @@ public class Luna {
 		try {
 			InputStream is = Minecraft.getMinecraft().getResourceManager()
 					.getResource(new ResourceLocation("NightMist/Comfortaa_Regular.ttf")).getInputStream();
+			font = Font.createFont(0, is);
+			font = font.deriveFont(0, size);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("Error loading font");
+			font = new Font("default", 0, size);
+		}
+		return font;
+	}
+	
+	private static Font getFontCorbert(int size) {
+		Font font = null;
+		try {
+			InputStream is = Minecraft.getMinecraft().getResourceManager()
+					.getResource(new ResourceLocation("luna/CODE.otf")).getInputStream();
 			font = Font.createFont(0, is);
 			font = font.deriveFont(0, size);
 		} catch (Exception ex) {

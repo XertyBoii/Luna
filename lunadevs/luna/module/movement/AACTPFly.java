@@ -27,7 +27,6 @@ public class AACTPFly extends Module{
         mc.thePlayer.posZ + 
         Math.cos(Math.toRadians(-yaw)) * increment);
 	}else if (z.gsettings().keyBindAttack.pressed==false){
-		Minecraft.thePlayer.capabilities.isFlying = false;
 	}
 		super.onUpdate();
 	}

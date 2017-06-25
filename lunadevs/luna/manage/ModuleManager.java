@@ -18,6 +18,7 @@ import lunadevs.luna.module.combat.Criticals;
 import lunadevs.luna.module.combat.FastBow;
 import lunadevs.luna.module.combat.InfiniteAura;
 import lunadevs.luna.module.combat.Killaura;
+import lunadevs.luna.module.combat.NormalCriticals;
 import lunadevs.luna.module.combat.TPAura;
 import lunadevs.luna.module.combat.TriggerBot;
 import lunadevs.luna.module.config.GommeHD;
@@ -30,12 +31,12 @@ import lunadevs.luna.module.exploits.Invisible;
 import lunadevs.luna.module.exploits.MultiServer;
 import lunadevs.luna.module.exploits.NCPGlide;
 import lunadevs.luna.module.exploits.NoGhostBlock;
-import lunadevs.luna.module.exploits.NoSlowDown;
 import lunadevs.luna.module.exploits.PacketFly;
 import lunadevs.luna.module.exploits.Regen;
 import lunadevs.luna.module.exploits.Reload;
 import lunadevs.luna.module.exploits.ServerCrasher;
 import lunadevs.luna.module.exploits.SpartanGlide;
+import lunadevs.luna.module.exploits.Suicide;
 import lunadevs.luna.module.exploits.Zoot;
 import lunadevs.luna.module.exploits.zPackets;
 import lunadevs.luna.module.fun.SlowMotion;
@@ -75,6 +76,7 @@ import lunadevs.luna.module.player.IRC;
 import lunadevs.luna.module.player.InventoryWalk;
 import lunadevs.luna.module.player.MiddleClick;
 import lunadevs.luna.module.player.NoFall;
+import lunadevs.luna.module.player.NoSlowdownModes;
 import lunadevs.luna.module.player.Parkour;
 import lunadevs.luna.module.player.Phase;
 import lunadevs.luna.module.player.PlayerChecker;
@@ -123,7 +125,7 @@ public class ModuleManager {
 		mods.add(new AutoClicker());
 		mods.add(new TriggerBot());
 		mods.add(new InventoryWalk());
-		mods.add(new NoSlowDown());
+		mods.add(new NoSlowdownModes());
 		mods.add(new AutoArmor());
 		mods.add(new AutoPot());
 		mods.add(new Parkour());
@@ -135,6 +137,7 @@ public class ModuleManager {
 		mods.add(new Animations());
 		mods.add(new Scaffold());
 		mods.add(new Criticals());
+		mods.add(new NormalCriticals());
 		mods.add(new SpeedMine());
 		mods.add(new FastUse());
 		mods.add(new ChestStealer());
@@ -198,6 +201,7 @@ public class ModuleManager {
 		mods.add(new Phase());
 		mods.add(new AACTPFly()); /** Testing, Might get you kicked. */
 		mods.add(new LowHop());
+		mods.add(new Suicide());
 	}
 
 	public static <T extends Module> T findMod(Class<T> clazz)

@@ -1,10 +1,13 @@
-package com.zCore.Render.Particles;
+package lunadevs.luna.Connector.ParticleSync.Particles;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 
-import lunadevs.luna.Connector.ParticleSync.Particles.Particle;
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.GL11;
+
+import net.minecraft.util.MathHelper;
 
 public class ParticleGenerator {
 

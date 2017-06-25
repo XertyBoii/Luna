@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 public class Timer {
 
 	 private long time;
+		private double lastMSdouble;
 	  private long prevMS;
 
 	  public long currentMS = 0L;
@@ -36,6 +37,22 @@ public class Timer {
 	  public static void reset() {
 	       previousTime = System.nanoTime();
 	    }
+	  public long getCurrentMS() {
+			return System.nanoTime() / 1000000L;
+		}
+	  public boolean hasReached(Double double1) {
+			return getCurrentMSDouble() - this.lastMSdouble >= double1;
+		}
+		public double getCurrentMSDouble() {
+			return System.nanoTime() / 1000000L;
+		}
+
+		public void resetDouble() {
+			this.lastMSdouble = getCurrentMS();
+		}
+	  public void resetT() {
+			this.lastMS = getCurrentMS();
+		}
 	  public final boolean hasPassed(long MS)
 	  {
 	    return this.currentMS >= this.lastMS + MS;

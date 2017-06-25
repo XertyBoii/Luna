@@ -1,12 +1,16 @@
 package lunadevs.luna.module.combat;
 
+import java.util.ArrayList;
+
 import com.darkmagician6.eventapi.EventTarget;
 
 import lunadevs.luna.category.Category;
 import lunadevs.luna.events.EventPacket;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.option.Option;
+import lunadevs.luna.utils.faithsminiutils.Timer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.network.play.server.S0CPacketSpawnPlayer;
 
@@ -17,27 +21,46 @@ public class AntiBot extends Module {
 	public static boolean Watchdog = false;
 	@Option.Op(name = "G.W.E.N")
 	public static boolean GWEN = true;
-
+	@Option.Op(name = "Advanced")
+	public static boolean Advanced = false;
 	public AntiBot() {
 		super("AntiBot", 0, Category.COMBAT, true);
+		bots = new ArrayList<Entity>();
+		time = new Timer();
 	}
+	
+	public static ArrayList<Entity> bots;
+	private Timer time;
 
 	public static String modname;
+	
 
 	@Override
 	public void onUpdate() {
 		if (!this.isEnabled)
 			return;
 		if (this.Watchdog == true) {
+			watchdog();
 			if (this.GWEN == true) {
 				this.GWEN = false;
+				this.Advanced = false;
 			}
 			modname = "Watchdog";
 		} else if (this.GWEN == true) {
+			
 			if (this.Watchdog == true) {
 				this.Watchdog = false;
+				this.Advanced=false;
 			}
 			modname = "G.W.E.N";
+		} else if (this.Advanced == true) {
+			advanced();
+			if (this.Watchdog == true) {
+				this.Watchdog = false;
+				this.GWEN = false;
+				/** Thanks Jordan & Italicz for the Advanced Bot Mode. */
+			}
+			modname = "Advanced";
 		}
 		if (this.Watchdog == true) {
 			watchdog();
@@ -55,7 +78,24 @@ public class AntiBot extends Module {
 			}
 		}
 	}
-
+	
+	public void advanced() {
+		if (this.Advanced == true) {
+			if (time.hasReached((double) 15000)) {
+				bots.clear();
+				time.resetDouble();
+			}
+			EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
+			for (Object entity : mc.theWorld.loadedEntityList) { //Idk whats wrong with Unicode on diff computers, Â
+				if (!((Entity) entity).getDisplayName().getFormattedText().contains("§a")
+						&& !((Entity) entity).getDisplayName().getFormattedText().contains("§9")
+						&& !((Entity) entity).getDisplayName().getFormattedText().contains("§c")
+						&& !((Entity) entity).getDisplayName().getFormattedText().contains("§e") && entity != p) {
+					bots.add((Entity) entity);
+				}
+			}
+		}
+	}
 	@EventTarget
 	public void receivePackets(EventPacket e) {
 		if (!this.isEnabled)
@@ -84,6 +124,8 @@ public class AntiBot extends Module {
 
 	@Override
 	public void onDisable() {
+		bots.clear();
+		time.resetDouble();
 		super.onDisable();
 		active = false;
 	}

@@ -32,8 +32,10 @@ public class URLHWID {
         {
         	/**
         	 * FIXME: Beta HWID System
+        	 * 
+        	 * http://lunaclient.pw/api/hwid/HWID.php?id=
         	 */
-          URL url = new URL("http://lunaclient.pw/api/hwid/HWID.php?id=" + getHwid());
+          URL url = new URL("" + getHwid());
           ArrayList<Object> lines = new ArrayList();
           URLConnection connection = url.openConnection();
           BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
