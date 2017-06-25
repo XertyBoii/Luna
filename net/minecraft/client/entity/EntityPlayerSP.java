@@ -1,9 +1,5 @@
 package net.minecraft.client.entity;
 
-import lunadevs.luna.gui.clickgui.ClickGui;
-import org.jibble.pircbot.User;
-import org.lwjgl.opengl.Display;
-
 import com.darkmagician6.eventapi.EventManager;
 import com.google.common.collect.Lists;
 
@@ -18,11 +14,10 @@ import lunadevs.luna.events.MoveEvent;
 import lunadevs.luna.events.PostTickEvent;
 import lunadevs.luna.events.PreMotionUpdatesEvent;
 import lunadevs.luna.events.TickPreEvent;
-import lunadevs.luna.events.UpdateEvent;
 import lunadevs.luna.irc.IrcChatLine;
 import lunadevs.luna.irc.IrcManager;
 import lunadevs.luna.main.Luna;
-import lunadevs.luna.module.exploits.NoSlowDown;
+import lunadevs.luna.module.player.NoSlowdownModes;
 import lunadevs.luna.utils.MathUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
@@ -48,7 +43,6 @@ import net.minecraft.client.gui.inventory.GuiScreenHorseInventory;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.command.server.CommandBlockLogic;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityMinecart;
@@ -67,7 +61,6 @@ import net.minecraft.network.play.client.C0DPacketCloseWindow;
 import net.minecraft.network.play.client.C13PacketPlayerAbilities;
 import net.minecraft.network.play.client.C16PacketClientStatus;
 import net.minecraft.potion.Potion;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.stats.StatBase;
 import net.minecraft.stats.StatFileWriter;
 import net.minecraft.tileentity.TileEntitySign;
@@ -845,7 +838,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
 
         if (this.isUsingItem() && !this.isRiding())
         {
-        	if (NoSlowDown.active == true){
+        	if (NoSlowdownModes.active == true){
         		this.movementInput.moveStrafe *= 1F;
                 this.movementInput.moveForward *= 1F;
                 this.sprintToggleTimer = 0;

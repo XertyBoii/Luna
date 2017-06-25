@@ -127,65 +127,64 @@ public class Killaura extends Module {
 	        }
 	    }
 
-    public void Tick(final EventMotion event) {
-        if (event.getType() == EventType.PRE) {
-            this.target = findClosestEntity();
-            if (isValid(this.target)) {
-                if (this.lock==false) {
-                    final float[] rotations = getRotations(this.target);
-                    final Location location = event.getLocation();
-                    location.setYaw(rotations[0]);
-                    location.setPitch(rotations[1]);
-                    event.setLocation(location);
-                }else if(this.lock==true){
-                    EntityUtils.faceEntity(this.target);
-                }
-            }
-        }
-        else {
-            double dist = 1.0E9;
-            EntityLivingBase entity = null;
-            for (final Object object : Minecraft.theWorld.loadedEntityList) {
-                if (object instanceof EntityLivingBase) {
-                    final EntityLivingBase e = (EntityLivingBase)object;
-                    if (e.getDistanceToEntity(mc.thePlayer) >= dist) {
-                        continue;
-                    }
-                    if (!isValid(e)) {
-                        continue;
-                    }
-                    dist = e.getDistanceToEntity(mc.thePlayer);
-                    entity = e;
-                }
-            }
-            final boolean block = entity != null && this.block && mc.thePlayer.getHeldItem() != null && mc.thePlayer.getHeldItem().getItem() != null && mc.thePlayer.getHeldItem().getItem() instanceof ItemSword;
-            if (block && entity.getDistanceToEntity(mc.thePlayer) < 8.0f) {
-                final PlayerControllerMP playerController = mc.playerController;
-                playerController.sendUseItem(mc.thePlayer, Minecraft.theWorld, mc.thePlayer.inventory.getCurrentItem());
-            }
-            if (isValid(this.target) && this.time.hasReached(550)) {
-                if (this.block==false) {
-                    attack(this.target);
-                    attack(this.target);
-                    attack(this.target);
-                }
-                if (this.block==true) {
-                    final int slot = 9;
-                    this.swap(slot, Minecraft.thePlayer.inventory.currentItem);
-                    attack(this.target);
-                    attack(this.target);
-                    attack(this.target);
-                    attack(this.target);
-                    final int slot2 = 9;
-                    this.swap(slot2, Minecraft.thePlayer.inventory.currentItem);
-                    attack(this.target);
-                    attack(this.target);
-                }
-                this.target = null;
-                this.time.reset();
-            }
-        }
-    }
+	  public void Tick(final EventMotion event) {
+	        if (event.getType() == EventType.PRE) {
+	            this.target = findClosestEntity();
+	            if (isValid(this.target)) {
+	                if (this.lock==false) {
+	                    final float[] rotations = getRotations(this.target);
+	                    final Location location = event.getLocation();
+	                    location.setYaw(rotations[0]);
+	                    location.setPitch(rotations[1]);
+	                    event.setLocation(location);
+	                }else if(this.lock==true){
+	                    EntityUtils.faceEntity(this.target);
+	                }
+	            }
+	        }
+	        else {
+	            double dist = 1.0E9;
+	            EntityLivingBase entity = null;
+	            for (final Object object : Minecraft.theWorld.loadedEntityList) {
+	                if (object instanceof EntityLivingBase) {
+	                    final EntityLivingBase e = (EntityLivingBase)object;
+	                    if (e.getDistanceToEntity(mc.thePlayer) >= dist) {
+	                        continue;
+	                    }
+	                    if (!isValid(e)) {
+	                        continue;
+	                    }
+	                    dist = e.getDistanceToEntity(mc.thePlayer);
+	                    entity = e;
+	                }
+	            }
+	            final boolean block = entity != null && this.block && mc.thePlayer.getHeldItem() != null && mc.thePlayer.getHeldItem().getItem() != null && mc.thePlayer.getHeldItem().getItem() instanceof ItemSword;
+	            if (block && entity.getDistanceToEntity(mc.thePlayer) < 8.0f) {
+	                final PlayerControllerMP playerController = mc.playerController;
+	                playerController.sendUseItem(mc.thePlayer, Minecraft.theWorld, mc.thePlayer.inventory.getCurrentItem());
+	            }
+	            if (isValid(this.target) && this.time.hasReached(550)) {
+	                if (this.block==false) {
+	                    attack(this.target);
+	                    attack(this.target);
+	                    attack(this.target);
+	                }
+	                if (this.block==true) {
+	                    final int slot = 9;
+	                    this.swap(slot, Minecraft.thePlayer.inventory.currentItem);
+	                    attack(this.target);
+	                    attack(this.target);
+	                    attack(this.target);
+	                    final int slot2 = 9;
+	                    this.swap(slot2, Minecraft.thePlayer.inventory.currentItem);
+	                    attack(this.target);
+	                    attack(this.target);
+	                }
+	                this.target = null;
+	                this.time.reset();
+	            }
+	        }
+	    }
 	  
 	  public static float[] getRotations(Entity entity)
 	  {

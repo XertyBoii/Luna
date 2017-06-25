@@ -12,8 +12,7 @@ import lunadevs.luna.events.EventPlayerUpdate;
 import lunadevs.luna.events.EventType;
 import lunadevs.luna.events.MoveEvent;
 import lunadevs.luna.module.Module;
-import lunadevs.luna.module.exploits.NoSlowDown;
-import lunadevs.luna.option.Option;
+import lunadevs.luna.module.player.NoSlowdownModes;
 import lunadevs.luna.utils.TimeHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.potion.Potion;
@@ -195,7 +194,7 @@ public class Speed extends Module{
 			    double mz = Math.sin(Math.toRadians(yaw + 90.0F));
 			    double motionX = forward * this.moveSpeed * mx + strafe * this.moveSpeed * mz;
 			    double motionZ = forward * this.moveSpeed * mz - strafe * this.moveSpeed * mx;
-			    if (((mc.thePlayer.isUsingItem()) || (mc.thePlayer.isBlocking())) && (!NoSlowDown.active==true))
+			    if (((mc.thePlayer.isUsingItem()) || (mc.thePlayer.isBlocking())) && (!NoSlowdownModes.active==true))
 			    {
 			      motionX *= 0.4000000059604645D;
 			      motionZ *= 0.4000000059604645D;

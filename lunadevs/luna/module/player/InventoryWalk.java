@@ -2,11 +2,19 @@ package lunadevs.luna.module.player;
 
 import org.lwjgl.input.Keyboard;
 
+import com.darkmagician6.eventapi.EventTarget;
+import com.zCore.Core.zCore;
+
 import lunadevs.luna.category.Category;
+import lunadevs.luna.events.EventPacket;
+import lunadevs.luna.events.PacketRecieveEvent;
+import lunadevs.luna.events.PacketSendEvent;
 import lunadevs.luna.module.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.network.play.client.C02PacketUseEntity;
+import net.minecraft.network.play.client.C0DPacketCloseWindow;
 
 public class InventoryWalk extends Module{
 
@@ -44,6 +52,16 @@ public class InventoryWalk extends Module{
 	      }
 		}
 	    }
+	
+	
+	@EventTarget
+	  public void onPacketRecieve(PacketRecieveEvent event)
+	  {
+	    if ((event.getPacket() instanceof C0DPacketCloseWindow)){ 
+	      event.setCancelled(true);
+	    }
+	  }
+	
 	
 
 	@Override

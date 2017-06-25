@@ -51,7 +51,7 @@ public class GlideModes extends Module {
 			modname = "AAC 3.2.0";
 		} else if (this.HiveMC == true) {
 			HiveMC();
-			mc.thePlayer.motionY = -0.007f;
+			mc.thePlayer.motionY = -0.07f;
 			if (this.Watchdog == true) {
 				this.Watchdog = false;
 				this.AAC = false;

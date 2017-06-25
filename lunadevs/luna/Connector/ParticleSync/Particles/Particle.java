@@ -1,11 +1,13 @@
-package com.zCore.Render.Particles;
+package lunadevs.luna.Connector.ParticleSync.Particles;
 
 import java.util.Random;
 
+import org.lwjgl.input.Keyboard;
+
 import com.zCore.Core.zCore;
 
-import lunadevs.luna.Connector.ParticleSync.Particles.ParticleGenerator;
 import lunadevs.luna.Connector.ParticleSync.Utils.RenderUtils;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.util.MathHelper;
 
 public class Particle {
@@ -40,7 +42,7 @@ public class Particle {
 		this.y -= random.nextInt(2);
 		
 		int xx = (int) (MathHelper.cos(0.1F * (this.x + this.k)) * 10.0F);
-		RenderUtils.drawBorderedCircle(this.x + xx, this.y, this.size, 0, 0xffFFFFFF);
+		zCore.drawBorderedCircle(this.x + xx, this.y, this.size, 0, 0xffFFFFFF);
 	}
 
 

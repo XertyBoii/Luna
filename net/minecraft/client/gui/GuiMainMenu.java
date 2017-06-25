@@ -2,6 +2,8 @@ package net.minecraft.client.gui;
 
 import com.google.common.collect.Lists;
 
+import lunadevs.luna.Connector.ParticleSync.Particles.Particle;
+import lunadevs.luna.Connector.ParticleSync.Particles.ParticleGenerator;
 import lunadevs.luna.main.Luna;
 
 import java.io.BufferedReader;
@@ -30,6 +32,7 @@ import net.minecraft.world.storage.WorldInfo;
 import org.apache.commons.io.Charsets;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GLContext;
 import org.lwjgl.util.glu.Project;
@@ -62,6 +65,10 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
     private static final ResourceLocation splashTexts = new ResourceLocation("texts/splashes.txt");
     private static final ResourceLocation minecraftTitleTextures = new ResourceLocation("textures/gui/title/minecraft.png");
 
+ // TODO Particle
+ 	private ParticleGenerator particles;
+ 	private Random random = new Random();
+    
     /** An array of all the paths to the panorama pictures. */
     private static final ResourceLocation[] titlePanoramaPaths = new ResourceLocation[] {new ResourceLocation("textures/gui/title/background/panorama_0.png"), new ResourceLocation("textures/gui/title/background/panorama_1.png"), new ResourceLocation("textures/gui/title/background/panorama_2.png"), new ResourceLocation("textures/gui/title/background/panorama_3.png"), new ResourceLocation("textures/gui/title/background/panorama_4.png"), new ResourceLocation("textures/gui/title/background/panorama_5.png")};
     public static final String field_96138_a = "Please click " + EnumChatFormatting.UNDERLINE + "here" + EnumChatFormatting.RESET + " for more information.";
@@ -216,8 +223,10 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
             this.field_92020_v = this.field_92022_t + var5;
             this.field_92019_w = this.field_92021_u + 24;
         }
-    }
+     // TODO Particle
+     		this.particles = new ParticleGenerator(100, this.width, this.height);
 
+     	}
     /**
      * Adds Singleplayer and Multiplayer buttons on Main Menu for players who have bought the game.
      */
@@ -529,10 +538,72 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         //String var11 = Luna.CLIENT_CREATORS;
         //this.drawString(this.fontRendererObj, var11, this.width - this.fontRendererObj.getStringWidth(var11) - 2, this.height - 10, -1);
 
+     // TODO Particle
+
+		
+     		for (Particle p : particles.particles) {
+     			for (Particle p2 : particles.particles) {
+     				int xx = (int) (MathHelper.cos(0.1F * (p.x + p.k)) * 10.0F);
+     				int xx2 = (int) (MathHelper.cos(0.1F * (p2.x + p2.k)) * 10.0F);
+
+     				boolean mouseOver = (mouseX >= p.x + xx - 95) && (mouseY >= p.y - 90) && (mouseX <= p.x)
+     						&& (mouseY <= p.y);
+
+     				if (mouseOver) {
+     					if (mouseY >= p.y - 80 && mouseX >= p2.x - 100 && mouseY >= p2.y && mouseY <= p2.y + 70
+     							&& mouseX <= p2.x) {
+
+     						int maxDistance = 100;
+
+     						final int xDif = p.x - mouseX;
+     						final int yDif = p.y - mouseY;
+     						final int distance = (int) Math.sqrt(xDif * xDif + yDif + yDif);
+
+     						final int xDif1 = p2.x - mouseX;
+     						final int yDif1 = p2.y - mouseY;
+     						final int distance2 = (int) Math.sqrt(xDif1 * xDif1 + yDif1 + yDif1);
+
+     						if (distance < maxDistance && distance2 < maxDistance) {
+
+     							GL11.glPushMatrix();
+     							GL11.glEnable(GL11.GL_LINE_SMOOTH);
+     							GL11.glDisable(GL11.GL_DEPTH_TEST);
+     							GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+     							GL11.glDisable(GL11.GL_TEXTURE_2D);
+     							GL11.glDepthMask(false);
+     							GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+     							GL11.glEnable(GL11.GL_BLEND);
+     							GL11.glLineWidth(1.5F);
+     							GL11.glBegin(GL11.GL_LINES);
+
+     							GL11.glVertex2d(p.x + xx, p.y);
+     							GL11.glVertex2d(p2.x + xx2, p2.y);
+     							GL11.glEnd();
+     							GL11.glPopMatrix();
+
+     							if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
+     								if (p2.x > mouseX) {
+     									p2.y -= random.nextInt(5);
+     								}
+     								if (p2.y < mouseY) {
+     									p2.x += random.nextInt(5);
+     								}
+
+     							}
+
+     						}
+     					}
+     				}
+     			}
+
+     		}
+
+     		this.particles.drawParticles();
+        
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
-    private static final ResourceLocation background = new ResourceLocation("Luna/bg.png");
+    private static final ResourceLocation background = new ResourceLocation("luna/bg.png");
 
     public void renderBackground(int par1, int par2)
     {

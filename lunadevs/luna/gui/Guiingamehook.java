@@ -5,15 +5,21 @@ import java.awt.Color;
 import org.lwjgl.opengl.Display;
 
 import com.darkmagician6.eventapi.EventTarget;
+import com.zCore.Core.zCore;
 
 import lunadevs.luna.category.Category;
 import lunadevs.luna.main.Luna;
 import lunadevs.luna.manage.ModuleManager;
 import lunadevs.luna.manage.TabGuiManager;
 import lunadevs.luna.module.Module;
+import lunadevs.luna.module.config.GommeHD;
+import lunadevs.luna.module.config.Hypixel;
+import lunadevs.luna.module.config.Mineplex;
 import lunadevs.luna.module.movement.Scaffold;
 import lunadevs.luna.utils.Comparator;
+import lunadevs.luna.utils.RenderHelper;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.ScaledResolution;
@@ -29,13 +35,36 @@ public class Guiingamehook extends GuiIngame{
 		 this.renderClientVersion();
 		 this.renderCords();
 		 this.renderCurrentScaffold();
+		 this.renderConfig();
 		 this.renderMods();
 		 TabGuiManager.init();
 		 TabGuiManager.render();
 	 }
 	 
+	  public void renderConfig(){
+	    	 if(ModuleManager.findMod(Hypixel.class).isEnabled){
+	    		 zCore.drawRect(0, 207, 109, 228, Integer.MIN_VALUE);
+	        	 Luna.fontRenderer.drawStringWithShadow("§fX: " + (int)zCore.p().posX + " Y: " + (int)zCore.p().posY + " Z: " + (int)zCore.p().posZ, 2, 207, 0);
+	             Luna.fontRenderer.drawStringWithShadow("§fConfig: Hypixel", 2, 217, 0);
+	             RenderHelper.drawRect(107.0F, 207.0F, 109.0F, 228.0F, 0xFF1aff1a);
+	         
+	     }else if(ModuleManager.findMod(Mineplex.class).isEnabled){
+	    	 zCore.drawRect(0, 207, 109, 228, Integer.MIN_VALUE);
+	    	 Luna.fontRenderer.drawStringWithShadow("§fX: " + (int)zCore.p().posX + " Y: " + (int)zCore.p().posY + " Z: " + (int)zCore.p().posZ, 2, 207, 0);
+	         Luna.fontRenderer.drawStringWithShadow("§fConfig: Mineplex", 2, 217, 0);
+	         RenderHelper.drawRect(107.0F, 207.0F, 109.0F, 228.0F, 0xFF1aff1a);
+	         
+	     }else if(ModuleManager.findMod(GommeHD.class).isEnabled){
+	    	 zCore.drawRect(0, 207, 109, 228, Integer.MIN_VALUE);
+	    	 Luna.fontRenderer.drawStringWithShadow("§fX: " + (int)zCore.p().posX + " Y: " + (int)zCore.p().posY + " Z: " + (int)zCore.p().posZ, 2, 207, 0);
+	         Luna.fontRenderer.drawStringWithShadow("§fConfig: GommeHD", 2, 217, 0);
+	         RenderHelper.drawRect(107.0F, 207.0F, 109.0F, 228.0F, 0xFF1aff1a);
+	         
+	     }
+	     }
+	 
      public void renderClientName(){
-         Luna.fontRenderer50.drawStringWithShadow(Luna.CLIENT_NAME, 3, -1, 0xFF9931FF);
+         Luna.fontRenderer50.drawStringWithShadow(Luna.CLIENT_NAME, 3, -2, 0xFF9931FF);
      }
   
   public void renderClientVersion(){
@@ -52,6 +81,7 @@ public class Guiingamehook extends GuiIngame{
 		public void renderMods(){
 			int y = 18;
 			int yR = 4;
+	    	 ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft(), Display.getWidth(), Display.getHeight());
 			
 			for (Module m : Luna.moduleManager.getModules()) {
 				final boolean setTransition = false;

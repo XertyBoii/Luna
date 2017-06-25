@@ -310,11 +310,13 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     }
 /**
  * FIXME: Beta HWID System
+ * 
+ * http://lunaclient.pw/api/hwid/HWID.php?id=
  */
     public static void hwid1() {
         try
         {
-            URL url = new URL("http://lunaclient.pw/api/hwid/HWID.php?id=" + URLHWID.getHwid());
+            URL url = new URL("" + URLHWID.getHwid());
             ArrayList<Object> lines = new ArrayList();
             URLConnection connection = url.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));

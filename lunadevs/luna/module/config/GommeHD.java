@@ -61,8 +61,9 @@ public class GommeHD extends Module {
 		Killaura.range = 4.5f;
 		Killaura.block = true;
 		Killaura.lock = false;
-		AntiBot.GWEN = true;
+		AntiBot.Advanced = true;
 		AntiBot.Watchdog = false;
+		AntiBot.GWEN = false;
 	}
 
 	@Override

@@ -5,6 +5,9 @@ import org.lwjgl.input.Keyboard;
 import lunadevs.luna.category.Category;
 import lunadevs.luna.module.Module;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.play.client.C07PacketPlayerDigging;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 
 //coded by faith
 
