@@ -56,6 +56,10 @@ public class Whitelist {
             if (!lines.contains(getLicense())) {
                 System.out.print("ERROR: NOT_WHITELISTED, You are not allowed to use Luna! Purchase it at https://discord.gg/kGCRzgM \n");
                 JOptionPane.showMessageDialog(null, "ERROR CODE: NOT_WHITELISTED");
+<<<<<<< HEAD
+=======
+
+>>>>>>> cc6d8154f09afd46f4b9dbe09dfd445a7b99e8b5
                 Minecraft.getMinecraft().shutdown();
                 Minecraft.getMinecraft().shutdownMinecraftApplet();
                 System.exit(0);
