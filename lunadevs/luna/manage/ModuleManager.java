@@ -204,7 +204,7 @@ public class ModuleManager {
 		mods.add(new LowHop());
 		mods.add(new Suicide());
 		mods.add(new KeepSprint());
-		/** 93 current active modules so far (91 when you count the 0), Thank me later.**/
+		/** 92 current active modules so far (91 when you count the 0), Thank me later.**/
 	}
 
 	public static <T extends Module> T findMod(Class<T> clazz)
