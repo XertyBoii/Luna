@@ -313,7 +313,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
  * 
  * http://lunaclient.pw/api/hwid/HWID.php?id=
  */
-    public static void hwid1() {
+  /**  public static void hwid1() {
         try
         {
             URL url = new URL("" + URLHWID.getHwid());
@@ -337,7 +337,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             Minecraft.getMinecraft().shutdownMinecraftApplet();
             System.exit(0);
         }
-    }
+    }**/
 
     /** Join player counter */
     private int joinPlayerCounter;

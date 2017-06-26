@@ -516,7 +516,12 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         this.mc.getTextureManager().bindTexture(minecraftTitleTextures);
         this.renderBackground(this.width, this.height);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        
+        String var11 = "Copyright Mojang AB. Do not distribute!";
+         this.drawString(this.fontRendererObj, var11, this.width - this.fontRendererObj.getStringWidth(var11) - 2, this.height - 10, -1);
+     //   Luna.fontRendererMAIN.drawCenteredString(var11, this.width - this.fontRendererObj.getStringWidth(var11) - 2, this.height - 10, 0xffffff);
 
+        
         var5.func_178991_c(-1);
         GlStateManager.pushMatrix();
         GlStateManager.translate((float)(this.width / 2 + 90), 70.0F, 0.0F);

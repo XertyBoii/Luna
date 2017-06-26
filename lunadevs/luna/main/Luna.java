@@ -37,6 +37,13 @@ import net.minecraft.util.ResourceLocation;
 
 public class Luna {
 
+	
+	/** TO EDIT THE 
+	* PASTEBIN TO WHITELIST PEOPLE, PLEASE CONTACT FlyingPig#1057 ON DISCORD.
+	*
+	*
+	**/
+	
 	public static String CLIENT_NAME = ConnectSettings.NAME;
 	public static String CLIENT_VERSION = ConnectSettings.VERSION;
 	public static String CLIENT_BUILD = ConnectSettings.VERSION;
@@ -349,7 +356,7 @@ public class Luna {
 
 	public static String getClientDevelopers() {
 		String prefix = "\2478[\2477Luna\2478] \2477";
-		return prefix + "@ZiTROXClient, @Mega_Mixer74, ugotsmashed, TimeSwitcher";
+		return prefix + "@ZiTROXClient, @Mega_Mixer74, ugotsmashed, TimeSwitcher, FlyingPig";
 	}
 
 	public static void getClientDeveloperMixer() {
@@ -360,6 +367,10 @@ public class Luna {
 	public static void getClientDeveloperTimothy() {
 		String timothy = "Timothy/ZiTROX";
 		addChatMessage(timothy);
+	}
+	public static void getClientDeveloperPig() {
+		String flyingpig = "FlyingPig // OmgItsAFlyingPig";
+		addChatMessage(flyingpig);
 	}
 	public static void getClientDeveloperU() {
 		String ugotsmashed = "ugotsmashed";
