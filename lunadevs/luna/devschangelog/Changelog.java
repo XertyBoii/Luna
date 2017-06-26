@@ -77,6 +77,10 @@ public void drawScreen(int mouseX, int mouseY, float partialTicks)
     drawCenteredString(mc.fontRendererObj, this.errorMessage, this.width / 2, 30, 16711680);
   }
    Wrapper.fontRenderer.drawCenteredString("Build " + ConnectSettings.VERSION + ":", this.width / 2 - 100, this.height / 2 - 50, 16777215);
+<<<<<<< HEAD
+=======
+//   mc.fontRendererObj.drawString("Build " + Luna.CLIENT_VERSION + ":", this.width / 2 - 100, this.height / 2 - 50, 16777215);
+>>>>>>> 061bc8ce7115b5c00ba0448233b39c4ee2f5c2d7
   this.drawGradientRect(12, 12, 12, 12, 0, 0);
 
  
