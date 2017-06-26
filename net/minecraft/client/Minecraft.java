@@ -200,7 +200,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 {
     private static final Logger logger = LogManager.getLogger();
     private static final ResourceLocation locationMojangPng = new ResourceLocation("textures/gui/title/mojang.png");
-    private static final ResourceLocation loading = new ResourceLocation("luna/Loading.jpg");
+    private static final ResourceLocation loading = new ResourceLocation("luna/bg.png");
     public static final boolean isRunningOnMac = Util.getOSType() == Util.EnumOS.OSX;
 
     /** A 10MiB preallocation to ensure the heap is reasonably sized. */

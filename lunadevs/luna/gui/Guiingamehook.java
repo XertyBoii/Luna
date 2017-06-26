@@ -35,7 +35,7 @@ public class Guiingamehook extends GuiIngame{
 		 this.renderCurrentScaffold();
 		 this.renderConfig();
 		 this.renderMods();
-		 this.renderChatOverlay();
+		 //this.renderChatOverlay();
 		 TabGuiManager.init();
 		 TabGuiManager.render();
 	 }

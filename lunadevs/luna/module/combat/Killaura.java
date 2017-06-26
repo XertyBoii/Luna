@@ -179,6 +179,7 @@ public class Killaura extends Module {
 	                    this.swap(slot2, Minecraft.thePlayer.inventory.currentItem);
 	                    attack(this.target);
 	                    attack(this.target);
+	                    attack(this.target);
 	                }
 	                this.target = null;
 	                this.time.reset();

@@ -1,10 +1,6 @@
 package net.minecraft.client.gui;
 
 import com.google.common.collect.Lists;
-import com.zCore.Core.zCore;
-
-import lunadevs.luna.main.Luna;
-
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
@@ -291,7 +287,7 @@ public class GuiChat extends GuiScreen
                     this.historyBuffer = this.inputField.getText();
                 }
 
-                Luna.fontRenderer.drawString((String)this.mc.ingameGUI.getChatGUI().getSentMessages().get(var2), var3, var3, var3);
+                this.inputField.setText((String)this.mc.ingameGUI.getChatGUI().getSentMessages().get(var2));
                 this.sentHistoryCursor = var2;
             }
         }
@@ -302,8 +298,7 @@ public class GuiChat extends GuiScreen
      */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-    	Luna.fontRenderer50.drawString("Enter message...", this.height - 14, this.width - 2, zCore.getRainbow(6000, -15 * 14));
-        drawRect(2, this.height - 14, this.width - 17, this.height - 2, Integer.MIN_VALUE);
+        drawRect(2, this.height - 14, this.width - 2, this.height - 2, Integer.MIN_VALUE);
         this.inputField.drawTextBox();
         IChatComponent var4 = this.mc.ingameGUI.getChatGUI().getChatComponent(Mouse.getX(), Mouse.getY());
 

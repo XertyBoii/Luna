@@ -360,10 +360,9 @@ public class ItemRenderer
                               this.func_178103_d();
                               float var14 = MathHelper.sin(var4 * var4 * 3.1415927F);
                               float var15 = MathHelper.sin(MathHelper.sqrt_float(var4) * 3.1415927F);
-                              GlStateManager.translate(-0.4F, 0.3F, 0.0F);
+                              GlStateManager.translate(-0F, 0.4F, 0.3F);
                               GlStateManager.rotate(-var15 * ((float) 70D / 2.0F), -8.0F, -0.0F, 9.0F);
-                              GlStateManager.rotate(-var15 * (float) 70D, 1.0F, -0.4F, -0.0F);
-                              GL11.glTranslatef(-0.05F, this.mc.thePlayer.isSneaking() ? -0.0F : 0.0F, 0.1F);
+                              GlStateManager.rotate(-var15 * (float) 10D, 1.0F, -0.4F, -0.5F);
                           }
                           break;
                         case 5: 

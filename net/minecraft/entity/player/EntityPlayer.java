@@ -5,6 +5,8 @@ import com.google.common.collect.Lists;
 import com.mojang.authlib.GameProfile;
 
 import lunadevs.luna.main.Luna;
+import lunadevs.luna.manage.ModuleManager;
+import lunadevs.luna.module.movement.KeepSprint;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -1358,7 +1360,7 @@ public abstract class EntityPlayer extends EntityLivingBase
                         {
                         	//Luna KeepSprint
                             targetEntity.addVelocity((double)(-MathHelper.sin(this.rotationYaw * (float)Math.PI / 180.0F) * (float)var18 * 0.5F), 0.1D, (double)(MathHelper.cos(this.rotationYaw * (float)Math.PI / 180.0F) * (float)var18 * 0.5F));
-                            if(Luna.moduleManager.getModules().get(91).isEnabled()){
+                            if(ModuleManager.findMod(KeepSprint.class).isEnabled()){
                             this.motionX *= 0.6D;
                             this.motionZ *= 0.6D;
                             this.setSprinting(false);

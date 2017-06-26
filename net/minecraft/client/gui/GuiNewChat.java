@@ -1,10 +1,6 @@
 package net.minecraft.client.gui;
 
-import com.darkmagician6.eventapi.EventManager;
 import com.google.common.collect.Lists;
-
-import lunadevs.luna.events.RenderStringEvent;
-
 import java.util.Iterator;
 import java.util.List;
 import net.minecraft.client.Minecraft;
@@ -26,9 +22,9 @@ public class GuiNewChat extends Gui
 
     /** Chat lines to be displayed in the chat box */
     public final List chatLines = Lists.newArrayList();
-    protected final List field_146253_i = Lists.newArrayList();
-    protected int scrollPos;
-    protected boolean isScrolled;
+    private final List field_146253_i = Lists.newArrayList();
+    private int scrollPos;
+    private boolean isScrolled;
     private static final String __OBFID = "CL_00000669";
 
     public GuiNewChat(Minecraft mcIn)
@@ -93,9 +89,6 @@ public class GuiNewChat extends Gui
                                 int var16 = -var9 * 9;
                                 drawRect(var15, var16 - 9, var15 + var8 + 4, var16, var14 / 2 << 24);
                                 String var17 = var10.getChatComponent().getFormattedText();
-                                RenderStringEvent event = new RenderStringEvent(var17, RenderStringEvent.State.CHAT);
-                                EventManager.call(event);
-                                var17 = event.getString().replaceAll("\247g", "\2473");
                                 GlStateManager.enableBlend();
                                 this.mc.fontRendererObj.func_175063_a(var17, (float)var15, (float)(var16 - 8), 16777215 + (var14 << 24));
                                 GlStateManager.disableAlpha();
