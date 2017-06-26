@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 public class Wrapper {
 
 	public static int client_build = 7;
-	
+
 	public static Minecraft mc = Minecraft.getMinecraft();
 	public static final MistFontRenderer fontRenderer50 = new MistFontRenderer(getFont(70), true, 8);
 	public static final MistFontRenderer fontRendererGUI = new MistFontRenderer(getFont(40), true, 8);
@@ -71,29 +71,27 @@ public class Wrapper {
 	public static String getClientName() {
 		return "Luna";
 	}
-	
+
 	public static int getClientNumber() {
 		return 7;
 	}
-	
+
 	public static String getClientBuild() {
 		return "b7";
 	}
-	
+
 	public static EntityPlayerSP getPlayer() {
 		Minecraft.getMinecraft();
 		return Minecraft.thePlayer;
 	}
-	
-	public static WorldClient getWorld(){
+
+	public static WorldClient getWorld() {
 		Minecraft.getMinecraft();
 		return Minecraft.theWorld;
 	}
-	
-	  public static PlayerControllerMP getPlayerController()
-	  {
-	    return Minecraft.getMinecraft().playerController;
-	  }
-	  
+
+	public static PlayerControllerMP getPlayerController() {
+		return Minecraft.getMinecraft().playerController;
+	}
 
 }
