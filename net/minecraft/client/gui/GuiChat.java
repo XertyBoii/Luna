@@ -3,6 +3,8 @@ package net.minecraft.client.gui;
 import com.google.common.collect.Lists;
 import com.zCore.Core.zCore;
 
+import lunadevs.luna.main.Luna;
+
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
@@ -289,7 +291,7 @@ public class GuiChat extends GuiScreen
                     this.historyBuffer = this.inputField.getText();
                 }
 
-                this.inputField.setText((String)this.mc.ingameGUI.getChatGUI().getSentMessages().get(var2));
+                Luna.fontRenderer.drawString((String)this.mc.ingameGUI.getChatGUI().getSentMessages().get(var2), var3, var3, var3);
                 this.sentHistoryCursor = var2;
             }
         }

@@ -12,6 +12,7 @@ public class VertexFormat
     private final List field_177355_b;
     private final List field_177356_c;
     private int field_177353_d;
+    private int colorElementOffset;
     private int field_177354_e;
     private List field_177351_f;
     private int field_177352_g;
@@ -24,6 +25,7 @@ public class VertexFormat
         for (int var2 = 0; var2 < p_i46097_1_.func_177345_h(); ++var2)
         {
             this.func_177349_a(p_i46097_1_.func_177348_c(var2));
+            
         }
 
         this.field_177353_d = p_i46097_1_.func_177338_f();
@@ -96,6 +98,11 @@ public class VertexFormat
     public int func_177340_e()
     {
         return this.field_177354_e;
+    }
+    
+    public boolean hasColor()
+    {
+        return this.colorElementOffset >= 0;
     }
 
     public boolean func_177347_a(int p_177347_1_)

@@ -129,6 +129,7 @@ public class RenderManager
     /** Reference to the GameSettings object. */
     public GameSettings options;
     public double viewerPosX;
+    private boolean renderShadow = true;
     public double viewerPosY;
     public double viewerPosZ;
     private boolean field_178639_r = false;
@@ -243,6 +244,11 @@ public class RenderManager
         {
             return this.getEntityClassRenderObject(p_78713_1_.getClass());
         }
+    }
+    
+    public void setPlayerViewY(float playerViewYIn)
+    {
+        this.playerViewY = playerViewYIn;
     }
 
     public void func_180597_a(World worldIn, FontRenderer p_180597_2_, Entity p_180597_3_, Entity p_180597_4_, GameSettings p_180597_5_, float p_180597_6_)
@@ -367,6 +373,11 @@ public class RenderManager
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             var9.func_177067_a(p_178630_1_, var3 - this.renderPosX, var5 - this.renderPosY, var7 - this.renderPosZ);
         }
+    }
+    
+    public void setRenderShadow(boolean renderShadowIn)
+    {
+        this.renderShadow = renderShadowIn;
     }
 
     public boolean renderEntityWithPosYaw(Entity p_147940_1_, double p_147940_2_, double p_147940_4_, double p_147940_6_, float p_147940_8_, float p_147940_9_)

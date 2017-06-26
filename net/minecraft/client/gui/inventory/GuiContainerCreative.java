@@ -653,7 +653,7 @@ public class GuiContainerCreative extends InventoryEffectRenderer
         GlStateManager.disableLighting();
     }
 
-    protected void renderToolTip(ItemStack itemIn, int x, int y)
+    public void renderToolTip(ItemStack itemIn, int x, int y)
     {
         if (selectedTabIndex == CreativeTabs.tabAllSearch.getTabIndex())
         {

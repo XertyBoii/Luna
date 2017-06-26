@@ -37,6 +37,7 @@ public class WorldRenderer
     public int drawMode;
     private double xOffset;
     private double yOffset;
+    private int color;
     private double zOffset;
     private int field_179003_o;
     private int field_179012_p;
@@ -939,4 +940,69 @@ public class WorldRenderer
             }
         }
     }
+
+	  public void setColorRGBA_F(float red, float green, float blue, float alpha)
+    {
+        this.setColorRGBA((int)(red * 255.0F), (int)(green * 255.0F), (int)(blue * 255.0F), (int)(alpha * 255.0F));
+    }
+	  public void setColorRGBA(int red, int green, int blue, int alpha)
+	    {
+	        if (!this.needsUpdate)
+	        {
+	            if (red > 255)
+	            {
+	                red = 255;
+	            }
+
+	            if (green > 255)
+	            {
+	                green = 255;
+	            }
+
+	            if (blue > 255)
+	            {
+	                blue = 255;
+	            }
+
+	            if (alpha > 255)
+	            {
+	                alpha = 255;
+	            }
+
+	            if (red < 0)
+	            {
+	                red = 0;
+	            }
+
+	            if (green < 0)
+	            {
+	                green = 0;
+	            }
+
+	            if (blue < 0)
+	            {
+	                blue = 0;
+	            }
+
+	            if (alpha < 0)
+	            {
+	                alpha = 0;
+	            }
+
+	            if (!this.vertexFormat.hasColor())
+	            {
+	                VertexFormatElement var5 = new VertexFormatElement(0, VertexFormatElement.EnumType.UBYTE, VertexFormatElement.EnumUseage.COLOR, 4);
+	                this.vertexFormat.func_177349_a(var5);
+	            }
+
+	            if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN)
+	            {
+	                this.color = alpha << 24 | blue << 16 | green << 8 | red;
+	            }
+	            else
+	            {
+	                this.color = red << 24 | green << 16 | blue << 8 | alpha;
+	            }
+	        }
+	    }
 }

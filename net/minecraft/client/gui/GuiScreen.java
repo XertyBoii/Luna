@@ -166,7 +166,7 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
         }
     }
 
-    protected void renderToolTip(ItemStack itemIn, int x, int y)
+    public void renderToolTip(ItemStack itemIn, int x, int y)
     {
         List var4 = itemIn.getTooltip(this.mc.thePlayer, this.mc.gameSettings.advancedItemTooltips);
 
@@ -189,12 +189,12 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
      * Draws the text when mouse is over creative inventory tab. Params: current creative tab to be checked, current
      * mouse x position, current mouse y position.
      */
-    protected void drawCreativeTabHoveringText(String tabName, int mouseX, int mouseY)
+    public void drawCreativeTabHoveringText(String tabName, int mouseX, int mouseY)
     {
         this.drawHoveringText(Arrays.asList(new String[] {tabName}), mouseX, mouseY);
     }
 
-    protected void drawHoveringText(List textLines, int x, int y)
+    public void drawHoveringText(List textLines, int x, int y)
     {
         if (!textLines.isEmpty())
         {
