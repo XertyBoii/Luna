@@ -225,7 +225,7 @@ public class zCore {
 			drawRect(right - bwidth, top + bwidth, right, bottom - bwidth, bcolor);
 		}
 	    
-	    public static void drawRectZZ(float x, float y, float x1, float y1) {
+	    public static void drawRectZZ(int x, int y, int x1, int y1) {
 	        GL11.glBegin((int)7);
 	        GL11.glVertex2f((float)x, (float)y1);
 	        GL11.glVertex2f((float)x1, (float)y1);

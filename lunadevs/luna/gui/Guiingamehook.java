@@ -4,10 +4,8 @@ import java.awt.Color;
 
 import org.lwjgl.opengl.Display;
 
-import com.darkmagician6.eventapi.EventTarget;
 import com.zCore.Core.zCore;
 
-import lunadevs.luna.category.Category;
 import lunadevs.luna.main.Luna;
 import lunadevs.luna.manage.ModuleManager;
 import lunadevs.luna.manage.TabGuiManager;
@@ -19,7 +17,7 @@ import lunadevs.luna.module.movement.Scaffold;
 import lunadevs.luna.utils.Comparator;
 import lunadevs.luna.utils.RenderHelper;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.ScaledResolution;
@@ -37,6 +35,7 @@ public class Guiingamehook extends GuiIngame{
 		 this.renderCurrentScaffold();
 		 this.renderConfig();
 		 this.renderMods();
+		 this.renderChatOverlay();
 		 TabGuiManager.init();
 		 TabGuiManager.render();
 	 }
@@ -71,8 +70,13 @@ public class Guiingamehook extends GuiIngame{
          Luna.fontRenderer.drawStringWithShadow("b"+Luna.CLIENT_BUILD, 55, 6, 0xFFFFFFFF);
   }
      public void renderCords(){
+    	 if(!(zCore.mc().currentScreen instanceof GuiChat)){
          Luna.fontRenderer.drawStringWithShadow("XYZ: " + String.valueOf(Math.round(Luna.mc.thePlayer.posX) + " " +  Math.round(Luna.mc.thePlayer.posY) + " " + Math.round(Luna.mc.thePlayer.posZ) + " "), 5, GuiMainMenu.height-10, 0x7200ff);
-     }
+     }}
+     public void renderChatOverlay(){
+    	 if((zCore.mc().currentScreen instanceof GuiChat)){
+        Luna.fontRendererGUI.drawStringWithShadow("Enter message...", 5, GuiMainMenu.height-13, getRainbow(6000, -15 * 14));
+     }}
      public void renderCurrentScaffold(){
     	 if(ModuleManager.findMod(Scaffold.class).isEnabled()){
     	 ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft(), Display.getWidth(), Display.getHeight());
@@ -108,9 +112,9 @@ public class Guiingamehook extends GuiIngame{
 	
 	 public static Color fade(long offset, float fade)
 	  {
-	    float hue = (float)(System.nanoTime() + offset) / 1.0E10F % 1.0F;
-	    long color = Long.parseLong(Integer.toHexString(Integer.valueOf(Color.HSBtoRGB(hue, 1.0F, 1.0F)).intValue()), 16);
-	    Color c = new Color((int)color);
-	    return new Color(c.getRed() / 255.0F * fade, c.getGreen() / 255.0F * fade, c.getBlue() / 255.0F * fade, c.getAlpha() / 255.0F);
+		 float hue = (float) (System.nanoTime() + offset) / 1.0E10F % 1.0F;
+			long color = Long.parseLong(Integer.toHexString(Integer.valueOf(Color.HSBtoRGB(hue, 1.0F, 1.0F)).intValue()), 16);
+			Color c = new Color((int) color);
+			 return new Color(c.getRed()/255.0F*fade, c.getGreen()/255.0F*fade, c.getBlue()/255.0F*fade, c.getAlpha()/255.0F);
 	  }
 }

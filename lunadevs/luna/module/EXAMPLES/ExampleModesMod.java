@@ -9,7 +9,7 @@ public class ExampleModesMod extends Module {
 
 	public static boolean active;
 	@Option.Op(name = "Mode 1")
-	public static boolean Mode1 = false;
+	public static boolean Mode1 = true;
 	@Option.Op(name = "Mode 2")
 	public static boolean Mode2 = false;
 
@@ -26,8 +26,8 @@ public class ExampleModesMod extends Module {
 		if (this.Mode1 == true) {
 			//If you want a glide, put the motionY code here.//\\
 			mode1();
-			if (this.Mode1 == true) {
-				this.Mode1 = false;
+			if (this.Mode2 == true) {
+				this.Mode2 = false;
 
 			}
 			modname = "Mode 1";

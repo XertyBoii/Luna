@@ -302,7 +302,8 @@ public class GuiChat extends GuiScreen
      */
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-        zCore.drawRect(2, this.height - 14, this.width - 2, this.height - 2, Integer.MIN_VALUE);
+    	Luna.fontRenderer50.drawString("Enter message...", this.height - 14, this.width - 2, zCore.getRainbow(6000, -15 * 14));
+        drawRect(2, this.height - 14, this.width - 17, this.height - 2, Integer.MIN_VALUE);
         this.inputField.drawTextBox();
         IChatComponent var4 = this.mc.ingameGUI.getChatGUI().getChatComponent(Mouse.getX(), Mouse.getY());
 
