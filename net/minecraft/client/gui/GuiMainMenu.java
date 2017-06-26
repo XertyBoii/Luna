@@ -23,7 +23,6 @@ import com.google.common.collect.Lists;
 import lunadevs.luna.Connector.ParticleSync.Particles.Particle;
 import lunadevs.luna.Connector.ParticleSync.Particles.ParticleGenerator;
 import lunadevs.luna.devschangelog.Changelog;
-import lunadevs.luna.devschangelog.GuiDevelopers;
 import lunadevs.luna.main.Luna;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -213,7 +212,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
 
         this.buttonList.add(new GuiButton(0, this.width / 2 - 100, var3 + 80 + 12, 98, 20, I18n.format("menu.options", new Object[0])));
         this.buttonList.add(new GuiButton(4, this.width / 2 + 2, var3 + 80 + 12, 98, 20, I18n.format("menu.quit", new Object[0])));
-        this.buttonList.add(new GuiButton(7, this.width / 2 - 100, var3 + -30 + 12, 98, 20, I18n.format("Discord", new Object[0])));
+    //    this.buttonList.add(new GuiButton(7, this.width / 2 - 100, var3 + -30 + 12, 98, 20, I18n.format("Discord", new Object[0])));
         this.buttonList.add(new GuiButton(6, this.width / 2 + 2, var3 + -30 + 12, 98, 20, I18n.format("Changelog", new Object[0])));
         this.buttonList.add(new GuiButton(5, this.width / 2 - 100, var3 + 58 + 12, 200, 20, I18n.format("Language", new Object[0])));
         Object var4 = this.field_104025_t;
@@ -263,11 +262,6 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         if (button.id == 0)
         {
             this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
-        }
-
-        if (button.id == 7)
-        {
-            this.mc.displayGuiScreen(new GuiDevelopers());
         }
 
         if (button.id == 5)
@@ -532,9 +526,9 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         
         String var11 = "Copyright Mojang AB. Do not distribute!";
-    //     this.drawString(this.fontRendererObj, var11, this.width - this.fontRendererObj.getStringWidth(var11) - 2, this.height - 10, -1);
+          this.drawString(this.fontRendererObj, var11, this.width - this.fontRendererObj.getStringWidth(var11) - 2, this.height - 10, -1);
      //   Luna.fontRendererMAIN.drawCenteredString(var11, this.width - this.fontRendererObj.getStringWidth(var11) - 2, this.height - 10, 0xffffff);
-        Luna.fontRenderer.drawCenteredString(var11, this.width - this.fontRendererObj.getStringWidth(var11) - 18, this.height - 16, 0xffffff);
+    //    Luna.fontRenderer.drawCenteredString(var11, this.width - this.fontRendererObj.getStringWidth(var11) - 18, this.height - 16, 0xffffff);
         
         var5.func_178991_c(-1);
         GlStateManager.pushMatrix();

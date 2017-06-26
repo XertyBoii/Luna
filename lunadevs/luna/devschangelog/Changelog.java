@@ -2,6 +2,7 @@ package lunadevs.luna.devschangelog;
 
 import org.lwjgl.opengl.GL11;
 
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.utils.faithsminiutils.Wrapper;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -62,20 +63,20 @@ public void initGui(){
 
 public void drawScreen(int mouseX, int mouseY, float partialTicks)
 {
-  //  this.drawDefaultBackground();
     this.renderBackground(this.width, this.height);
-	// this.userNameField.drawTextBox();
-    //this.userNameField.setText("Fixed Bugs || Added Mods");
-    this.build2Field.drawTextBox();
-    this.build2Field.setText("Fixed and added a lot");
-  if (this.displayError)
+   mc.fontRendererObj.drawString("§a+ §7Added this Changelog", this.width / 2 - 115, this.height / 2 - 35, 0xfffff);
+   mc.fontRendererObj.drawString("§a+ §7Added Better Whitelist", this.width / 2 - 115, this.height / 2 - 25, 0xfffff);
+   mc.fontRendererObj.drawString("§a+ §7Fixed a Lot of Bugs", this.width / 2 - 115, this.height / 2 - 5, 0xfffff);
+   mc.fontRendererObj.drawString("§a+ §7Better Tick Aura", this.width / 2 - 115, this.height / 2 - 15, 0xfffff);
+   mc.fontRendererObj.drawString("§a+ §7Added Extreme Criticals", this.width / 2 - 115, this.height / 2 - -5, 0xfffff);
+   mc.fontRendererObj.drawString("§a+ §7LowHop Now Works on The Latest NCP", this.width / 2 - 115, this.height / 2 - -15, 0xfffff);
+   if (this.displayError)
   {
     drawCenteredString(mc.fontRendererObj, this.errorMessage, this.width / 2, 30, 16711680);
   }
-   // drawCenteredString(mc.fontRendererObj, "Build 6:", this.width / 2 - 73, this.height / 3 - 36, 16777215);
-  drawCenteredString(mc.fontRendererObj, "Build 7:", this.width / 2 - 73, this.height / 2 - 45, 16777215);
+   Wrapper.fontRenderer.drawCenteredString("Build " + Luna.CLIENT_VERSION + ":", this.width / 2 - 100, this.height / 2 - 50, 16777215);
   this.drawGradientRect(12, 12, 12, 12, 0, 0);
- 
+
  
 
 }
