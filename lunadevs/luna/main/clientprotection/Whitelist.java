@@ -2,9 +2,12 @@ package lunadevs.luna.main.clientprotection;
 
 import java.security.*;
 import java.util.*;
+<<<<<<< HEAD
 
 import javax.swing.JOptionPane;
 
+=======
+>>>>>>> 10c9b3ef9b4ca14f194dc24f0c991f14ec350db3
 import java.io.*;
 import net.minecraft.client.*;
 import java.net.*;
@@ -55,7 +58,10 @@ public class Whitelist {
             }
             if (!lines.contains(getLicense())) {
                 System.out.print("ERROR: NOT_WHITELISTED, You are not allowed to use Luna! Purchase it at https://discord.gg/kGCRzgM \n");
+<<<<<<< HEAD
                 JOptionPane.showMessageDialog(null, "ERROR CODE: NOT_WHITELISTED");
+=======
+>>>>>>> 10c9b3ef9b4ca14f194dc24f0c991f14ec350db3
                 Minecraft.getMinecraft().shutdown();
                 Minecraft.getMinecraft().shutdownMinecraftApplet();
                 System.exit(0);
