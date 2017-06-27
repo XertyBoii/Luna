@@ -6,12 +6,14 @@ import lunadevs.luna.command.Command;
 import lunadevs.luna.commands.AntiBot;
 import lunadevs.luna.commands.Bind;
 import lunadevs.luna.commands.ClearChat;
+import lunadevs.luna.commands.ClientBuild;
 import lunadevs.luna.commands.Friend;
 import lunadevs.luna.commands.Hclip;
 import lunadevs.luna.commands.Help;
 import lunadevs.luna.commands.Killaura;
 import lunadevs.luna.commands.Longjump;
 import lunadevs.luna.commands.NotACommand;
+import lunadevs.luna.commands.Say;
 import lunadevs.luna.commands.TimerSpeed;
 import lunadevs.luna.commands.Toggle;
 import lunadevs.luna.commands.Vclip;
@@ -36,6 +38,8 @@ public class CommandManager {
 	    commands.add(new Longjump());
 	    commands.add(new ClearChat());
 	    commands.add(new NotACommand());
+	    commands.add(new Say());
+	    commands.add(new ClientBuild());
 	  }
 	  
 	  public void addCommand(Command c)

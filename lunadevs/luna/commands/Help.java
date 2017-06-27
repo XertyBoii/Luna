@@ -1,8 +1,7 @@
 package lunadevs.luna.commands;
 
-import com.zCore.Core.zCore;
-
 import lunadevs.luna.command.Command;
+import lunadevs.luna.main.Luna;
 
 public class Help extends Command{
 
@@ -24,18 +23,17 @@ public class Help extends Command{
 
 	@Override
 	public void onCommand(String command, String[] args) throws Exception {
-		zCore.addChatMessageP("-t <module>");
-		zCore.addChatMessageP("-bind set/del <module>");
-		zCore.addChatMessageP("-killaura <block/friend/lock/speed/range> §7<true/false>");
-		zCore.addChatMessageP("-killaura <tick/switch>");
-		zCore.addChatMessageP("-vclip <blocks>");
-		zCore.addChatMessageP("-hclip <blocks>");
-		zCore.addChatMessageP("-friend add/del <name>");
-		zCore.addChatMessageP("-longjump <old/new>");
-        zCore.addChatMessageP("-timer speed <value>");
-        zCore.addChatMessageP("-devs");
-        zCore.addChatMessageP("-build");
-        zCore.addChatMessageP("-clearchat");
+		Luna.addChatMessage("-t <module>");
+		Luna.addChatMessage("-bind set/del <module>");
+		Luna.addChatMessage("-killaura <block/friend/lock/speed/range> §7<true/false>");
+		Luna.addChatMessage("-killaura <tick/switch>");
+		Luna.addChatMessage("-vclip <blocks>");
+		Luna.addChatMessage("-hclip <blocks>");
+		Luna.addChatMessage("-friend add/del <name>");
+		Luna.addChatMessage("-longjump <old/new>");
+        Luna.addChatMessage("-timer speed <value>");
+        Luna.addChatMessage("-build");
+        Luna.addChatMessage("-clearchat");
         
 	}
 
