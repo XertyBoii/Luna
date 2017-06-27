@@ -197,7 +197,7 @@ public class ThreadDownloadImageData extends SimpleTexture
         else
         {
             Proxy proxy = Minecraft.getMinecraft().getProxy();
-         return proxy.type() != Type.DIRECT && proxy.type() != Type.SOCKS ? false : this.imageUrl.startsWith("http://");
+        return proxy.type() != Type.DIRECT && proxy.type() != Type.SOCKS ? false : this.imageUrl.startsWith("http://");
         }
     }
 

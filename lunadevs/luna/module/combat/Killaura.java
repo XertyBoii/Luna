@@ -179,12 +179,10 @@ public class Killaura extends Module {
 	                    this.swap(slot2, Minecraft.thePlayer.inventory.currentItem);
 	                    attack(this.target);
 	                    attack(this.target);
-	                    attack(this.target);
-	                }
 	                this.target = null;
 	                this.time.reset();
 	            }
-	        }
+	            }}
 	    }
 	  
 	  public static float[] getRotations(Entity entity)
@@ -224,9 +222,9 @@ public class Killaura extends Module {
 
 	public void onUpdate() {
         if (mode==0){
-            modname="Switch";
+            modname="Switch ";
         }else if (mode==1){
-            modname="Tick";
+            modname="Tick ";
             
         }
 		super.onUpdate();

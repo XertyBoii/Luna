@@ -151,13 +151,23 @@ public class Scaffold extends Module{
 	        }
 	        return 0;
 	    }
-
 	  
 	  @EventTarget
 	  public void onPre(EventMotion event)
 	  {
-		  if(mc.gameSettings.keyBindSneak.pressed){
-		  }
+//			  if (this.blockData != null) {
+//		            if (this.timer.hasReached(65L)) {
+//		                mc.rightClickDelayTimer = 0;
+//		                if (mc.gameSettings.keyBindJump.getIsKeyPressed() && !mc.thePlayer.isMoving()) {
+//		                    mc.thePlayer.motionY = 0.42;
+//		                    if (timer.hasReached(1500)) {
+//		                        mc.thePlayer.motionY = -0.28;
+//		                        timer.reset();
+//		                        if (timer.hasReached(2L)) {
+//		                            mc.thePlayer.motionY = 0.42;
+//		                        }}		                    }
+//		                }
+//		            }
 	        blockcount = 0;
 	        for (int i = 0; i < 45; i++) {
 	            ItemStack stack = z.player().inventoryContainer.getSlot(i).getStack();

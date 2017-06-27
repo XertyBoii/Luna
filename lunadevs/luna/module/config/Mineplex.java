@@ -41,6 +41,8 @@ public class Mineplex extends Module {
 			ModuleManager.findMod(InfiniteAura.class).toggle();
 		} else if (ModuleManager.findMod(NCPGlide.class).isEnabled()) {
 			ModuleManager.findMod(NCPGlide.class).toggle();
+		} else if (!ModuleManager.findMod(AntiBot.class).isEnabled()) {
+			ModuleManager.findMod(AntiBot.class).toggle();
 		} else if (ModuleManager.findMod(AACClip.class).isEnabled()) {
 			ModuleManager.findMod(AACClip.class).toggle();
 		}

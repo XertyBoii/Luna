@@ -54,6 +54,8 @@ public class GommeHD extends Module {
 			ModuleManager.findMod(NCPGlide.class).toggle();
 		} else if (ModuleManager.findMod(AntiKnockback.class).isEnabled()) {
 			ModuleManager.findMod(AntiKnockback.class).toggle();
+		} else if (!ModuleManager.findMod(AntiBot.class).isEnabled()) {
+			ModuleManager.findMod(AntiBot.class).toggle();
 		} else if (ModuleManager.findMod(AntiFire.class).isEnabled() || (ModuleManager.findMod(Zoot.class).isEnabled() )) {
 			ModuleManager.findMod(AntiFire.class).toggle();
 			ModuleManager.findMod(Zoot.class).toggle();

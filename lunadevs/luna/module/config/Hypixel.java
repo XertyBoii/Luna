@@ -43,6 +43,8 @@ public class Hypixel extends Module {
 			ModuleManager.findMod(Boost.class).toggle();
 		} else if (ModuleManager.findMod(Nuker.class).isEnabled()) {
 			ModuleManager.findMod(Nuker.class).toggle();
+		} else if (!ModuleManager.findMod(AntiBot.class).isEnabled()) {
+			ModuleManager.findMod(AntiBot.class).toggle();
 		} else if (ModuleManager.findMod(TimerBoost.class).isEnabled()) {
 			ModuleManager.findMod(TimerBoost.class).toggle();
 		} else if (ModuleManager.findMod(Regen.class).isEnabled()) {

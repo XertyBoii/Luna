@@ -51,7 +51,7 @@ public class TabGuiManager {
     public static void render() {
         updateBars();
         int y = 4;
-        GuiIngame.drawRect(1, 20, 2 + baseCategoryWidth, 16 + baseCategoryHeight, -1610612736);
+        GuiIngame.drawRect(0, 20, 2 + baseCategoryWidth, 16 + baseCategoryHeight, -1610612736);
         GuiIngame.drawRect(2 /** Used for drawing the main rect with Category texts. */, categoryPosition, 2 + baseCategoryWidth - 1, categoryPosition + 13, 0xFF9931FF);
         if(Luna.moduleManager.getModule(TabGuiColor.class).isEnabled) {
              GuiIngame.drawRect(2, categoryPosition, 2 + baseCategoryWidth - 1, categoryPosition + 13, RenderUtils.getRainbow(6000, -15 * y));

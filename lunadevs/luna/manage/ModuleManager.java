@@ -83,7 +83,6 @@ import lunadevs.luna.module.player.Phase;
 import lunadevs.luna.module.player.PlayerChecker;
 import lunadevs.luna.module.player.SkipLadder;
 import lunadevs.luna.module.player.SpeedMine;
-import lunadevs.luna.module.player.Trizlo;
 import lunadevs.luna.module.render.Animations;
 import lunadevs.luna.module.render.ChestESP;
 import lunadevs.luna.module.render.CircleESP;
@@ -188,7 +187,6 @@ public class ModuleManager {
 		mods.add(new RecordingMode());
 		mods.add(new InfiniteAura());
 		mods.add(new Wallhack());
-		mods.add(new Trizlo());
 		mods.add(new Mineplex());
 		mods.add(new IRC());
 		mods.add(new GommeHD());

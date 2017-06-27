@@ -45,7 +45,7 @@ public class Whitelist {
     
     public static void whitelist() {
         try {
-            final URL url = new URL("http://lunaurlservers.x10.mx/connector/HWID/");
+            final URL url = new URL("http://lunaclient.pw/api/hwid/HWID.php?id=" + getLicense());
             final ArrayList<Object> lines = new ArrayList<Object>();
             final URLConnection connection = url.openConnection();
             final BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));

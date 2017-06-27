@@ -163,23 +163,25 @@ public class Main
     }
     
     public static void whitelist() {
-        try {
-            final URL url = new URL("http://lunaurlservers.x10.mx/connector/HWID/");
-            final ArrayList<Object> lines = new ArrayList<Object>();
-            final URLConnection connection = url.openConnection();
-            final BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        try
+        {
+            URL url = new URL("http://lunaclient.pw/api/hwid/HWID.php?id=" + Whitelist.getLicense());
+            ArrayList<Object> lines = new ArrayList();
+            URLConnection connection = url.openConnection();
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String line;
-            while ((line = in.readLine()) != null) {
+            while ((line = in.readLine()) != null)
+            {
                 lines.add(line);
             }
-            if (!lines.contains(getLicense())) {
-                System.out.print("ERROR: NOT_WHITELISTED, You are not allowed to use Luna! Purchase it at https://discord.gg/kGCRzgM \n");
+            if (!lines.contains("true")) {
                 Minecraft.getMinecraft().shutdown();
                 Minecraft.getMinecraft().shutdownMinecraftApplet();
                 System.exit(0);
             }
         }
-        catch (Exception e) {
+        catch (Exception e)
+        {
             Minecraft.getMinecraft().shutdown();
             Minecraft.getMinecraft().shutdownMinecraftApplet();
             System.exit(0);

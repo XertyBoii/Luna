@@ -93,7 +93,7 @@ public class GuiInventory extends InventoryEffectRenderer
      // TODO Particle
 
 		
-     		for (Particle p : particles.particles) {
+     	/**	for (Particle p : particles.particles) {
      			for (Particle p2 : particles.particles) {
      				int xx = (int) (MathHelper.cos(0.1F * (p.x + p.k)) * 10.0F);
      				int xx2 = (int) (MathHelper.cos(0.1F * (p2.x + p2.k)) * 10.0F);
@@ -150,9 +150,9 @@ public class GuiInventory extends InventoryEffectRenderer
 
      		}
 
-     		this.particles.drawParticles();
-    }
+     		this.particles.drawParticles();*/
 
+    }
 
     /**
      * Args : renderPartialTicks, mouseX, mouseY
