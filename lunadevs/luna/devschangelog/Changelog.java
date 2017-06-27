@@ -65,18 +65,18 @@ public void initGui(){
 public void drawScreen(int mouseX, int mouseY, float partialTicks)
 {
     this.renderBackground(this.width, this.height);
-   Luna.fontRenderer.drawStringWithShadow("§a+ §7Added this Changelog", this.width / 2 - 115, this.height / 2 - 35, 0xfffff);
-   Luna.fontRenderer.drawStringWithShadow("§a+ §7Added Better Whitelist", this.width / 2 - 115, this.height / 2 - 25, 0xfffff);
-   Luna.fontRenderer.drawStringWithShadow("§a+ §7Fixed a Lot of Bugs", this.width / 2 - 115, this.height / 2 - 5, 0xfffff);
-   Luna.fontRenderer.drawStringWithShadow("§a+ §7Better Tick Aura", this.width / 2 - 115, this.height / 2 - 15, 0xfffff);
-   Luna.fontRenderer.drawStringWithShadow("§a+ §7Added Extreme Criticals", this.width / 2 - 115, this.height / 2 - -5, 0xfffff);
-   Luna.fontRenderer.drawStringWithShadow("§a+ §7LowHop Now Works on The Latest NCP [Testing]", this.width / 2 - 115, this.height / 2 - -15, 0xfffff);
-   Luna.fontRenderer.drawStringWithShadow("§a+ §7Added Particles", this.width / 2 - 115, this.height / 2 - -25, 0xfffff);
+   mc.fontRendererObj.drawString("§a+ §7Added this Changelog", this.width / 2 - 115, this.height / 2 - 35, 0xfffff);
+   mc.fontRendererObj.drawString("§a+ §7Added Better Whitelist", this.width / 2 - 115, this.height / 2 - 25, 0xfffff);
+   mc.fontRendererObj.drawString("§a+ §7Fixed a Lot of Bugs", this.width / 2 - 115, this.height / 2 - 5, 0xfffff);
+   mc.fontRendererObj.drawString("§a+ §7Better Tick Aura", this.width / 2 - 115, this.height / 2 - 15, 0xfffff);
+   mc.fontRendererObj.drawString("§a+ §7Added Extreme Criticals", this.width / 2 - 115, this.height / 2 - -5, 0xfffff);
+   mc.fontRendererObj.drawString("§a+ §7LowHop Now Works on The Latest NCP [Testing]", this.width / 2 - 115, this.height / 2 - -15, 0xfffff);
+   mc.fontRendererObj.drawString("§a+ §7Added Particles", this.width / 2 - 115, this.height / 2 - -25, 0xfffff);
    if (this.displayError)
   {
     drawCenteredString(mc.fontRendererObj, this.errorMessage, this.width / 2, 30, 16711680);
   }
-   Wrapper.fontRenderer.drawCenteredString("Build " + ConnectSettings.VERSION + ":", this.width / 2 - 100, this.height / 2 - 50, 16777215);
+   mc.fontRendererObj.drawString("Build " + ConnectSettings.VERSION + ":", this.width / 2 - 115, this.height / 2 - 50, 16777215);
   this.drawGradientRect(12, 12, 12, 12, 0, 0);
 
  

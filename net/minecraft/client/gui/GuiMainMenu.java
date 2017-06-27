@@ -213,8 +213,8 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         this.buttonList.add(new GuiButton(0, this.width / 2 - 100, var3 + 80 + 12, 98, 20, I18n.format("menu.options", new Object[0])));
         this.buttonList.add(new GuiButton(4, this.width / 2 + 2, var3 + 80 + 12, 98, 20, I18n.format("menu.quit", new Object[0])));
     //    this.buttonList.add(new GuiButton(7, this.width / 2 - 100, var3 + -30 + 12, 98, 20, I18n.format("Discord", new Object[0])));
-        this.buttonList.add(new GuiButton(6, this.width / 2 + 2, var3 + -30 + 12, 98, 20, I18n.format("Changelog", new Object[0])));
-        this.buttonList.add(new GuiButton(5, this.width / 2 - 100, var3 + 58 + 12, 200, 20, I18n.format("Language", new Object[0])));
+        this.buttonList.add(new GuiButton(6, this.width / 2 + 2, var3 + 58 + 12, 98, 20, I18n.format("Changelog", new Object[0])));
+        this.buttonList.add(new GuiButton(5, this.width / 2 - 100, var3 + 58 + 12, 98, 20, I18n.format("Language", new Object[0])));
         Object var4 = this.field_104025_t;
 
         synchronized (this.field_104025_t)
