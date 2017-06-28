@@ -2,9 +2,6 @@ package lunadevs.luna.main.clientprotection;
 
 import java.security.*;
 import java.util.*;
-
-import javax.swing.JOptionPane;
-
 import java.io.*;
 import net.minecraft.client.*;
 import java.net.*;
@@ -24,7 +21,7 @@ public class Whitelist {
         sha1hash = md.digest();
         return convertToHex(sha1hash);
     }
-    
+   
     private static String convertToHex(final byte[] data) {
         final StringBuffer buf = new StringBuffer();
         for (int i = 0; i < data.length; ++i) {
@@ -45,7 +42,7 @@ public class Whitelist {
     
     public static void whitelist() {
         try {
-            final URL url = new URL("http://lunaclient.pw/api/hwid/HWID.php?id=" + getLicense());
+            final URL url = new URL("http://lunaurlservers.x10.mx/connector/HWID/");
             final ArrayList<Object> lines = new ArrayList<Object>();
             final URLConnection connection = url.openConnection();
             final BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -55,7 +52,6 @@ public class Whitelist {
             }
             if (!lines.contains(getLicense())) {
                 System.out.print("ERROR: NOT_WHITELISTED, You are not allowed to use Luna! Purchase it at https://discord.gg/kGCRzgM \n");
-                JOptionPane.showMessageDialog(null, "ERROR CODE: NOT_WHITELISTED");
                 Minecraft.getMinecraft().shutdown();
                 Minecraft.getMinecraft().shutdownMinecraftApplet();
                 System.exit(0);
