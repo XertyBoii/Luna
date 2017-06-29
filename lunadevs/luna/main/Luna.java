@@ -172,7 +172,7 @@ public class Luna {
 		Font font = null;
 		try {
 			InputStream is = Minecraft.getMinecraft().getResourceManager()
-					.getResource(new ResourceLocation("NightMist/BebasNeue.otf")).getInputStream(); //Thx nero for the font
+					.getResource(new ResourceLocation("luna/BebasNeue.otf")).getInputStream(); //Thx nero for the font
 			font = Font.createFont(0, is);
 			font = font.deriveFont(0, +48);
 		} catch (Exception ex) {
@@ -187,7 +187,7 @@ public class Luna {
 		Font font = null;
 		try {
 			InputStream is = Minecraft.getMinecraft().getResourceManager()
-					.getResource(new ResourceLocation("NightMist/BebasNeue.otf")).getInputStream(); //Thx nero for the font
+					.getResource(new ResourceLocation("luna/BebasNeue.otf")).getInputStream(); //Thx nero for the font
 			font = Font.createFont(0, is);
 			font = font.deriveFont(0, +70);
 		} catch (Exception ex) {

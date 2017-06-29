@@ -95,11 +95,11 @@ public class Guiingamehook extends GuiIngame{
 			if (!m.isEnabled) continue;
 			if (m.value == true){
 				//zCore.drawRect(Luna.mc.displayWidth / 2 + 15 - (Luna.fontRenderer).getStringWidth(m.getName()), mheight - 1, sr.getScaledWidth(), mheight + zCore.getFontRenderer().FONT_HEIGHT, Integer.MAX_VALUE);
-				Luna.fontRendererArrayList.drawStringWithShadow(m.name +  " §7" + m.getValue(), ((Luna.mc.displayWidth / 2 + 15) - (Luna.fontRenderer).getStringWidth(m.getName() + m.getValue())) - 21 + m.getTransition(), y - 15, RenderUtils.getRainbow(6000, +15 * y) /**getRainbow(6000, -15 * 4)*/);
+				Luna.fontRendererArrayList.drawStringWithShadow(m.name +  " §7" + m.getValue(), ((Luna.mc.displayWidth / 2 + 15) - (Luna.fontRendererArrayList).getStringWidth(m.getName() + m.getValue())) - 21 + m.getTransition(), y - 15, RenderUtils.getRainbow(6000, +15 * y) /**getRainbow(6000, -15 * 4)*/);
 			//Original: Luna.fontRenderer.drawStringWithShadow(m.name + "\2477[" + m.getValue() + "]", ((Luna.mc.displayWidth / 2 + 15) - (Luna.fontRenderer).getStringWidth(m.getName() + m.getValue())) - 21 + m.getTransition(), y - 15, 0xFF7200ff);
 			}else if (m.value == false){
 			//Original: Luna.fontRenderer.drawStringWithShadow(m.name, ((Luna.mc.displayWidth / 2 + 15) - (Luna.fontRenderer).getStringWidth(m.getName()))  - 19 +  m.getTransition(), y - 15, 0xFF7200ff);
-				Luna.fontRendererArrayList.drawStringWithShadow(m.name, ((Luna.mc.displayWidth / 2 + 15) - (Luna.fontRenderer).getStringWidth(m.getName()))  - 19 +  m.getTransition(), y - 15,  RenderUtils.getRainbow(6000, +15 * y) /**getRainbow(6000, -15 * 4)*/);
+				Luna.fontRendererArrayList.drawStringWithShadow(m.name, ((Luna.mc.displayWidth / 2 + 15) - (Luna.fontRendererArrayList).getStringWidth(m.getName()))  - 19 +  m.getTransition(), y - 15,  RenderUtils.getRainbow(6000, +15 * y) /**getRainbow(6000, -15 * 4)*/);
 			}
 				y += Luna.fontRendererArrayList.getStringHeight(m.getName() + m.getValue());
 			}

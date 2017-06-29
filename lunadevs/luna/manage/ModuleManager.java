@@ -141,7 +141,7 @@ public class ModuleManager {
 		mods.add(new SpeedMine());
 		mods.add(new FastUse());
 		mods.add(new ChestStealer());
-		mods.add(new NewNameTags());
+		//mods.add(new NewNameTags()); Removed bc it has so many render problems :/
 		//mods.add(new Phase());
 		//mods.add(new AntiChat());
 		mods.add(new BowAimbot());
