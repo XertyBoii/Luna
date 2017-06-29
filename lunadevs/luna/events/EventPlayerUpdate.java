@@ -1,8 +1,9 @@
 package lunadevs.luna.events;
 
 import com.darkmagician6.eventapi.events.Event;
+import com.darkmagician6.eventapi.events.callables.EventCancellable;
 
-public class EventPlayerUpdate implements Event{
+public class EventPlayerUpdate extends EventCancellable{
 	
 	 private EventType type;
 	  public double x;

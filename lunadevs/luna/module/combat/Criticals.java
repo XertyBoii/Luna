@@ -5,6 +5,7 @@ import com.zCore.Core.zCore;
 
 import lunadevs.luna.category.Category;
 import lunadevs.luna.events.EventPacket;
+import lunadevs.luna.manage.ModuleManager;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.module.exploits.zPackets;
 import lunadevs.luna.utils.faithsminiutils.Timer;
@@ -22,6 +23,14 @@ public class Criticals extends Module{
 
 	private static Timer timer = new Timer();
 	private static boolean cancelSomePackets;
+	
+	@Override
+	public void onUpdate(){
+		if(ModuleManager.findMod(NormalCriticals.class).isEnabled()){
+			ModuleManager.findMod(NormalCriticals.class).setEnabled(false);
+		}
+		super.onUpdate();
+	}
 	
 	public static void doCrit()
 	  {

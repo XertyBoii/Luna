@@ -76,11 +76,8 @@ public class Main
         var1.accepts("demo");
         var1.accepts("fullscreen");
         var1.accepts("checkGlErrors");
-<<<<<<< HEAD
         whitelist();
-=======
         //whitelist();
->>>>>>> bbaeefd06ae025d735d425d3e8659f5f0dd2dcfe
         ArgumentAcceptingOptionSpec var2 = var1.accepts("server").withRequiredArg();
         ArgumentAcceptingOptionSpec var3 = var1.accepts("port").withRequiredArg().ofType(Integer.class).defaultsTo(Integer.valueOf(25565), new Integer[0]);
         ArgumentAcceptingOptionSpec var4 = var1.accepts("gameDir").withRequiredArg().ofType(File.class).defaultsTo(new File("."), new File[0]);

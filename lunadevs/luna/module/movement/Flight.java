@@ -25,7 +25,7 @@ public class Flight extends Module {
 		if (!this.isEnabled)
 			return;
 		if (this.Mode1 == true) {
-			Minecraft.thePlayer.motionY = 0.0f;
+			Minecraft.thePlayer.motionY = 0.005f;
 			mode1();
 			if (this.Mode2 == true) {
 				this.Mode2 = false;
@@ -52,7 +52,7 @@ public class Flight extends Module {
 				Minecraft.thePlayer.setPosition(Minecraft.thePlayer.posX, Minecraft.thePlayer.posY + 0.4f,
 						Minecraft.thePlayer.posZ);
 
-				Minecraft.thePlayer.motionY = 0.0f;
+				Minecraft.thePlayer.motionY = 0.005f;
 			}
 				else if (mc.gameSettings.keyBindSneak.isKeyDown()) {
 						Minecraft.thePlayer.setPosition(Minecraft.thePlayer.posX, Minecraft.thePlayer.posY - 0.4f,

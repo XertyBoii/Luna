@@ -196,7 +196,7 @@ public class Scaffold extends Module{
 	        double xOffset = Minecraft.thePlayer.movementInput.moveForward * 0.4D * x2 + Minecraft.thePlayer.movementInput.moveStrafe * 0.4D * z2;
 	        double zOffset = Minecraft.thePlayer.movementInput.moveForward * 0.4D * z2 - Minecraft.thePlayer.movementInput.moveStrafe * 0.4D * x2;
 	        double x = Minecraft.thePlayer.posX + xOffset;double y = Minecraft.thePlayer.posY - 1.0D;double z = Minecraft.thePlayer.posZ + zOffset;
-	        BlockPos blockBelow1 = new BlockPos(x, y, z);
+	        BlockPos blockBelow1 = new BlockPos(x+0.1, y, z+0.1);
 	        if (Minecraft.theWorld.getBlockState(blockBelow1).getBlock() == Blocks.air)
 	        {
 	          this.blockData = getBlockData(blockBelow1, this.invalid);
