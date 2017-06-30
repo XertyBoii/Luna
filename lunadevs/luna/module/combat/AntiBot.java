@@ -23,6 +23,8 @@ public class AntiBot extends Module {
 	public static boolean GWEN = true;
 	@Option.Op(name = "Advanced")
 	public static boolean Advanced = false;
+	@Option.Op(name = "Extreme")
+	public static boolean Extreme = false;
 	public AntiBot() {
 		super("AntiBot", 0, Category.COMBAT, true);
 		bots = new ArrayList<Entity>();
@@ -44,6 +46,7 @@ public class AntiBot extends Module {
 			if (this.GWEN == true) {
 				this.GWEN = false;
 				this.Advanced = false;
+				this.Extreme = false;
 			}
 			modname = "Watchdog";
 		} else if (this.GWEN == true) {
@@ -51,10 +54,19 @@ public class AntiBot extends Module {
 			if (this.Watchdog == true) {
 				this.Watchdog = false;
 				this.Advanced=false;
+				this.Extreme = false;
 			}
 			modname = "G.W.E.N";
+         } else if (this.Extreme == true) {
+			
+			if (this.Watchdog == true) {
+				this.Watchdog = false;
+				this.Advanced=false;
+				this.GWEN = false;
+			}
+			modname = "Extreme";
 		} else if (this.Advanced == true) {
-			advanced();
+			extreme();
 			if (this.Watchdog == true) {
 				this.Watchdog = false;
 				this.GWEN = false;
@@ -79,6 +91,29 @@ public class AntiBot extends Module {
 		}
 	}
 	
+	public void extreme() {
+		if (this.Extreme == true) {
+			if (time.hasReached((double) 15000)) {
+				bots.clear();
+				time.resetDouble();
+			}
+			EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
+			for (Object entity : mc.theWorld.loadedEntityList) { //Idk whats wrong with Unicode on diff computers, Â
+				if (!((Entity) entity).getDisplayName().getFormattedText().contains("§a")
+						&& !((Entity) entity).getDisplayName().getFormattedText().contains("§9")
+						&& !((Entity) entity).getDisplayName().getFormattedText().contains("§c")
+						&& !((Entity) entity).getDisplayName().getFormattedText().contains("§e") && entity != p) {
+					bots.add((Entity) entity);
+				if ((((Entity) entity).isInvisible()) && (entity != Minecraft.thePlayer)) {
+					mc.theWorld.removeEntity((Entity) entity);
+					((Entity) entity).setInvisible(false);
+					((Entity) entity).setInvisible(true);
+				}
+			}
+		}
+	}
+}
+	
 	public void advanced() {
 		if (this.Advanced == true) {
 			if (time.hasReached((double) 15000)) {
@@ -100,7 +135,7 @@ public class AntiBot extends Module {
 	public void receivePackets(EventPacket e) {
 		if (!this.isEnabled)
 			return;
-		if (this.GWEN == true) {
+		if (this.GWEN == true || this.Extreme == true) {
 			for (Object entity : mc.theWorld.loadedEntityList) {
 				if ((e.getPacket() instanceof S0CPacketSpawnPlayer)) {
 					S0CPacketSpawnPlayer packet = (S0CPacketSpawnPlayer) e.getPacket();
