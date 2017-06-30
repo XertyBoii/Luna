@@ -7,7 +7,7 @@ import com.zCore.Core.zCore;
 import lunadevs.luna.category.Category;
 import lunadevs.luna.manage.ModuleManager;
 import lunadevs.luna.module.Module;
-import lunadevs.luna.module.combat.AntiBot;
+import lunadevs.luna.module.exploits.AntiBot;
 import lunadevs.luna.module.combat.InfiniteAura;
 import lunadevs.luna.module.combat.Killaura;
 import lunadevs.luna.module.exploits.AACClip;

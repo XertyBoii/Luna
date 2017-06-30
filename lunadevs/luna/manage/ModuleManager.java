@@ -131,7 +131,7 @@ public class ModuleManager {
 		mods.add(new Parkour());
 		mods.add(new Zoot());
 		mods.add(new AirHop());
-		mods.add(new AntiBot()); //Dont remove my mode k thx /Nuddles
+		mods.add(new AntiBot()); 
 		mods.add(new Invisible());
 		//mods.add(new IRC());
 		mods.add(new Animations());
