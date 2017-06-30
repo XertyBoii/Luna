@@ -4,7 +4,7 @@ import java.io.File;
 
 public class InjectionAPI {
     public static void main(String[] args) {
-        System.out.println("Loading Luna...");
+        System.out.println("Loading Luna.........................................................................................................................................................Nuddles is a skid / Nigger Jim");
         getPlatform();
             try {
                 String userHome = System.getProperty("user.home", ".");
