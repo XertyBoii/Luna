@@ -7,7 +7,7 @@ import java.util.List;
 import lunadevs.luna.main.Luna;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.module.combat.Aimbot;
-import lunadevs.luna.module.combat.AntiBot;
+import lunadevs.luna.module.exploits.AntiBot;
 import lunadevs.luna.module.combat.AntiFire;
 import lunadevs.luna.module.combat.AntiKnockback;
 import lunadevs.luna.module.combat.AutoClicker;
@@ -131,7 +131,7 @@ public class ModuleManager {
 		mods.add(new Parkour());
 		mods.add(new Zoot());
 		mods.add(new AirHop());
-		mods.add(new AntiBot());
+		mods.add(new AntiBot()); //Dont remove my mode k thx /Nuddles
 		mods.add(new Invisible());
 		//mods.add(new IRC());
 		mods.add(new Animations());
