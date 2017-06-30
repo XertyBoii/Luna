@@ -14,6 +14,7 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 
 import lunadevs.luna.events.MoveEvent;
+import lunadevs.luna.main.Luna;
 import lunadevs.luna.utils.MathUtils;
 import lunadevs.luna.utils.RenderUtils;
 import net.minecraft.block.Block;
@@ -22,6 +23,7 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.multiplayer.PlayerControllerMP;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.client.renderer.GlStateManager;
@@ -45,7 +47,7 @@ import net.minecraft.util.StringUtils;
 import parallaxadevs.Utils.FontUtils.FontType;
 /**
  * 
- * @author Timothy/SLiZ_D_2017/ZiTROX/LunaDevs/Italicz/DanielDev
+ * @author Timothy/SLiZ_D_2017/ZiTROX/LunaDevs/Italicz/DanielDev/Nigger Jim/Nuddles
  *
  */
 public class zCore {
@@ -65,7 +67,7 @@ public class zCore {
     private DynamicTexture dynamicTexture;
     private DynamicTexture dynamicTextureBlurred = null;
     private FontMetrics theMetrics;
-	public static String zCore_BUILD = "5";
+	public static String zCore_BUILD = "6";
 	
 	
 	private static final Random rng = new Random();
@@ -95,6 +97,17 @@ public class zCore {
 	  public static EntityPlayerSP player()
 	  {
 	    return mc().thePlayer;
+	  }
+	  
+	  public static PlayerControllerMP playerControll()
+	  {
+		  return mc().playerController;
+	  }
+	  
+	  public static Luna client()
+	  {
+		  //YES HELLO NIGGER JIM HERE
+		return Luna.client();  
 	  }
 	  
 	  public static void sendChatMessage(String msg) {

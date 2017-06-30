@@ -44,6 +44,7 @@ public class Luna {
 	*
 	**/
 	//Nigger Jim
+	private static Luna theClient;
 	public static String CLIENT_NAME = ConnectSettings.NAME;
 	public static String CLIENT_VERSION = ConnectSettings.VERSION;
 	public static String CLIENT_BUILD = ConnectSettings.VERSION;
@@ -110,6 +111,10 @@ public class Luna {
 		}
 	}
 
+	public static Luna client(){
+		return theClient;
+	}
+	
 	private static Font getFont(int size) {
 		Font font = null;
 		try {

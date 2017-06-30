@@ -167,6 +167,7 @@ public class StepModes extends Module {
 	}
 
 	public void aac() {
+		//@author Nuddles
 		if (this.AAC == true) {
 			this.modname = "AAC 3.1.6";
 			if ((mc.thePlayer.isCollidedHorizontally)) {
