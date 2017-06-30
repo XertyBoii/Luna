@@ -3,6 +3,7 @@ package lunadevs.luna.module.combat;
 import java.util.ArrayList;
 
 import com.darkmagician6.eventapi.EventTarget;
+import com.zCore.Core.zCore;
 
 import lunadevs.luna.category.Category;
 import lunadevs.luna.events.EventPacket;
@@ -25,6 +26,8 @@ public class AntiBot extends Module {
 	public static boolean Advanced = false;
 	@Option.Op(name = "Extreme")
 	public static boolean Extreme = false;
+	@Option.Op(name = "Nuddles")
+	public static boolean Nuddles = false;
 	public AntiBot() {
 		super("AntiBot", 0, Category.COMBAT, true);
 		bots = new ArrayList<Entity>();
@@ -33,9 +36,9 @@ public class AntiBot extends Module {
 	
 	public static ArrayList<Entity> bots;
 	private Timer time;
-
+	int boostNuddles = 0;
 	public static String modname;
-	
+	int nuddlesBotCount = 0;
 
 	@Override
 	public void onUpdate() {
@@ -47,6 +50,7 @@ public class AntiBot extends Module {
 				this.GWEN = false;
 				this.Advanced = false;
 				this.Extreme = false;
+				this.Nuddles = false;
 			}
 			modname = "Watchdog";
 		} else if (this.GWEN == true) {
@@ -55,6 +59,7 @@ public class AntiBot extends Module {
 				this.Watchdog = false;
 				this.Advanced=false;
 				this.Extreme = false;
+				this.Nuddles = false;
 			}
 			modname = "G.W.E.N";
          } else if (this.Extreme == true) {
@@ -63,6 +68,7 @@ public class AntiBot extends Module {
 				this.Watchdog = false;
 				this.Advanced=false;
 				this.GWEN = false;
+				this.Nuddles = false;
 			}
 			modname = "Extreme";
 		} else if (this.Advanced == true) {
@@ -70,9 +76,13 @@ public class AntiBot extends Module {
 			if (this.Watchdog == true) {
 				this.Watchdog = false;
 				this.GWEN = false;
+				this.Nuddles = false;
 				/** Thanks Jordan & Italicz for the Advanced Bot Mode. */
 			}
 			modname = "Advanced";
+		} else if (this.Nuddles){
+			this.Nuddles = true;
+			nuddles();
 		}
 		if (this.Watchdog == true) {
 			watchdog();
@@ -80,6 +90,66 @@ public class AntiBot extends Module {
 		super.onUpdate();
 	}
 
+	public void nuddles(){
+		if (this.Nuddles == true) {
+			if (time.hasReached((double) 15000)) {
+				bots.clear();
+				time.resetDouble();
+			}
+			EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
+		
+		for (Object entity : zCore.mc().theWorld.loadedEntityList) {
+		float reasonsToRemoveEntity = 0;
+		int airTicks = 0;
+		if ((((Entity) entity).isInvisible()) && (entity != Minecraft.thePlayer)) {
+			reasonsToRemoveEntity += 0.5;
+		}
+		if((((Entity) entity).isInvisible()) || (((Entity) entity).ticksExisted < 2)){
+			reasonsToRemoveEntity += 0.5;
+		}
+		if(((Entity) entity).getDisplayName().getFormattedText().contains("bot")){
+			reasonsToRemoveEntity += 2;
+		}
+		if(!((Entity) entity).onGround){
+			airTicks += 1;
+			if(airTicks > 900){
+				reasonsToRemoveEntity += 1;
+			}
+		}else if(((Entity) entity).onGround){
+			airTicks = 0;
+		}
+		
+		if (!((Entity) entity).getDisplayName().getFormattedText().contains("§a")
+				&& !((Entity) entity).getDisplayName().getFormattedText().contains("§9")
+				&& !((Entity) entity).getDisplayName().getFormattedText().contains("§c")
+				&& !((Entity) entity).getDisplayName().getFormattedText().contains("§e") && entity != p) {
+			bots.add((Entity) entity);
+		if ((((Entity) entity).isInvisible()) && (entity != Minecraft.thePlayer)) {
+			reasonsToRemoveEntity += 3;
+		}
+	}
+		if ((((Entity) entity).motionX > 1.1) || (((Entity) entity).motionZ > 1.1) || (((Entity) entity).motionY > 0.6)){
+			reasonsToRemoveEntity += 0.75;
+			if((((Entity) entity).motionY > 0.5)){
+				reasonsToRemoveEntity += 1.25;
+			}
+		}
+		if(entity != zCore.mc().thePlayer){
+			if(reasonsToRemoveEntity > 2.25){
+				mc.theWorld.removeEntity((Entity) entity);
+				((Entity) entity).setInvisible(false);
+				((Entity) entity).setInvisible(true);
+				reasonsToRemoveEntity = 0;
+				airTicks = 0;
+				nuddlesBotCount += 1;
+				zCore.addChatMessageP("Nuddles AntiBot removed the bot: " + ((Entity) entity).getName() + "! " + 
+				"Total Bots removed: " + String.valueOf(nuddlesBotCount));
+			}
+		}
+		}
+	}
+	}
+	
 	public void watchdog() {
 		if (this.Watchdog == true) {
 			for (Object entity : mc.theWorld.loadedEntityList) {
@@ -93,6 +163,29 @@ public class AntiBot extends Module {
 	
 	public void extreme() {
 		if (this.Extreme == true) {
+			if (time.hasReached((double) 15000)) {
+				bots.clear();
+				time.resetDouble();
+			}
+			EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
+			for (Object entity : mc.theWorld.loadedEntityList) { //Idk whats wrong with Unicode on diff computers, Â
+				if (!((Entity) entity).getDisplayName().getFormattedText().contains("§a")
+						&& !((Entity) entity).getDisplayName().getFormattedText().contains("§9")
+						&& !((Entity) entity).getDisplayName().getFormattedText().contains("§c")
+						&& !((Entity) entity).getDisplayName().getFormattedText().contains("§e") && entity != p) {
+					bots.add((Entity) entity);
+				if ((((Entity) entity).isInvisible()) && (entity != Minecraft.thePlayer)) {
+					mc.theWorld.removeEntity((Entity) entity);
+					((Entity) entity).setInvisible(false);
+					((Entity) entity).setInvisible(true);
+				}
+			}
+		}
+	}
+}
+	
+	public void nuddlesisjustgoingtoborrowitaliczandjordansantibotkthx() {
+		if (this.Nuddles == true) {
 			if (time.hasReached((double) 15000)) {
 				bots.clear();
 				time.resetDouble();
@@ -135,7 +228,7 @@ public class AntiBot extends Module {
 	public void receivePackets(EventPacket e) {
 		if (!this.isEnabled)
 			return;
-		if (this.GWEN == true || this.Extreme == true) {
+		if (this.GWEN == true || this.Extreme == true || this.Nuddles == true) {
 			for (Object entity : mc.theWorld.loadedEntityList) {
 				if ((e.getPacket() instanceof S0CPacketSpawnPlayer)) {
 					S0CPacketSpawnPlayer packet = (S0CPacketSpawnPlayer) e.getPacket();
@@ -160,6 +253,7 @@ public class AntiBot extends Module {
 	@Override
 	public void onDisable() {
 		bots.clear();
+		nuddlesBotCount = 0;
 		time.resetDouble();
 		super.onDisable();
 		active = false;
@@ -167,6 +261,7 @@ public class AntiBot extends Module {
 
 	@Override
 	public void onEnable() {
+		nuddlesBotCount = 0;
 		active = true;
 		super.onEnable();
 	}
