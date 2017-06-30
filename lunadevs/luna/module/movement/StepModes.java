@@ -13,7 +13,7 @@ public class StepModes extends Module {
 	public static boolean active;
 	@Option.Op(name = "NCP")
 	public static boolean ncp = false;
-	@Option.Op(name = "AAC 3.1.6")
+	@Option.Op(name = "AAC 3.2.1")
 	public static boolean AAC = true;
 	@Option.Op(name = "Lemon")
 	public static boolean Lemon = false;
@@ -49,7 +49,7 @@ public class StepModes extends Module {
 				this.Bunny = false;
 				this.jump = false;
 			}
-			modname = "AAC 3.1.6";
+			modname = "AAC 3.2.1";
 		} else if (this.Lemon == true) {
 			lemon();
 			if (this.Lemon == true) {
@@ -171,6 +171,19 @@ public class StepModes extends Module {
 			this.modname = "AAC 3.1.6";
 			if ((mc.thePlayer.isCollidedHorizontally)) {
 				mc.thePlayer.onGround = true;
+				zCore.mc().thePlayer.stepHeight = 1;
+				Minecraft.thePlayer.setSprinting(true);
+				Minecraft.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(
+						Minecraft.thePlayer.posX, Minecraft.thePlayer.posY + 0.42D, Minecraft.thePlayer.posZ,
+						Minecraft.thePlayer.onGround));
+				Minecraft.thePlayer.setSprinting(true);
+				Minecraft.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(
+						Minecraft.thePlayer.posX, Minecraft.thePlayer.posY + 0.753D, Minecraft.thePlayer.posZ,
+						Minecraft.thePlayer.onGround));
+				Minecraft.thePlayer.setSprinting(true);
+				Minecraft.thePlayer.setPosition(Minecraft.thePlayer.posX, Minecraft.thePlayer.posY + 1.0D,
+						Minecraft.thePlayer.posZ);
+				Minecraft.thePlayer.setSprinting(true);
 			}
 		}
 	}
