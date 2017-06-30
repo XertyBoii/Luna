@@ -230,15 +230,19 @@ public class Longjump extends Module{
 	public void onUpdate() {
 	    if (lunadevs.luna.commands.Longjump.updated==true){
 	        mode="New";
+	        boost = 4.5;
         }else if (lunadevs.luna.commands.Longjump.updated==false){
 	        mode="Old";
+	        boost = 3;
         }
 	    if (this.updated==true) {
 	    	lunadevs.luna.commands.Longjump.updated=true;
         	mode="New";
+        	boost = 4.5;
         }else if (this.old==true){
         	lunadevs.luna.commands.Longjump.updated=false;
         	mode="Old";
+        	boost = 3;
         }
 		if (!this.isEnabled){
 			return;
