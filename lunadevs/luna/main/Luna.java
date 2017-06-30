@@ -43,7 +43,7 @@ public class Luna {
 	*
 	*
 	**/
-	
+	//Nigger Jim
 	public static String CLIENT_NAME = ConnectSettings.NAME;
 	public static String CLIENT_VERSION = ConnectSettings.VERSION;
 	public static String CLIENT_BUILD = ConnectSettings.VERSION;
