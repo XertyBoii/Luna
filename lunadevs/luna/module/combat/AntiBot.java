@@ -1,6 +1,12 @@
 package lunadevs.luna.module.combat;
 
 import java.util.ArrayList;
+import net.minecraft.entity.NpcMerchant;
+import net.minecraft.entity.item.EntityArmorStand;
+import net.minecraft.entity.monster.EntityGuardian;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntitySheep;
 
 import com.darkmagician6.eventapi.EventTarget;
 import com.zCore.Core.zCore;
@@ -108,7 +114,7 @@ public class AntiBot extends Module {
 			reasonsToRemoveEntity += 0.5;
 		}
 		if(((Entity) entity).getDisplayName().getFormattedText().contains("bot")){
-			reasonsToRemoveEntity += 2;
+			reasonsToRemoveEntity += 0.1;
 		}
 		if(!((Entity) entity).onGround){
 			airTicks += 1;
@@ -134,16 +140,19 @@ public class AntiBot extends Module {
 				reasonsToRemoveEntity += 1.25;
 			}
 		}
-		if(entity != zCore.mc().thePlayer){
-			if(reasonsToRemoveEntity > 2.25){
+		if(entity instanceof EntityGuardian){
+			reasonsToRemoveEntity += 0.5;
+		}
+		if(entity != zCore.mc().thePlayer && !(entity instanceof NpcMerchant) && !(entity instanceof EntityArmorStand) && !(entity instanceof EntityPig) && !(entity instanceof EntityCow) && !(entity instanceof EntitySheep)){
+			if(reasonsToRemoveEntity > 3.25){
 				mc.theWorld.removeEntity((Entity) entity);
 				((Entity) entity).setInvisible(false);
 				((Entity) entity).setInvisible(true);
 				reasonsToRemoveEntity = 0;
 				airTicks = 0;
 				nuddlesBotCount += 1;
-				zCore.addChatMessageP("Nuddles AntiBot removed the bot: " + ((Entity) entity).getName() + "! " + 
-				"Total Bots removed: " + String.valueOf(nuddlesBotCount));
+				zCore.addChatMessageP("§7Nuddles AntiBot removed the bot: " + ((Entity) entity).getName() + "! " + 
+				"§7 Total Bots removed: " + String.valueOf(nuddlesBotCount));
 			}
 		}
 		}
