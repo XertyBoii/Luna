@@ -233,7 +233,7 @@ public class Longjump extends Module{
 	        boost = 4.5;
         }else if (lunadevs.luna.commands.Longjump.updated==false){
 	        mode="Old";
-	        boost = 3.5;
+	        boost = 3.525;
         }
 	    if (this.updated==true) {
 	    	lunadevs.luna.commands.Longjump.updated=true;
@@ -242,7 +242,7 @@ public class Longjump extends Module{
         }else if (this.old==true){
         	lunadevs.luna.commands.Longjump.updated=false;
         	mode="Old";
-        	boost = 3.5;
+        	boost = 3.525;
         }
 		if (!this.isEnabled){
 			return;
