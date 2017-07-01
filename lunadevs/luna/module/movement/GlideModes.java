@@ -1,9 +1,12 @@
 package lunadevs.luna.module.movement;
 
+import com.zCore.Core.zCore;
+
 import lunadevs.luna.category.Category;
 import lunadevs.luna.module.Module;
 import lunadevs.luna.option.Option;
 import net.minecraft.client.Minecraft;
+import net.minecraft.potion.Potion;
 
 public class GlideModes extends Module {
 
@@ -29,6 +32,7 @@ public class GlideModes extends Module {
 			return;
 		if (this.Watchdog == true) {
 			Minecraft.thePlayer.motionY = 0.0f;
+			zCore.setSpeedM((float) 0.32);
 			if (this.AAC == true) {
 				this.AAC = false;
 
@@ -86,6 +90,7 @@ public class GlideModes extends Module {
 	public void watchdog() {
 		if (this.Watchdog == true) {
 			this.modname = "Watchdog";
+			zCore.setSpeedM((float) 0.32);
 			if (mc.gameSettings.keyBindJump.isKeyDown()) {
 				Minecraft.thePlayer.setPosition(Minecraft.thePlayer.posX, Minecraft.thePlayer.posY + 0.4f,
 						Minecraft.thePlayer.posZ);
@@ -139,9 +144,21 @@ public class GlideModes extends Module {
 	public void onDisable() {
 		super.onDisable();
 		mc.thePlayer.stepHeight = 0.6f;
+		zCore.setSpeedM((float) getBaseMoveSpeed());
 		active = false;
 	}
 
+	  public double getBaseMoveSpeed()
+	  {
+	    double baseSpeed = 0.2873D;
+	    if (mc.thePlayer.isPotionActive(Potion.moveSpeed))
+	    {
+	      int amplifier = mc.thePlayer.getActivePotionEffect(Potion.moveSpeed).getAmplifier();
+	      baseSpeed *= (1.0D + 0.2D * (amplifier + 1));
+	    }
+	    return baseSpeed;
+	  }
+	
 	@Override
 	public void onEnable() {
 		active = true;
