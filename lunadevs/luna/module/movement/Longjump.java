@@ -163,8 +163,8 @@ public class Longjump extends Module{
                     double[] speedVals = new double[]{0.420606, 0.417924, 0.415258, 0.412609, 0.409977, 0.407361, 0.404761, 0.402178, 0.399611, 0.39706, 0.394525, 0.392, 0.3894, 0.38644, 0.383655, 0.381105, 0.37867, 0.37625, 0.37384, 0.37145, 0.369, 0.3666, 0.3642, 0.3618, 0.35945, 0.357, 0.354, 0.351, 0.348, 0.345, 0.342, 0.339, 0.336, 0.333, 0.33, 0.327, 0.324, 0.321, 0.318, 0.315, 0.312, 0.309, 0.307, 0.305, 0.303, 0.3, 0.297, 0.295, 0.293, 0.291, 0.289, 0.287, 0.285, 0.283, 0.281, 0.279, 0.277, 0.275, 0.273, 0.271, 0.269, 0.267, 0.265, 0.263, 0.261, 0.259, 0.257, 0.255, 0.253, 0.251, 0.249, 0.247, 0.245, 0.243, 0.241, 0.239, 0.237};
                     if (mc.gameSettings.keyBindForward.pressed) {
                         try {
-                            Minecraft.thePlayer.motionX = (double)xDir * speedVals[this.airTicks - 1] * 3.0 * this.addSpeedForSpeedEffect();
-                            Minecraft.thePlayer.motionZ = (double)zDir * speedVals[this.airTicks - 1] * 3.0 * this.addSpeedForSpeedEffect();
+                            Minecraft.thePlayer.motionX = (double)xDir * speedVals[this.airTicks - 1] * boost * this.addSpeedForSpeedEffect();
+                            Minecraft.thePlayer.motionZ = (double)zDir * speedVals[this.airTicks - 1] * boost * this.addSpeedForSpeedEffect();
                             this.off = true;
                         }
                         catch (ArrayIndexOutOfBoundsException var6_12) {}
@@ -233,7 +233,7 @@ public class Longjump extends Module{
 	        boost = 4.5;
         }else if (lunadevs.luna.commands.Longjump.updated==false){
 	        mode="Old";
-	        boost = 3;
+	        boost = 3.5;
         }
 	    if (this.updated==true) {
 	    	lunadevs.luna.commands.Longjump.updated=true;
@@ -242,7 +242,7 @@ public class Longjump extends Module{
         }else if (this.old==true){
         	lunadevs.luna.commands.Longjump.updated=false;
         	mode="Old";
-        	boost = 3;
+        	boost = 3.5;
         }
 		if (!this.isEnabled){
 			return;

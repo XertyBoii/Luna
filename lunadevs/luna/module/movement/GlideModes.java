@@ -86,7 +86,6 @@ public class GlideModes extends Module {
 			}
 		}
 	}
-
 	public void watchdog() {
 		if (this.Watchdog == true) {
 			this.modname = "Watchdog";
