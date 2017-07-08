@@ -13,7 +13,7 @@ import lunadevs.luna.module.Module;
 
 public class Spammer extends Module{
 
-	private String[] spamList = { "MiDNiGHT developed by MinemanFaith, Mega_Mixer, Timothy/ZiTROX", "I am using the best hacked client!!", "Did you know? That You can download Luna for free! but only for a certain time!", "Im not hacking, just energy drink."  };
+	private String[] spamList = { "MiDNiGHT developed by MinemanFaith, Mega_Mixer, Timothy/ZiTROX", "I am using the best hacked client!!", "Did you know? That You can download Luna for free! but only for a certain time!", "Im not hacking, just energy drink.","No hax just Nuddles mixtape!","If the floor is stormanticheat just toggle fly and fly away cause stormanticheat is terrible!","ZOOM ZOOM ZOOOM","Nuddles is a tall midget!"  };
 	private int last;
 	TimerUtil timer = new TimerUtil();
 	
